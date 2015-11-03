@@ -1,0 +1,1 @@
+define([],function(){var e=function(){this.name="表单"};return e});
