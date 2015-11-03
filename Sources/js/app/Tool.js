@@ -1,0 +1,38 @@
+define([
+	'knockout',
+	'app/Util',
+	'app/tool/selection',
+	'app/tool/addLine',
+	'app/tool/addRect',
+	'app/tool/addText',
+	'app/tool/addFixWidthText',
+	'app/tool/addImage'
+],function (ko,util,selection,addline,addrect,addtext,addfixwidthtext,addimage){
+	var tool = function (){
+		var self =this;
+		self.curTool = ko.observable();
+		self.tools = {};
+
+		self.init = function (){
+			self.tools["selection"] = new selection(self);
+			self.tools["addline"] = new addline(self);
+			self.tools["addrect"] = new addrect(self);
+			self.tools["addtext"] = new addtext(self);
+			self.tools["addfixwidthtext"] = new addfixwidthtext(self);
+			self.tools["addimage"] = new addimage(self);
+			self.setDefaultTool();
+		};
+		self.setDefaultTool = function (){
+			self.changeTool("selection");
+		};
+		self.changeTool = function (tool){
+			if(util._isString(tool) && self.tools.hasOwnProperty(tool)){
+				if(self.curTool()) self.curTool().deactive();
+				self.tools[tool].active();
+				self.curTool(self.tools[tool]);
+			}
+		};
+
+	};
+	return new tool;
+});
