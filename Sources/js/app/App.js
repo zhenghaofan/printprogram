@@ -9,6 +9,7 @@
  	'app/Tool',
  	'app/History',
  	'app/Lang',
+ 	'app/UI/barcode',
  	'app/UI/objectsAlign',
  	'app/UI/lineProperty',
  	'app/UI/codeProperty',
@@ -16,9 +17,10 @@
  	'app/UI/rectProperty',
  	'app/UI/textProperty',
  	'app/UI/stageRightmenu',
+ 	'app/UI/page-setting',
  	'app/UI/login2',
  	'app/UI/login1'
-],function ($,ui,ko,router,stage,database,util,tool,history,lang,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,login2,login1){
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1){
  	
  	var App = function (){
 		//属性
@@ -101,11 +103,15 @@
 				}
 			});
 
+			// if(document.location.hash="#disign"){
+			// 	$('#page-initial').dialog("open");
+			// }
 
 		},
 		getStage : function (){
 			return this.stage;
 		}
+
 	};
 	window.app = new App;
 	return window.app;

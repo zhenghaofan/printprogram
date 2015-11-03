@@ -11,7 +11,8 @@ requirejs.config({
         sammy: 'lib/sammy.min',
         kinetic: 'lib/kinetic.min',
         object: 'app/object',
-        DBObj: 'app/DBObj'
+        DBObj: 'app/DBObj',
+        vue:'lib/vue'
     }
 });
 require(['knockout','app/App','jquery'],function (ko,app,$){
