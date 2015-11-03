@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<title>Document</title>
+	<link rel="stylesheet" href="/Sources/dist/css/style.css">
+	<link rel="stylesheet" href="/Sources/dist/css/icomoon.css">
+</head>
+<body>
+	<div id="sections">
+		<section id="login1" data-bind="visible: router.state() ==='login1' " style="display:none;">
+			<div class="center-pane">
+				<header class="center-pane-header">
+					<h2>标签生产平台</h2>
+				</header>
+			  <div class="center-pane-content">
+			  	<form>
+				  	<div class="inputGroup">
+				  		<label>生产指令：</label>
+				  		<input type="text">
+				  	</div>
+				  	<div class="inputGroup">
+				  		<label>工位：</label>
+				  		<select name="" id="">
+				  			<option value="">1</option>
+				  			<option value="">2</option>
+				  			<option value="">3</option>
+				  		</select>
+				  	</div>
+				  	<div class="inputGroup">
+				  		<label>ID：</label>
+				  		<input type="text" data-bind="value: login1.username">
+				  	</div>
+				  	<div class="inputGroup">
+				  		<label>密码：</label>
+				  		<input type="password" data-bind="value: login1.password">
+				  	</div>
+				  	<div class="buttonGroup">
+				  		<input type="submit" value="确定" data-bind="click: login1.check"><input type="reset">
+				  	</div>
+			  	</form>
+			  </div>
+			</div>		
+		</section>
+		<section id="login2" data-bind="visible: router.state() ==='login2' " style="display:none;">
+			<div class="center-pane">
+				<header class="center-pane-header">
+					<h2>标签设计平台</h2>
+				</header>
+			  <div class="center-pane-content">
+			  	<form>
+				  	<div class="inputGroup">
+				  		<label>ID：</label>
+				  		<input type="text" data-bind="value: login2.username">
+				  	</div>
+				  	<div class="inputGroup">
+				  		<label>密码：</label>
+				  		<input type="password" data-bind="value: login2.password">
+				  	</div>
+				  	<div class="buttonGroup">
+				  		<input type="submit" value="确定" data-bind="click: login2.check"><input type="reset">
+				  	</div>
+			  	</form>
+			  </div>
+			</div>		
+		</section>
+		<section id="new" data-bind="visible: router.state() ==='new' " style="display:none;">
+			new
+		</section>
+		<section id="disign" data-bind="visible: router.state() ==='disign' " style="display:none;">
+			<div id="menubar" class="noprint">
+				<ul id="menu">
+					<li>
+						<span data-bind="text: lang.curLang().file">文件</span>
+						<ul>
+							<li data-bind="text: lang.curLang().new">新建</li>
+							<li data-bind="text: lang.curLang().open">打开</li>
+							<li data-bind="text: lang.curLang().close">关闭</li>
+							<li data-bind="text: lang.curLang().closeall">关闭所有</li>
+							<li data-bind="text: lang.curLang().save">保存</li>
+							<li data-bind="text: lang.curLang().saveas">另存为</li>
+							<li>
+								<span data-bind="text: lang.curLang().export">导出</span>
+								<ul>
+									<li data-bind="text: lang.curLang().toanimagefile">导出至图片</li>
+								</ul>
+							</li>
+							<li data-bind="text: lang.curLang().pagesetup">页面设置</li>
+							<li data-bind="text: lang.curLang().selectprinter">选择打印机</li>
+							<li data-bind="text: lang.curLang().printersetup">打印机设置</li>
+							<li data-bind="text: lang.curLang().print">打印</li>
+							<li data-bind="text: lang.curLang().exit">退出</li>
+						</ul>
+					</li>
+					<li>
+						<span data-bind="text: lang.curLang().edit">编辑</span>
+						<ul>
+							<li data-bind="text: lang.curLang().undo">撤销</li>
+							<li data-bind="text: lang.curLang().redo">重做</li>
+							<li data-bind="text: lang.curLang().cut">剪切</li>
+							<li data-bind="text: lang.curLang().copy">复制</li>
+							<li data-bind="text: lang.curLang().paste">粘贴</li>
+							<li data-bind="text: lang.curLang().selectall">全选</li>
+						</ul>
+					</li>
+					<li>查看
+						<ul>
+							<li>表单</li>
+							<li>缩放
+								<ul>
+									<li>100%</li>
+									<li>缩小</li>
+									<li>放大</li>
+									<li>宽度文档</li>
+									<li>整个文档</li>
+								</ul>
+							</li>
+							<li>方位
+								<ul>
+									<li>0</li>
+									<li>90</li>
+									<li>180</li>
+									<li>270</li>
+								</ul>
+							</li>
+							<li>表单自定义</li>
+						</ul>
+					</li>
+					<li>对象
+						<ul>
+							<li>文本
+								<ul>
+									<li>固定文本</li>
+									<li>向导</li>
+									<li>新建数据源</li>
+								</ul>
+							</li>
+							<li>条形码
+								<ul>
+									<li>固定条形码</li>
+									<li>向导</li>
+									<li>新建数据源</li>
+								</ul>
+							</li>
+							<li>图像
+								<ul>
+									<li>固定图像</li>
+									<li>向导</li>
+									<li>新建数据源</li>
+								</ul>
+							</li>
+							<li>形状
+								<ul>
+									<li>线条</li>
+									<li>矩形</li>
+								</ul>
+							</li>
+							<li>对齐方式
+								<ul>
+									<li data-bind="click: objectsalign.left">左侧</li>
+									<li>水平居中</li>
+									<li>在文档中水平居中</li>
+									<li data-bind="click: objectsalign.right">右侧</li>
+									<li>顶部</li>
+									<li>垂直居中</li>
+									<li>在文档中垂直居中</li>
+									<li>底端</li>
+									<li>调整为相同宽度</li>
+									<li>调整为相同高度</li>
+									<li>调整为相同尺寸</li>
+									<li>横向间隔</li>
+									<li>纵向间隔</li>
+								</ul>
+							</li>
+							<li>向右旋转90度</li>
+							<li>向左旋转90度</li>
+							<li>顺序</li>
+							<li>置于顶层</li>
+							<li>置于底层</li>
+							<li>可打印/不可打印</li>
+							<li>锁定/解除锁定</li>
+							<li>属性</li>
+						</ul>
+					</li>
+					<li>数据源
+						<ul>
+							<li>表单
+								<ul>
+									<li>添加</li>
+									<li>查看</li>
+								</ul>
+							</li>
+							<li>日期
+								<ul>
+									<li>添加</li>
+									<li>查看</li>
+								</ul>
+							</li>
+							<li>表查找
+								<ul>
+									<li>添加</li>
+									<li>查看</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>工具
+						<ul>
+							<li data-bind="click: lang.switchLang">中英文切换</li>
+						</ul>
+					</li>
+					<li>帮助
+						<ul>
+							<li>异常提交</li>
+							<li>帮助</li>
+							<li>关于</li>
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+
+			<div id="settingbar" class="noprint" style="padding:8px 25px">
+				<div style="height:32px">
+				<button type="button" class="btn">
+					<span class="icon-file-text2">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-folder-open">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-floppy-disk">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<!-- <span class="icon-printer">？</span> -->
+					<img src="/Sources/img/1.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<!-- <span class="icon-printer">？</span> -->
+					<img src="/Sources/img/2.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<!-- <span class="icon-printer">？</span> -->
+					<img src="/Sources/img/3.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<!-- <span class="icon-printer">？</span> -->
+					<img src="/Sources/img/4.png" alt="" style="height:15px">
+				</button>
+				<!-- <button type="button" class="btn">
+					<span class="icon-drawer">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-file-text">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-printer">				
+					</span>
+				</button> -->
+				<button type="button" class="btn">
+					<span class="icon-scissors">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-copy">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-paste">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-undo2">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-redo2">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-table2">				
+					</span>
+				</button>
+				<select name="" id="" class="sm-margin-right">
+					<option value="">167</option>
+				</select>
+				<button type="button" class="btn">
+					<span class="icon-search">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-zoom-out">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-zoom-in">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-enlarge2">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-shrink2">				
+					</span>
+				</button>
+				</div>
+				<div style="height:32px">
+				<select name="" id="" style="width:134px" class="sm-margin-right">
+					<option value="">黑体</option>
+				</select>
+				<select name="" id="" class="sm-margin-right">
+					<option value="">15px</option>
+				</select>
+				<button type="button" class="btn">
+					<span class="icon-bold">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-italic">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-underline">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-sort-amount-desc">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-paragraph-left">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-paragraph-center">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-paragraph-right">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-paragraph-justify">				
+					</span>
+				</button>
+				</div>
+				<select name="" id="" style="width:134px" class="sm-margin-right">
+					<option value="">
+						中文
+					</option>
+				</select>
+
+				<button type="button" class="btn">
+					<!-- <span class="icon-printer">	
+						<span class="icon-equalizer2"></span>			
+					</span> -->
+					<img src="/Sources/img/5.png" alt="" style="height: 15px;">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/6.png" alt="" style="height: 15px;">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/7.png" alt="" style="height: 15px;">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/8.png" alt="" style="height: 15px;">
+				</button>
+				<!-- <button type="button" class="btn">
+					<span class="icon-printer">	
+						<span class="icon-scissors"></span>			
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-list-numbered">				
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<span class="icon-libreoffice">				
+					</span>
+				</button> -->
+				<button type="button" class="btn">
+					<span class="icon-unlocked">			
+					</span>
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/10.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/11.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/12.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/13.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/14.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/15.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/16.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/17.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/18.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/19.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/20.png" alt="" style="height:15px">
+				</button>
+				<button type="button" class="btn">
+					<img src="/Sources/img/21.png" alt="" style="height:15px">
+				</button>
+			</div>
+
+			<div id="main">
+				<div id="toolbar" data-bind="with: tool" class="noprint">
+					<ul class="menu">
+						<li data-bind="css: {curTool: curTool().name == 'selection'},click: changeTool.bind($data,'selection')" style="border-bottom: 1px solid #F7F7F7;"><span class="icon-arrow-up-left sidebar-icon" style="line-height:54px;"></span></li>
+						<li data-bind="css: {curTool: curTool().name == 'addtext'},click: changeTool.bind($data,'addtext')">
+							<span class="icon-font-size sidebar-icon" style="line-height:54px;color:#E0E0E0"></span>
+							<ul>
+								<li data-bind="css: {curTool: curTool().name == 'addfixwidthtext'},click: changeTool.bind($data,'addfixwidthtext'),clickBubble: false">固定文本</li>
+								<li>向导</li>
+								<li>新建数据源</li>
+							</ul>
+						</li>
+						<li>
+							<span class="icon-barcode sidebar-icon" style="line-height:54px;color:#E0E0E0"></span>
+							<ul>
+								<li>固定条码</li>
+								<li>向导</li>
+								<li>新建数据源</li>
+							</ul>
+						</li>
+						<li data-bind="css: {curTool: curTool().name == 'addimage'},click: changeTool.bind($data,'addimage')"><span class="icon-image sidebar-icon" style="line-height:54px;color:#E0E0E0"></span>
+							<ul>
+								<li>固定图片</li>
+								<li>向导</li>
+								<li>新建数据源</li>
+							</ul>
+						</li>
+						<li data-bind="css: {curTool: curTool().name == 'addline'},click: changeTool.bind($data,'addrect')" style="border-bottom: 1px solid #F7F7F7;"><span class="icon-checkbox-unchecked sidebar-icon" style="line-height:54px"></span></li>
+						<li data-bind="css: {curTool: curTool().name == 'addrect'},click: changeTool.bind($data,'addline')"><span class="icon-minus sidebar-icon" style="line-height:54px"></span></li>
+					</ul>
+
+				</div>
+				<div id="content">
+					<div id="docsbar" data-bind="with: stage" class="noprint">
+						<ul data-bind="foreach: docs">
+							<li data-bind="attr: { title: name },click: $parent.setCurDoc,css: {curDoc:$parent.curDoc()==$data}">
+								<span class="name" data-bind="text: name"></span>
+								<span class="close" data-bind="click: $parent.removeDoc"></span>
+							</li>
+						</ul>
+					</div>
+					<div id="cvs-container">
+						<canvas id="cvs"></canvas>
+					</div>
+					<div id="h-ruler" class="noprint"><canvas id="h-ruler-canvas"></canvas></div>
+					<div id="v-ruler" class="noprint"><canvas id="v-ruler-canvas"></canvas></div>
+				</div>
+				<div id="sidebar" class="noprint">
+					<div id="database">
+						<h3 class="header">数据库</h3>
+						<div class="content">
+							<ul class="node" data-bind="with: database">
+								<li>
+									<span data-bind="text: '日期 ('+date().length+')'" class="node-name"></span>
+									<ul class="node-child" data-bind="foreach: date">
+										<li data-bind="text: name"></li>
+									</ul>
+									<ul class="rightmenu menu">
+										<li data-bind="click: showAdddate">添加</li>
+										<li>向导</li>
+									</ul>
+								</li>
+								<li>
+									<span data-bind="text: '表单 ('+whenprinted().length+')'" class="node-name"></span>
+									<ul class="node-child" data-bind="foreach: whenprinted">
+										<li data-bind="text: name"></li>
+									</ul>
+									<ul class="rightmenu menu">
+										<li data-bind="click: showAddwhenprinted">添加</li>
+										<li>向导</li>
+									</ul>
+								</li>
+								<li>
+									<span data-bind="text: '表查找 ('+tablelookup().length+')'" class="node-name"></span>
+									<ul class="node-child" data-bind="foreach: tablelookup">
+										<li data-bind="text: name"></li>
+									</ul>
+									<ul class="rightmenu menu">
+										<li data-bind="click: showAddtablelookup">添加</li>
+										<li>向导</li>
+									</ul>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+					<div id="objects">
+						<h3 class="header">对象</h3>
+						<div class="content">
+							<ul class="node" data-bind="with: stage.curDoc">
+							<li>
+								<span data-bind="text: '文本 ('+text().length+')'" class="node-name"></span>
+								<ul data-bind="foreach: text" class="node-child">
+									<li data-bind="text: name">
+										<ul class="rightmenu menu">
+											<li>属性</li>
+											<li data-bind="click: $parent.removeObject">删除</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span data-bind="text: '条码 ('+code().length+')'" class="node-name"></span>
+								<ul data-bind="foreach: code" class="node-child">
+									<li data-bind="text: name"></li>
+								</ul>
+							</li>
+							<li>
+								<span data-bind="text: '图片 ('+image().length+')'" class="node-name"></span>
+								<ul data-bind="foreach: image" class="node-child">
+									<li data-bind="text: name"></li>
+								</ul>
+							</li>
+							<li>
+								<span data-bind="text: '直线 ('+line().length+')'" class="node-name"></span>
+								<ul data-bind="foreach: line" class="node-child">
+									<li data-bind="text: name">
+										<ul class="rightmenu menu">
+											<li>属性</li>
+											<li data-bind="click: $parent.removeObject">删除</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<span data-bind="text: '矩形 ('+rect().length+')'" class="node-name"></span>
+								<ul data-bind="foreach: rect" class="node-child">
+									<li data-bind="text: name">
+										<ul class="rightmenu menu">
+											<li>属性</li>
+											<li data-bind="click: $parent.removeObject">删除</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="state" class="noprint">
+				<dl>
+					<dt>打印机名称：</dt>
+					<dd>dyingjiminc</dd>
+					<dt>端口：</dt>
+					<dd>8898</dd>
+					<dt>x,y：</dt>
+					<dd data-bind="text: stage.mouseX() + ','+ stage.mouseY()"></dd>
+					<dt>cx,cy：</dt>
+					<dd></dd>
+				</dl>
+			</div>
+		</section>
+		<section id="prodution" data-bind="visible: router.state() ==='prodution' " style="display:none;">
+			<div class="center-pane">
+				<header class="center-pane-header">
+					<h2>生产模式</h2>
+				</header>
+				<div class="center-pane-content">
+					<canvas id="preview"></canvas>
+					<div class="buttonGroup">
+						<input type="file">
+						<button>打印设置</button>
+						<button>打印</button>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div id="dialogs" style="display:none;">
+		<!-- 表单输入 -->
+		<div class="property" id="biaodanshuru" title="表单输入" data-width="510" data-visibility="false">
+			<div class="row">
+				<div class="span4"><label class="label">名称：</label></div>
+				<div class="span16 last-span"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">值：</label></div>
+				<div class="span16 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">提示符：</label></div>
+				<div class="span6"><input type="text" class="input"></div>
+				<div class="span4"><label class="label">最小长度：</label></div>
+				<div class="span6 last-span"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
+				<div class="span10"><input type="checkbox"><label for="">计数器</label></div>
+				<div class="span10 last-span"><input type="checkbox"><label for="">以表单形式显示</label></div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">数据类型：</label></div>
+				<div class="span6">
+					<select class="input" name="" id="">
+			  			<option value="">二进制</option>
+			  			<option value="">八进制</option>
+			  			<option value="">十进制</option>
+			  			<option value="">十六进制</option>
+			  			<option value="">字母</option>
+			  			<option value="">字母数字</option>
+			  		</select>
+			  	</div>
+			</div>
+			<div class="row">
+				<div class="span10"><label class="label text-left">当前值：</label></div>
+				<div class="span10 last-span"><label class="label text-left">递增：</label></div>
+			</div>
+			<div class="row">
+				<div class="span10"><input type="text" class="input"></div>
+				<div class="span10 last-span"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
+				<div class="span10"><label class="label text-left">最小值：</label></div>
+				<div class="span10 last-span"><label class="label text-left">最大值：</label></div>
+			</div>
+			<div class="row">
+				<div class="span10"><input type="text" class="input"></div>
+				<div class="span10 last-span"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">确定</button></div>
+			</div>
+		</div>
+		<!-- 日期 -->
+		<div class="property" id="riqi" title="日期" data-width="510" data-visibility="false">
+			<div class="row">
+				<div class="span4"><label class="label">名称：</label></div>
+				<div class="span16 last-span"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">日期类型：</label></div>
+				<div class="span16 last-span">
+					<select class="input" name="" id="">
+			  			<option value="">软件日期</option>
+			  			<option value="">打印机日期</option>
+			  		</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span"><label class="label text-left">日期格式：</label></div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span">
+					<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span"><label class="label text-left">预览：</label></div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span">
+					<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">确定</button></div>
+			</div>
+		</div>
+		<!-- 表查找 -->
+		<div class="property" id="biaochazhao" title="表查找" data-width="610" data-visibility="false">
+			<div class="row tabs">
+				<div class="span4 span-border-right">
+					<ul>
+						<li><a href="#biaochazhao1">表查找</a></li>
+						<li><a href="#biaochazhao2">数据格式设置</a></li>
+					</ul>
+				</div>
+				<div class="span20 last-span">
+					<!-- tab1 -->
+					<div id="biaochazhao1">
+						<div class="row">
+							<div class="span4"><label class="label">名称：</label></div>
+							<div class="span16 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span4"><label class="label">选择数据源：</label></div>
+							<div class="span16 last-span">
+								<select class="input" name="" id="">
+						  			<option value="">ABO1</option>
+						  			<option value="">ABO2</option>
+						  		</select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span4"><label class="label">创建模式：</label></div>
+							<div class="span5">
+								<input class="" type="checkbox">标准
+							</div>
+							<div class="span5">
+								<input class="" type="checkbox">SQL
+							</div>
+							<div class="span6 last-span">
+								<button class="button">SQL查询生成器</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span20 last-span">
+								<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">测试</button></div>
+						</div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<!-- tab2 -->
+					<div id="biaochazhao2">
+						<div class="row">
+							<div class="span6"><label class="label">记录分隔符字符串：</label></div>
+							<div class="span14 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span6"><label class="label">相关记录：</label></div>
+							<div class="span14 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span4">
+								<label class="label text-left">预览：</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span20 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						</div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 矩形属性 -->
+		<div class="property" id="juxingshuxing" title="矩形属性" data-width="510" data-visibility="false">
+			<div class="row">
+				<div class="span2"><label class="label text-left">名称：</label></div>
+				<div class="span18 last-span"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
+				<div class="span4">
+					<label class="label text-left">位置和尺寸：</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span span-border">
+					<div class="row">
+						<div class="span3"><label class="label">X：</label></div>
+						<div class="span6"><input type="text" class="input"></div>
+						<div class="span3"><label class="label">横坐标：</label></div>
+						<div class="span6 last-span"><input type="text" class="input"></div>
+					</div>
+					<div class="row">
+						<div class="span3"><label class="label">Y：</label></div>
+						<div class="span6"><input type="text" class="input"></div>
+						<div class="span3"><label class="label">纵坐标：</label></div>
+						<div class="span6 last-span"><input type="text" class="input"></div>
+					</div>
+					<div class="row row-margin-bottom">
+						<div class="span3"><label class="label">线宽：</label></div>
+						<div class="span6"><input type="text" class="input"></div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="span2"><label class="label text-left">旋转：</label></div>
+				<div class="span18 last-span"></div>
+			</div>
+			<div class="row">
+				<div class="span2"><label class="label text-left">选项：</label></div>
+				<div class="span4"><input type="checkbox">可打印</div>
+				<div class="span4"><input type="checkbox">锁定</div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">确定</button></div>
+			</div>
+		</div>
+		<!-- 图片属性 -->
+		<div class="property" id="tupianshuxing" title="图片属性" data-width="610" data-visibility="false">
+			<div class="row tabs">
+				<div class="span4 span-border-right">
+					<ul>
+						<li><a href="#tupianshuxing1">常规</a></li>
+						<li><a href="#tupianshuxing2">图片设置</a></li>
+					</ul>
+				</div>
+				<div class="span20 last-span">
+					<div id="tupianshuxing1">
+						<div class="row">
+							<div class="span2"><label class="label text-left">名称：</label></div>
+							<div class="span18 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span5">
+								<label class="label text-left">位置和尺寸：</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span20 span-border">
+								<div class="row">
+									<div class="span3"><label class="label">X：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">横坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+								<div class="row row-margin-bottom">
+									<div class="span3"><label class="label">Y：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">纵坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="span2"><label class="label text-left">旋转：</label></div>
+							<div class="span18 last-span"></div>
+						</div>
+						<div class="row">
+							<div class="span2"><label class="label text-left">选项：</label></div>
+							<div class="span4"><input type="checkbox">可打印</div>
+							<div class="span4"><input type="checkbox">锁定</div>
+						</div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<div id="tupianshuxing2">
+						<div class="row">
+							<div class="span16"><input type="file"></div>
+							<div class="span4 last-span"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 文本属性 -->
+		<div class="property" id="wenbenshuxing" title="文本属性" data-width="610" data-visibility="false">
+			<div class="row tabs">
+				<div class="span4 span-border-right">
+					<ul>
+						<li><a href="#wenbenshuxing1">常规</a></li>
+						<li><a href="#wenbenshuxing2">视图</a></li>
+						<li><a href="#wenbenshuxing3">段落</a></li>
+						<li><a href="#wenbenshuxing4">数据源</a></li>
+					</ul>
+				</div>
+				<div class="span20 last-span">
+					<div id="wenbenshuxing1">
+						<div class="row">
+							<div class="span2"><label class="label text-left">名称：</label></div>
+							<div class="span18 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span5">
+								<label class="label text-left">位置和尺寸：</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span20 span-border">
+								<div class="row">
+									<div class="span3"><label class="label">X：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">横坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+								<div class="row row-margin-bottom">
+									<div class="span3"><label class="label">Y：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">纵坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="span4"><label class="label text-left">旋转：</label></div>
+							<div class="span16 last-span"></div>
+						</div>
+						<div class="row">
+							<div class="span4"><label class="label text-left">选项：</label></div>
+							<div class="span4"><input type="checkbox">可打印</div>
+							<div class="span4"><input type="checkbox">锁定</div>
+						</div>
+						<div class="row">
+							<div class="span2"><label class="label text-left">预览：</label></div>
+							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						</div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<div id="wenbenshuxing2">
+						<div class="row">
+							<div class="span10">
+								<div class="row">
+									<label class="label text-left">字体：</label>
+								</div>
+								<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+							</div>
+							<div class="span10 last-span">
+								<div class="row">
+									<label class="label text-left">样式：</label>
+								</div>
+								<div class="row">
+									<span class="span10 last-span span-border">
+										<div class="row"><input type="checkbox">粗体</div>
+										<div class="row"><input type="checkbox">斜体</div>
+										<div class="row row-margin-bottom"><input type="checkbox">下划线</div>
+									</span>
+								</div>
+								<div class="row">
+									<label class="label text-left">单位：</label>
+								</div>
+								<div class="row">
+									<select class="input" name="" id="">
+										<option value="">毫米</option>
+										<option value="">磅</option>
+									</select>
+								</div>
+								<div class="row">
+									<label class="label text-left">高度：</label>
+								</div>
+								<div class="row"><input type="text" class="input"></div>
+							</div>
+						</div>
+						<div class="row">
+							<label class="label text-left">预览：</label>
+						</div>
+						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<div id="wenbenshuxing3">
+						<div class="row">
+							<div class="span10">
+								<label class="label text-left">对齐方式：</label>
+								<div class="row row-margin-bottom">
+									<div class="span2"><button class="button"></button></div>
+									<div class="span2"><button class="button"></button></div>
+									<div class="span2"><button class="button"></button></div>
+									<div class="span2"><button class="button"></button></div>
+								</div>
+							</div>
+							<div class="span10 last-span">
+								<label class="label text-left">行距：</label>
+								<div class="row"><input type="text" class="input"></div>
+							</div>
+						</div>
+						<div class="row"><input type="checkbox">自动换行</div>
+						<div class="row span-border">
+							<div class="row"><input type="checkbox">固定高度调整宽度</div>
+							<div class="row">
+								<div class="span4"><label class="label">行数：</label></div>
+								<div class="span12">
+									<input type="text" class="input">
+								</div>
+								
+							</div>
+							<div class="row row-margin-bottom">
+								<div class="span4"><label class="label">最小宽度：</label></div>
+								<div class="span12">
+									<input type="text" class="input">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<label class="label text-left">预览：</label>
+						</div>
+						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<div id="wenbenshuxing4">
+						<div class="row">
+							<div class="span6"><button class="button">新建数据源</button></div>
+						</div>
+						<div class="row span-border">
+							<ul class="node">
+								<li>
+									<span class="node-name">日期</span>
+									<ul class="node-child">
+										<li>变量1</li>
+										<li>变量2</li>
+										<li>变量3</li>
+									</ul>
+								</li>
+								<li>
+									<span class="node-name">表单</span>
+									<ul class="node-child">
+										<li>变量1</li>
+										<li>变量2</li>
+										<li>变量3</li>
+									</ul>
+								</li>
+								<li>
+									<span class="node-name">表查找</span>
+									<ul class="node-child">
+										<li>变量1</li>
+										<li>变量2</li>
+										<li>变量3</li>
+									</ul>
+								</li>
+								
+							</ul>
+						</div>
+						<div class="row">
+							<label class="label text-left">预览：</label>
+						</div>
+						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 直线属性 -->
+		<div class="property" id="zhixianshuxing" title="直线属性" data-width="510" data-visibility="false" data-bind="with: lineproperty.line()">
+			<div class="row">
+				<div class="span2"><label class="label text-left">名称：</label></div>
+				<div class="span18 last-span"><input type="text" class="input" data-bind="value: name"></div>
+			</div>
+			<div class="row">
+				<div class="span4">
+					<label class="label text-left">位置和尺寸：</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span span-border">
+					<div class="row">
+						<div class="span3"><label class="label">X：</label></div>
+						<div class="span6"><input type="text" class="input" data-bind="value: offsetX"></div>
+						<div class="span3"><label class="label">宽度：</label></div>
+						<div class="span6 last-span"><input type="text" class="input" data-bind="value: lineLength"></div>
+					</div>
+					<div class="row">
+						<div class="span3"><label class="label">Y：</label></div>
+						<div class="span6"><input type="text" class="input" data-bind="value: offsetY"></div>
+						<div class="span3"><label class="label">高度：</label></div>
+						<div class="span6 last-span"><input type="text" class="input"></div>
+					</div>
+					<div class="row row-margin-bottom">
+						<div class="span3"><label class="label">线宽：</label></div>
+						<div class="span6"><input type="text" class="input" data-bind="value: lineWidth"></div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="span2"><label class="label text-left">旋转：</label></div>
+				<div class="span18 last-span"></div>
+			</div>
+			<div class="row">
+				<div class="span2"><label class="label text-left">选项：</label></div>
+				<div class="span4"><input type="checkbox">可打印</div>
+				<div class="span4"><input type="checkbox">锁定</div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">确定</button></div>
+			</div>
+		</div>
+		<!-- 条码属性 -->
+		<div class="property" id="tiaomashuxing" title="条码属性" data-width="610" data-visibility="false">
+			<div class="row tabs">
+				<div class="span4 span-border-right">
+					<ul>
+						<li><a href="#tiaomashuxing1">常规</a></li>
+						<li><a href="#tiaomashuxing2">视图</a></li>
+						<li><a href="#tiaomashuxing3">字符</a></li>
+						<li><a href="#tiaomashuxing4">数据源</a></li>
+					</ul>
+				</div>
+				<div class="span20 last-span">
+					<div id="tiaomashuxing1">
+						<div class="row">
+							<div class="span2"><label class="label text-left">名称：</label></div>
+							<div class="span18 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span5">
+								<label class="label text-left">位置和尺寸：</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="span20 span-border">
+								<div class="row">
+									<div class="span3"><label class="label">X：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">横坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+								<div class="row row-margin-bottom">
+									<div class="span3"><label class="label">Y：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">纵坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="span4"><label class="label text-left">旋转：</label></div>
+							<div class="span16 last-span"></div>
+						</div>
+						<div class="row">
+							<div class="span4"><label class="label text-left">选项：</label></div>
+							<div class="span4"><input type="checkbox">可打印</div>
+							<div class="span4"><input type="checkbox">锁定</div>
+						</div>
+						<div class="row">
+							<div class="span2"><label class="label text-left">预览：</label></div>
+							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						</div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+					</div>
+					<div id="tiaomashuxing2">
+						<div class="row">
+							<div class="span10">
+								<label class="label text-left">符号体系：</label>
+								<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+							</div>
+							<div class="span10 last-span">
+								<div class="row">
+									<div class="span2"><label class="label">值：</label></div>
+									<div class="span8 last-span"><input type="text" class="input"></div>
+								</div>
+								<div class="row">
+									<label class="label text-left">属性：</label>
+								</div>
+								<div class="row span-border">
+									<div class="row">
+										<div class="span4"><label class="label">高度：</label></div>
+										<div class="span5 last-span"><input type="text" class="input"></div>
+									</div>
+									<div class="row">
+										<div class="span4"><label class="label">校验字符：</label></div>
+										<div class="span5 last-span">
+											<select class="input" name="" id="">
+												<option value="">1</option>
+												<option value="">2</option>
+												<option value="">3</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="span4"><label class="label">窄条宽度：</label></div>
+										<div class="span5 last-span"><input type="text" class="input"></div>
+									</div>
+									<div class="row row-margin-bottom">
+										<div class="span4"><label class="label">类型：</label></div>
+										<div class="span5 last-span">
+											<select class="input" name="" id="">
+												<option value="">1</option>
+												<option value="">2</option>
+												<option value="">3</option>
+											</select>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<label class="label text-left">预览：</label>
+						</div>
+						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<div id="tiaomashuxing3">
+						<div class="row">
+							<div class="span10">
+								<label class="label text-left">字体：</label>
+								<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+							</div>
+							<div class="span10 last-span">
+								<label class="label text-left">样式：</label>
+								<div class="row span-border">
+									<div class="row"><input type="checkbox">粗体</div>
+									<div class="row"><input type="checkbox">斜体</div>
+									<div class="row row-margin-bottom"><input type="checkbox">下划线</div>
+								</div>
+								<div class="row">
+									<label class="label text-left">单位：</label>
+								</div>
+								<div class="row">
+									<select class="input" name="" id="">
+										<option value="">毫米</option>
+										<option value="">磅</option>
+									</select>
+								</div>
+								<div class="row">
+									<label class="label text-left">高度：</label>
+								</div>
+								<div class="row"><input type="text" class="input"></div>
+							</div>
+						</div>
+						<div class="row">
+							<label class="label text-left">预览：</label>
+						</div>
+						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<div id="tiaomashuxing4">
+						<div class="row">
+							<div class="span6"><button class="button">新建数据源</button></div>
+						</div>
+						<div class="row span-border">
+							<ul class="node">
+								<li>
+									<span class="node-name">日期</span>
+									<ul class="node-child">
+										<li>变量1</li>
+										<li>变量2</li>
+										<li>变量3</li>
+									</ul>
+								</li>
+								<li>
+									<span class="node-name">表单</span>
+									<ul class="node-child">
+										<li>变量1</li>
+										<li>变量2</li>
+										<li>变量3</li>
+									</ul>
+								</li>
+								<li>
+									<span class="node-name">表查找</span>
+									<ul class="node-child">
+										<li>变量1</li>
+										<li>变量2</li>
+										<li>变量3</li>
+									</ul>
+								</li>
+								
+							</ul>
+						</div>
+						<div class="row">
+							<label class="label text-left">预览：</label>
+						</div>
+						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="mousemenu" style="position:absolute;left:-2000px;">
+		
+		<div id="stageRightmenu" data-bind="with: stagerightmenu">
+			<ul class="menu" data-bind="visible: hasObj">
+				<li>复制</li>
+				<li>剪切</li>
+				<li>粘贴</li>
+				<li>删除</li>
+				<li data-bind="visible: hasObjList">选择
+					<ul data-bind="foreach: selectedObject">
+						<li data-bind="text: name,click: $parent.focusObj">item</li>
+					</ul>
+				</li>
+				<li data-bind="click: showProperty">属性</li>
+			</ul>
+		</div>
+	</div>
+	<script data-baseurl="/Sources/js" data-main="/Sources/js/main" src="/Sources/js/lib/require.js" id="mainJS"></script>
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js"></' + 'script>')</script>
+</body>
+</html>
