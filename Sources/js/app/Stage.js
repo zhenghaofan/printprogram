@@ -2,7 +2,7 @@
  	'jquery',
  	'knockout',
  	'mapping',
- 	'app/ruler',
+ 	'app/Ruler',
  	'app/Doc',
  	'app/UIController',
  	'app/Util'

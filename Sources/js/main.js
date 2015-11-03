@@ -15,7 +15,7 @@ requirejs.config({
         vue:'lib/vue'
     }
 });
-require(['knockout','app/App','object/Text','jquery'],function (ko,app,text,$){
+require(['knockout','app/App','jquery'],function (ko,app,$){
    ko.applyBindings(app);
 app.getStage().addDoc().curDoc().addCode();
     function a (){

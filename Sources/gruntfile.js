@@ -134,6 +134,6 @@ module.exports = function(grunt) {
 
 
     // 默认被执行的任务列表。
-    grunt.registerTask('default', ['clean','less:all','cssmin','imagemin','requirejs']);
+    grunt.registerTask('default', ['less:main','cssmin','imagemin','requirejs']);
 
 };

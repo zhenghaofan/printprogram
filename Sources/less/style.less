@@ -86,41 +86,6 @@ label {
 	}
 }
 
-.inputGroup {
-	.clearfix();
-	margin-top: 10px;
-	label {
-		font-size: 14px;
-		color: #000;
-		width: 120px;
-		height: 30px;
-		line-height: 30px;
-		text-align: right;
-		float: left;
-		margin-right: 10px;
-	}
-	input,select {
-		height: 30px;
-		outline: none;
-		border: 1px solid #ccc;
-		box-shadow: 0 1px 2px #ccc inset;
-		box-sizing: border-box;
-		padding: 0 10px;
-		color: #000;
-	}
-}
-.buttonGroup {
-	.clearfix();
-	margin-top: 10px;
-	text-align: center;
-	input {
-		display: inline-block;
-		width: 120px;
-		height: 28px;
-		color: #000;
-		margin: 0 10px;
-	}
-}
 //forms
 .property {
 	.ui-tabs {
@@ -174,36 +139,79 @@ label {
 	}
 }
 
-#login .ui-tabs {
-	width: 440px;
-	margin-top: 120px;
-	padding: 0;
-	.center-block();
-	.card();
-	.ui-tabs-nav {
-		height: 68px;
-		background: #666;
-		.ui-tabs-anchor {
-			height: 40px;
-			line-height: 40px;
-			padding: 0 20px;
-			color: #fff;
-			border-top-left-radius:5px;
-			border-top-right-radius:5px;
-			outline: none;
-			margin: 28px 0 0 8px;
-		}
-		.ui-tabs-active .ui-tabs-anchor {
-			color: #000;
-			background: #fff;
-
-		}
+//login
+.inputGroup {
+	.clearfix();
+	margin: 10px 0;
+	label {
+		font-size: 14px;
+		color: #000;
+		width: 180px;
+		height: 30px;
+		line-height: 30px;
+		text-align: right;
+		float: left;
+		margin-right: 10px;
 	}
-	.ui-widget-content {
-		background: #fff;
+	input,select {
+		height: 30px;
+		outline: none;
+		border: 1px solid #ccc;
+		box-shadow: 0 1px 2px #ccc inset;
+		box-sizing: border-box;
+		padding: 0 10px;
+		color: #000;
 	}
 }
-
+.buttonGroup {
+	.clearfix();
+	margin: 10px 0;
+	text-align: center;
+	input {
+		display: inline-block;
+		width: 120px;
+		height: 28px;
+		color: #000;
+		margin: 0 10px;
+	}
+}
+.center-pane {
+	.center-block();
+	.card();
+	background: #fff;
+	color: #000;
+}
+.center-pane-header {
+	background: #666;
+	color: #fff;
+	height: 80px;
+	h2 {
+		padding: 20px;
+		margin: 0;
+	}
+}
+#login1 .center-pane {
+	width: 500px;
+	margin-top: 100px;
+}
+#login2 .center-pane {
+	width: 500px;
+	margin-top: 100px;
+}
+//
+#prodution {
+	.center-pane {
+		width: 680px;
+		margin-top: 20px;
+	}
+	#preview {
+		width: 600px;
+		height: 600px;
+		margin: 10px 0;
+		.center-block();
+		border: 1px solid #ccc;
+	}
+}
 #menubar {
 	position: absolute;
 	top: 0;

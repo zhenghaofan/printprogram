@@ -2,9 +2,9 @@
  	'jquery',
  	'jqueryUI',
  	'knockout',
- 	'sammy',
+ 	'app/Router',
  	'app/Stage',
- 	'app/database',
+ 	'app/Database',
  	'app/Util',
  	'app/Tool',
  	'app/History',
@@ -17,8 +17,10 @@
  	'app/UI/rectProperty',
  	'app/UI/textProperty',
  	'app/UI/stageRightmenu',
- 	'app/UI/page-setting'
-],function ($,ui,ko,sammy,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet){
+ 	'app/UI/page-setting',
+ 	'app/UI/login2',
+ 	'app/UI/login1'
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1){
  	
  	var App = function (){
 		//属性
@@ -30,7 +32,7 @@
 		this.database    = database;
 		this.history = history;
 		this.lang = lang;
-		this.router      = null;
+		this.router      = router;
 		//UI
 		this.objectsalign = objectsalign;
 		this.lineproperty = lineproperty;
@@ -39,6 +41,8 @@
 		this.rectproperty = lineproperty;
 		this.textproperty = lineproperty;
 
+		this.login2 = login2;
+		this.login1 = login1;
 		this.stagerightmenu = stagerightmenu;
 		this._init();
 	};
@@ -99,38 +103,15 @@
 				}
 			});
 
+			// if(document.location.hash="#disign"){
+			// 	$('#page-initial').dialog("open");
+			// }
 
-	    	self._setRouter();
-
-	    	$(function(){
-	    		$('#page-initial').dialog('open');
-	    	});
-		},
-		_setRouter : function (){
-			var self = this;
-			self.router = sammy(function (){
-				this.get('/',function (){
-					self.router.setLocation('/edit');
-				});
-				this.get("/login",function (){
-					self.state("login");
-				});
-				this.get('/new',function (){
-					
-					self.state('new');
-				}); 
-
-				this.get('/edit/:id',function (){
-					self.state('edit');
-
-					//$.get('/doc',{id:this.params.id},self.data);
-				});
-			});
-			self.router.run();
 		},
 		getStage : function (){
 			return this.stage;
 		}
+
 	};
 	window.app = new App;
 	return window.app;
