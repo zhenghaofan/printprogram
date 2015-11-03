@@ -2,7 +2,7 @@
 requirejs.config({
     //baseUrl: baseURL,
     //baseUrl: '/Sources/dist/js',
-    baseUrl: '/Sources/js',
+    baseUrl: './Sources/js',
     paths: {
         jquery:'lib/jquery',
         jqueryUI: 'lib/jquery-ui.min',

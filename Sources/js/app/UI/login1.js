@@ -5,9 +5,9 @@ define(['jquery','knockout','app/Util'],function ($,ko,util){
 		self.password = ko.observable();
 		self.islogin = false;
 		self.check = function (){
-			if(self.username() == "admin" && self.password() == "admin"){
+			if(true){
 				self.islogin = true;
-				util.Event.dispatch("setLocation",self,"/prodution");
+				util.Event.dispatch("setLocation",self,"#prodution");
 			}
 		};
 
