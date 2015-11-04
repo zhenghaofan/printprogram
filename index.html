@@ -124,7 +124,7 @@
 									<li>270</li>
 								</ul>
 							</li>
-							<li>表单自定义</li>
+							<li class="form-setting">表单自定义</li>
 						</ul>
 					</li>
 					<li>对象
@@ -495,13 +495,17 @@
 								</li>
 								<li>
 									<span data-bind="text: '表单 ('+whenprinted().length+')'" class="node-name"></span>
-									<ul class="node-child" data-bind="foreach: whenprinted">
+									<ul class="node-child" id="formattr" data-bind="foreach: whenprinted">
 										<li data-bind="text: name"></li>
+										<ul class="rightmenu menu">
+											<li data-bind="click:$parent.showFormAttr()">属性</li>
+											<li>删除</li>
+										</ul>
 									</ul>
 									<ul class="rightmenu menu">
 										<li data-bind="click: showAddwhenprinted">添加</li>
 										<li>向导</li>
-									</ul>
+									</ul>									
 								</li>
 								<li>
 									<span data-bind="text: '表查找 ('+tablelookup().length+')'" class="node-name"></span>
@@ -619,6 +623,36 @@
 	<!-- objectcontext begin -->
 	<div id="dialogs" style="display:none;">
 
+		<!-- 表单自定义 -->
+		<div class="property" id="form-setting-dialog" title="自定义表单" data-width="260" data-visibility="false" style="margin-left:18px;">
+			<div class="row">
+				<div class="span3"><label class="label">名称：</label></div>
+				<div class="span9"><input type="text" class="input"></div>
+				<div class="span3"><label class="label">长度：</label></div>
+				<div class="span9"><input type="text" class="input"></div>
+				<div class="span3"><label class="label">宽度：</label></div>
+				<div class="span9"><input type="text" class="input"></div>
+			</div>
+			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">确定</button></div>
+			</div>
+		</div>
+
+		<!-- 表单 -->
+		<div class="property" id="form-dialog" title="表单" data-width="260" data-visibility="false" style="margin-left:18px;">
+			<div class="row">
+				<div class="span4"><label class="label">变量1：</label></div>
+				<div class="span8"><input type="text" class="input"></div>
+				<div class="span4"><label class="label">变量2：</label></div>
+				<div class="span8"><input type="text" class="input"></div>
+			</div>
+			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">确定</button></div>
+			</div>
+		</div>
+
 		<!-- 初始化 -->
 		<div class="property" id="page-initial" title="向导" data-width="260" data-visibility="false" style="margin-left:18px;">
 			<div class="row">
@@ -651,7 +685,29 @@
 			<div class="property" id="biaodanshuru" title="表单输入" data-width="510" data-visibility="false">
 			<div class="row">
 				<div class="span4"><label class="label">名称：</label></div>
-				<div class="span16 last-span"><input type="text" class="input"></div>
+				<!-- <div class="span16 last-span"><input type="text" class="input" data-bind="value:database.attr"></div> -->
+				<div class="span16 last-span"><input type="text" class="input" id="formname"></div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">数据类型：</label></div>
+				<div class="span6">
+					<select class="input" name="" id="">
+			  			<option value="">二进制</option>
+			  			<option value="">八进制</option>
+			  			<option value="">十进制</option>
+			  			<option value="">十六进制</option>
+			  			<option value="">字母</option>
+			  			<option value="">字母数字</option>
+			  		</select>
+			  	</div>
+			  	<div class="span4"><label class="label">校验模式：</label></div>
+				<div class="span5">
+					<select class="input" name="" id="">
+			  			<option value="">无</option>
+			  			<option value="">通用打印</option>
+			  			<option value="">一级装箱</option>
+			  		</select>
+			  	</div>
 			</div>
 			<div class="row">
 				<div class="span4"><label class="label">值：</label></div>
@@ -666,19 +722,6 @@
 			<div class="row">
 				<div class="span10"><input type="checkbox"><label for="">计数器</label></div>
 				<div class="span10 last-span"><input type="checkbox"><label for="">以表单形式显示</label></div>	
-			</div>
-			<div class="row">
-				<div class="span4"><label class="label">数据类型：</label></div>
-				<div class="span6">
-					<select class="input" name="" id="">
-			  			<option value="">二进制</option>
-			  			<option value="">八进制</option>
-			  			<option value="">十进制</option>
-			  			<option value="">十六进制</option>
-			  			<option value="">字母</option>
-			  			<option value="">字母数字</option>
-			  		</select>
-			  	</div>
 			</div>
 			<div class="row">
 				<div class="span10"><label class="label text-left">当前值：</label></div>
@@ -698,7 +741,7 @@
 			</div>
 			<div class="row">
 				<div class="span4 last-span span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+				<div class="span4 span-right"><button class="button" id="addFormAttr">确定</button></div>
 			</div>
 		</div>
 		<!-- 日期 -->

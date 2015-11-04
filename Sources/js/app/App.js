@@ -92,11 +92,12 @@
 			$(document).on("click",function (){
 				$(".rightmenu").hide();
 			});
-			$("#database").delegate(">.content>.node>li","contextmenu",function (e){
+			$("#database").delegate(">.content>.node>li>span","contextmenu",function (e){
 				$(document).click();
 				if(e.button == 2) {
 					e.preventDefault();
-					$(".rightmenu",this).show().position({
+
+					$(this).siblings(".rightmenu.menu").show().position({
 						my: "left top",
 						of: e
 					});
