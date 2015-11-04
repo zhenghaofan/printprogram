@@ -1,1 +1,0 @@
-define([],function(){var e=function(){this.name="表查找"};return e});

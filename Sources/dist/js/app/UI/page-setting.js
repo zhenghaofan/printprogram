@@ -1,1 +1,0 @@
-define(["jquery"],function(e){e(document).on("click",".page-setting,.icon-file-text",function(){e("#page-setting-dialog").dialog("open")})});

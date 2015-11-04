@@ -1,1 +1,0 @@
-define(["knockout"],function(e){e.extenders.numeric=function(t,n){var r=e.pureComputed({read:t,write:function(e){var r=t(),i=Math.pow(10,n),s=isNaN(e)?0:parseFloat(+e),o=Math.round(s*i)/i;o!==r?t(o):e!==r&&t.notifySubscribers(o)}}).extend({notify:"always"});return r(t()),r}});
