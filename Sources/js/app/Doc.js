@@ -17,7 +17,7 @@ define([
 		
 		self.id             = idCounter++;
 		self.name           = ko.observable('document ' + (self.id+1));
-		self.width          = ko.observable(1800);
+		self.width          = ko.observable(1200);
 		self.height         = ko.observable(800);
 		self.angle          = ko.observable(0);
 		self.ratio          = ko.observable(1);
@@ -145,8 +145,9 @@ define([
 			// self.resizeCanvas(self.canvasWidth(),self.canvasHeight());
 			//self.ctx.clearRect(0,0,self.canvasWidth(),self.canvasHeight());
 			self.ctx.fillStyle = self.backgroudcolor();
-			self.ctx.lineWidth = 3;
+			self.ctx.lineWidth = 1;
 			self.ctx.strokeStyle = "#144DD4";
+			self.ctx.shadowColor = "#080F35";
 			self.ctx.fillRect(0,0,self.width(),self.height());
 			 // console.log(objects);
 			for(var i = objects.length - 1; i >= 0 ; i--){
@@ -154,14 +155,21 @@ define([
 				//var c = obj.cache();
 				// console.log(c.toDataURL("image/png"));
 				//self.ctx.putImageData(c,0,0);
+				self.ctx.save();
 				if(obj.selected()){
-					var info = obj.UI_INFO();
-					self.ctx.beginPath();
-					self.ctx.rect(info.UI_LEFT_TOP_X,info.UI_LEFT_TOP_Y,info.UI_RIGHT_BOTTOM_X - info.UI_LEFT_TOP_X,info.UI_RIGHT_BOTTOM_Y - info.UI_LEFT_TOP_Y);
-					self.ctx.stroke();
-
+					//var info = obj.UI_INFO();
+					//self.ctx.save();
+					//self.ctx.beginPath();
+					//self.ctx.shadowColor = "#0E2067";
+					self.ctx.shadowBlur = 10;
+					self.ctx.shadowOffsetX = 1;
+					self.ctx.shadowOffsetY = 1;
+					//self.ctx.rect(info.UI_LEFT_TOP_X,info.UI_LEFT_TOP_Y,info.UI_RIGHT_BOTTOM_X - info.UI_LEFT_TOP_X,info.UI_RIGHT_BOTTOM_Y - info.UI_LEFT_TOP_Y);
+					//self.ctx.stroke();
+					//self.ctx.restore();
 				}
 				self.ctx.drawImage(obj.cvs,obj.offsetX(),obj.offsetY());
+				self.ctx.restore();
 			}
 		};
 		self.addText = function (d){
@@ -263,6 +271,14 @@ define([
 				return;
 			}
 			self.clearSelectedObjects();
+			self.parent.updateCanvas();
+		};
+		self.selectall = function (){
+			var objects = self.objects();
+			for(var i = 0 ; i < objects.length ; i++ ){
+				var obj = objects[i];
+				obj.selected(true);
+			}
 			self.parent.updateCanvas();
 		};
 		self.init();
