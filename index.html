@@ -581,7 +581,7 @@
 								</ul>
 							</li>
 							<li>
-								<span data-bind="text: '矩形 ('+rect().length+')'" class="node-name" style="border-bottom: 1px solid #F7F7F7;"></span>
+								<span data-bind="text: '矩形 ('+rect().length+')'" class="node-name"></span>
 								<ul data-bind="foreach: rect" class="node-child">
 									<li data-bind="text: name">
 										<ul class="rightmenu menu">
@@ -1447,6 +1447,7 @@
 		</div>
 	</div>
 	<script data-baseurl="./Sources/js" data-main="./Sources/js/main" src="./Sources/js/lib/require.js" id="mainJS"></script>
-	<script>//document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js"></' + 'script>')</script>
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js"></' + 'script>')</script>
+
 </body>
 </html>

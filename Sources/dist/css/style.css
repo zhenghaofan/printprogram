@@ -1208,7 +1208,7 @@ label {
   height: 16px;
 }
 .print {
-  background: url(../img/print2.jpg) no-repeat;
+  background: url(../../img/print2.jpg) no-repeat;
 }
 .printer {
   background-position: -28px 3px;
