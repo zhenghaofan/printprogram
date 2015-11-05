@@ -19,8 +19,9 @@
  	'app/UI/stageRightmenu',
  	'app/UI/page-setting',
  	'app/UI/login2',
- 	'app/UI/login1'
-],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1){
+ 	'app/UI/login1',
+ 	'app/UI/Menu'
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu){
  	
  	var App = function (){
 		//属性
@@ -41,6 +42,7 @@
 		this.rectproperty = lineproperty;
 		this.textproperty = lineproperty;
 
+		this.menu = menu;
 		this.login2 = login2;
 		this.login1 = login1;
 		this.stagerightmenu = stagerightmenu;

@@ -83,7 +83,8 @@
 							<li>
 								<span data-bind="text: lang.curLang().export">导出</span>
 								<ul>
-									<li data-bind="text: lang.curLang().toanimagefile">导出至图片</li>
+									<li data-bind="click: menu.tojpg">导出至JPG图片</li>
+									<li data-bind="click: menu.topng">导出至PNG图片</li>
 								</ul>
 							</li>
 							<li data-bind="text: lang.curLang().pagesetup" class="page-setting">页面设置</li>
@@ -101,7 +102,7 @@
 							<li data-bind="text: lang.curLang().cut">剪切</li>
 							<li data-bind="text: lang.curLang().copy">复制</li>
 							<li data-bind="text: lang.curLang().paste">粘贴</li>
-							<li data-bind="text: lang.curLang().selectall">全选</li>
+							<li data-bind="text: lang.curLang().selectall,click: menu.selectall">全选</li>
 						</ul>
 					</li>
 					<li>查看
@@ -195,17 +196,17 @@
 						<ul>
 							<li>表单
 								<ul>
-									<li  data-bind="click: database.showAdddate">添加</li>
+									<li  data-bind="click: database.showAddwhenprinted">添加</li>
 								</ul>
 							</li>
 							<li>日期
 								<ul>
-									<li data-bind="click:database.showFormAttr">添加</li>
+									<li data-bind="click:database.showAdddate">添加</li>
 								</ul>
 							</li>
 							<li>表查找
 								<ul>
-									<li data-bind="click: database.showAddwhenprinted">添加</li>
+									<li data-bind="click: database.showAddtablelookup">添加</li>
 								</ul>
 							</li>
 						</ul>
@@ -488,7 +489,7 @@
 				</div>
 				<div id="sidebar" class="noprint">
 					<div id="database">
-						<h3 class="header">数据库</h3>
+						<h3 class="header">数据源</h3>
 						<div class="content">
 							<ul class="node" data-bind="with: database">
 								<li>
@@ -619,8 +620,8 @@
 				<div class="center-pane-content">
 					<canvas id="preview"></canvas>
 					<div class="buttonGroup">
-						<input type="file">
-						<button>打印设置</button>
+						<input type="file" value="浏览">
+						<button>测试打印</button>
 						<button>打印</button>
 					</div>
 				</div>
@@ -749,16 +750,16 @@
 				<div class="span10 last-span"><input type="checkbox"><label for="">以表单形式显示</label></div>	
 			</div>
 			<div class="row">
-				<div class="span10"><label class="label text-left">当前值：</label></div>
-				<div class="span10 last-span"><label class="label text-left">递增：</label></div>
+				<div class="span10"><label class="label">当前值：</label></div>
+				<div class="span10 last-span"><label class="label">递增：</label></div>
 			</div>
 			<div class="row">
 				<div class="span10"><input type="text" class="input"></div>
 				<div class="span10 last-span"><input type="text" class="input"></div>
 			</div>
 			<div class="row">
-				<div class="span10"><label class="label text-left">最小值：</label></div>
-				<div class="span10 last-span"><label class="label text-left">最大值：</label></div>
+				<div class="span10"><label class="label">最小值：</label></div>
+				<div class="span10 last-span"><label class="label">最大值：</label></div>
 			</div>
 			<div class="row">
 				<div class="span10"><input type="text" class="input"></div>
@@ -795,7 +796,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="span20 last-span"><label class="label text-left">预览：</label></div>
+				<div class="span20 last-span"><label class="label">预览：</label></div>
 			</div>
 			<div class="row">
 				<div class="span20 last-span">
@@ -870,7 +871,7 @@
 						</div>
 						<div class="row">
 							<div class="span4">
-								<label class="label text-left">预览：</label>
+								<label class="label">预览：</label>
 							</div>
 						</div>
 						<div class="row">
@@ -888,42 +889,40 @@
 		<!-- 矩形属性 -->
 		<div class="property" id="juxingshuxing" title="矩形属性" data-width="510" data-visibility="false">
 			<div class="row">
-				<div class="span2"><label class="label text-left">名称：</label></div>
+				<div class="span2"><label class="label">名称：</label></div>
 				<div class="span18 last-span"><input type="text" class="input"></div>
 			</div>
 			<div class="row">
-				<div class="span4">
-					<label class="label text-left">位置和尺寸：</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span20 last-span span-border">
-					<div class="row">
-						<div class="span3"><label class="label">X：</label></div>
-						<div class="span6"><input type="text" class="input"></div>
-						<div class="span3"><label class="label">横坐标：</label></div>
-						<div class="span6 last-span"><input type="text" class="input"></div>
-					</div>
-					<div class="row">
-						<div class="span3"><label class="label">Y：</label></div>
-						<div class="span6"><input type="text" class="input"></div>
-						<div class="span3"><label class="label">纵坐标：</label></div>
-						<div class="span6 last-span"><input type="text" class="input"></div>
-					</div>
-					<div class="row row-margin-bottom">
-						<div class="span3"><label class="label">线宽：</label></div>
-						<div class="span6"><input type="text" class="input"></div>
+				<div class="span20 last-span">
+					<fieldset class="label-right">
+						<legend>位置和尺寸</legend>
+						<div class="row">
+							<div class="span3"><label class="label">X：</label></div>
+							<div class="span6"><input type="text" class="input"></div>
+							<div class="span3"><label class="label">横坐标：</label></div>
+							<div class="span6 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span3"><label class="label">Y：</label></div>
+							<div class="span6"><input type="text" class="input"></div>
+							<div class="span3"><label class="label">纵坐标：</label></div>
+							<div class="span6 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<div class="span3"><label class="label">线宽：</label></div>
+							<div class="span6"><input type="text" class="input"></div>
 
-					</div>
-				</div>
+						</div>
+					</fieldset>
+			</div>
 
 			</div>
 			<div class="row">
-				<div class="span2"><label class="label text-left">旋转：</label></div>
+				<div class="span2"><label class="label">旋转：</label></div>
 				<div class="span18 last-span"></div>
 			</div>
 			<div class="row">
-				<div class="span2"><label class="label text-left">选项：</label></div>
+				<div class="span2"><label class="label">选项：</label></div>
 				<div class="span4"><input type="checkbox">可打印</div>
 				<div class="span4"><input type="checkbox">锁定</div>
 			</div>
@@ -944,37 +943,33 @@
 				<div class="span20 last-span">
 					<div id="tupianshuxing1">
 						<div class="row">
-							<div class="span2"><label class="label text-left">名称：</label></div>
+							<div class="span2"><label class="label">名称：</label></div>
 							<div class="span18 last-span"><input type="text" class="input"></div>
 						</div>
 						<div class="row">
-							<div class="span5">
-								<label class="label text-left">位置和尺寸：</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="span20 span-border">
+							<fieldset class="label-right">
+								<legend>位置和尺寸</legend>
 								<div class="row">
 									<div class="span3"><label class="label">X：</label></div>
 									<div class="span6"><input type="text" class="input"></div>
 									<div class="span3"><label class="label">横坐标：</label></div>
 									<div class="span6 last-span"><input type="text" class="input"></div>
 								</div>
-								<div class="row row-margin-bottom">
+								<div class="row">
 									<div class="span3"><label class="label">Y：</label></div>
 									<div class="span6"><input type="text" class="input"></div>
 									<div class="span3"><label class="label">纵坐标：</label></div>
 									<div class="span6 last-span"><input type="text" class="input"></div>
 								</div>
 
-							</div>
+							</fieldset>
 						</div>
 						<div class="row">
-							<div class="span2"><label class="label text-left">旋转：</label></div>
+							<div class="span2"><label class="label">旋转：</label></div>
 							<div class="span18 last-span"></div>
 						</div>
 						<div class="row">
-							<div class="span2"><label class="label text-left">选项：</label></div>
+							<div class="span2"><label class="label">选项：</label></div>
 							<div class="span4"><input type="checkbox">可打印</div>
 							<div class="span4"><input type="checkbox">锁定</div>
 						</div>
@@ -1007,42 +1002,38 @@
 				<div class="span20 last-span">
 					<div id="wenbenshuxing1">
 						<div class="row">
-							<div class="span2"><label class="label text-left">名称：</label></div>
+							<div class="span2"><label class="label">名称：</label></div>
 							<div class="span18 last-span"><input type="text" class="input"></div>
 						</div>
 						<div class="row">
-							<div class="span5">
-								<label class="label text-left">位置和尺寸：</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="span20 span-border">
+							<fieldset class="label-right">
+								<legend>位置和尺寸</legend>
 								<div class="row">
 									<div class="span3"><label class="label">X：</label></div>
 									<div class="span6"><input type="text" class="input"></div>
 									<div class="span3"><label class="label">横坐标：</label></div>
 									<div class="span6 last-span"><input type="text" class="input"></div>
 								</div>
-								<div class="row row-margin-bottom">
+								<div class="row">
 									<div class="span3"><label class="label">Y：</label></div>
 									<div class="span6"><input type="text" class="input"></div>
 									<div class="span3"><label class="label">纵坐标：</label></div>
 									<div class="span6 last-span"><input type="text" class="input"></div>
 								</div>
 
-							</div>
+							</fieldset>
 						</div>
 						<div class="row">
-							<div class="span4"><label class="label text-left">旋转：</label></div>
+							<div class="span4"><label class="label">旋转：</label></div>
 							<div class="span16 last-span"></div>
 						</div>
 						<div class="row">
-							<div class="span4"><label class="label text-left">选项：</label></div>
+							<div class="span4"><label class="label">选项：</label></div>
 							<div class="span4"><input type="checkbox">可打印</div>
 							<div class="span4"><input type="checkbox">锁定</div>
 						</div>
 						<div class="row">
-							<div class="span2"><label class="label text-left">预览：</label></div>
+							<div class="span2"><label class="label">预览：</label></div>
 							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						</div>
 						<div class="row">
@@ -1054,24 +1045,22 @@
 					<div id="wenbenshuxing2">
 						<div class="row">
 							<div class="span10">
-								<div class="row">
-									<label class="label text-left">字体：</label>
+								<div class="row row-no-margin">
+									<label class="label">字体：</label>
 								</div>
 								<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 							</div>
 							<div class="span10 last-span">
 								<div class="row">
-									<label class="label text-left">样式：</label>
-								</div>
-								<div class="row">
-									<span class="span10 last-span span-border">
+									<fieldset>
+										<legend>样式</legend>
 										<div class="row"><input type="checkbox">粗体</div>
 										<div class="row"><input type="checkbox">斜体</div>
-										<div class="row row-margin-bottom"><input type="checkbox">下划线</div>
-									</span>
+										<div class="row"><input type="checkbox">下划线</div>
+									</fieldset>
 								</div>
 								<div class="row">
-									<label class="label text-left">单位：</label>
+									<label class="label">单位：</label>
 								</div>
 								<div class="row">
 									<select class="input" name="" id="">
@@ -1080,13 +1069,13 @@
 									</select>
 								</div>
 								<div class="row">
-									<label class="label text-left">高度：</label>
+									<label class="label">高度：</label>
 								</div>
 								<div class="row"><input type="text" class="input"></div>
 							</div>
 						</div>
 						<div class="row">
-							<label class="label text-left">预览：</label>
+							<label class="label">预览：</label>
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
@@ -1098,8 +1087,8 @@
 					<div id="wenbenshuxing3">
 						<div class="row">
 							<div class="span10">
-								<label class="label text-left">对齐方式：</label>
-								<div class="row row-margin-bottom">
+								<label class="label">对齐方式：</label>
+								<div class="row">
 									<div class="span2"><button class="button"></button></div>
 									<div class="span2"><button class="button"></button></div>
 									<div class="span2"><button class="button"></button></div>
@@ -1107,29 +1096,31 @@
 								</div>
 							</div>
 							<div class="span10 last-span">
-								<label class="label text-left">行距：</label>
+								<label class="label">行距：</label>
 								<div class="row"><input type="text" class="input"></div>
 							</div>
 						</div>
 						<div class="row"><input type="checkbox">自动换行</div>
-						<div class="row span-border">
-							<div class="row"><input type="checkbox">固定高度调整宽度</div>
-							<div class="row">
-								<div class="span4"><label class="label">行数：</label></div>
-								<div class="span12">
-									<input type="text" class="input">
+						<div class="row">
+							<fieldset>
+								<div class="row"><input type="checkbox">固定高度调整宽度</div>
+								<div class="row">
+									<div class="span4"><label class="label">行数：</label></div>
+									<div class="span12">
+										<input type="text" class="input">
+									</div>
+									
 								</div>
-								
-							</div>
-							<div class="row row-margin-bottom">
-								<div class="span4"><label class="label">最小宽度：</label></div>
-								<div class="span12">
-									<input type="text" class="input">
+								<div class="row">
+									<div class="span4"><label class="label">最小宽度：</label></div>
+									<div class="span12">
+										<input type="text" class="input">
+									</div>
 								</div>
-							</div>
+							</fieldset>
 						</div>
 						<div class="row">
-							<label class="label text-left">预览：</label>
+							<label class="label">预览：</label>
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
@@ -1143,37 +1134,40 @@
 							<input type="radio" name="radio">固定
 							<input type="radio" name="radio"> 可变
 						</div>
-						<div class="row span-border">
-							<ul class="node">
-								<li>
-									<span class="node-name">日期</span>
-									<ul class="node-child">
-										<li>变量1</li>
-										<li>变量2</li>
-										<li>变量3</li>
-									</ul>
-								</li>
-								<li>
-									<span class="node-name">表单</span>
-									<ul class="node-child">
-										<li>变量1</li>
-										<li>变量2</li>
-										<li>变量3</li>
-									</ul>
-								</li>
-								<li>
-									<span class="node-name">表查找</span>
-									<ul class="node-child">
-										<li>变量1</li>
-										<li>变量2</li>
-										<li>变量3</li>
-									</ul>
-								</li>
-								
-							</ul>
+						<div class="row">
+							<fieldset>
+								<legend>数据源</legend>
+								<ul class="node">
+									<li>
+										<span class="node-name">日期</span>
+										<ul class="node-child">
+											<li>变量1</li>
+											<li>变量2</li>
+											<li>变量3</li>
+										</ul>
+									</li>
+									<li>
+										<span class="node-name">表单</span>
+										<ul class="node-child">
+											<li>变量1</li>
+											<li>变量2</li>
+											<li>变量3</li>
+										</ul>
+									</li>
+									<li>
+										<span class="node-name">表查找</span>
+										<ul class="node-child">
+											<li>变量1</li>
+											<li>变量2</li>
+											<li>变量3</li>
+										</ul>
+									</li>
+									
+								</ul>
+							</fieldset>
 						</div>
 						<div class="row">
-							<label class="label text-left">预览：</label>
+							<label class="label">预览：</label>
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
@@ -1188,16 +1182,12 @@
 		<!-- 直线属性 -->
 		<div class="property" id="zhixianshuxing" title="直线属性" data-width="510" data-visibility="false" data-bind="with: lineproperty.line()">
 			<div class="row">
-				<div class="span2"><label class="label text-left">名称：</label></div>
+				<div class="span2"><label class="label">名称：</label></div>
 				<div class="span18 last-span"><input type="text" class="input" data-bind="value: name"></div>
 			</div>
 			<div class="row">
-				<div class="span4">
-					<label class="label text-left">位置和尺寸：</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span20 last-span span-border">
+				<fieldset class="label-right">
+					<legend>位置和尺寸</legend>
 					<div class="row">
 						<div class="span3"><label class="label">X：</label></div>
 						<div class="span6"><input type="text" class="input" data-bind="value: offsetX"></div>
@@ -1210,20 +1200,20 @@
 						<div class="span3"><label class="label">高度：</label></div>
 						<div class="span6 last-span"><input type="text" class="input"></div>
 					</div>
-					<div class="row row-margin-bottom">
+					<div class="row">
 						<div class="span3"><label class="label">线宽：</label></div>
 						<div class="span6"><input type="text" class="input" data-bind="value: lineWidth"></div>
 
 					</div>
-				</div>
+				</fieldset>
 
 			</div>
 			<div class="row">
-				<div class="span2"><label class="label text-left">旋转：</label></div>
+				<div class="span2"><label class="label">旋转：</label></div>
 				<div class="span18 last-span"></div>
 			</div>
 			<div class="row">
-				<div class="span2"><label class="label text-left">选项：</label></div>
+				<div class="span2"><label class="label">选项：</label></div>
 				<div class="span4"><input type="checkbox">可打印</div>
 				<div class="span4"><input type="checkbox">锁定</div>
 			</div>
@@ -1238,7 +1228,7 @@
 				<div class="span4 span-border-right">
 					<ul>
 						<li><a href="#tiaomashuxing1">常规</a></li>
-						<li><a href="#tiaomashuxing2">视图</a></li>
+						<li><a href="#tiaomashuxing2">编码</a></li>
 						<li><a href="#tiaomashuxing3">字符</a></li>
 						<li><a href="#tiaomashuxing4">数据源</a></li>
 					</ul>
@@ -1247,30 +1237,26 @@
 					<form action="" id="barcodeForm">
 					<div id="tiaomashuxing1">
 						<div class="row">
-							<div class="span2"><label class="label text-left">名称：</label></div>
+							<div class="span2"><label class="label">名称：</label></div>
 							<div class="span18 last-span"><input type="text" class="input" v-model="barFormName"></div>
 						</div>
 						<div class="row">
-							<div class="span5">
-								<label class="label text-left">位置和尺寸：</label>
-							</div>
-						</div>
-						<div class="row">
-							<div class="span20 span-border">
+							<fieldset class="label-right">
+								<legend>位置和尺寸</legend>
 								<div class="row">
 									<div class="span3"><label class="label">X：</label></div>
 									<div class="span6"><input type="text" class="input" v-model="barX"></div>
 									<div class="span3"><label class="label">Y：</label></div>
 									<div class="span6 last-span"><input type="text" class="input" v-model="barY"></div>
 								</div>
-								<div class="row row-margin-bottom">
+								<div class="row">
 									<div class="span3"><label class="label">长度：</label></div>
 									<div class="span6"><input type="text" class="input" v-model="barWidth"></div>
 									<div class="span3"><label class="label">宽度：</label></div>
 									<div class="span6 last-span"><input type="text" class="input" v-model="barHeight"></div>
 								</div>
 
-							</div>
+							</fieldset>
 						</div>
 						<div class="row">
 							<ul class="degree">
@@ -1279,7 +1265,7 @@
 								<li>180</li>
 								<li>270</li>
 							</ul>
-							<div class="span4"><label class="label text-left">旋转：</label>
+							<div class="span4"><label class="label">旋转：</label>
 								<!-- v-model无效 
 								<input type="hidden" v-model="degree" id='degree' />
 								-->
@@ -1289,12 +1275,12 @@
 							
 						</div>
 						<div class="row">
-							<div class="span4"><label class="label text-left">选项：</label></div>
+							<div class="span4"><label class="label">选项：</label></div>
 							<div class="span4"><input type="checkbox" name="barOption" v-model="print">可打印</div>
 							<div class="span4"><input type="checkbox" name="barOption" v-model="lock">锁定</div>
 						</div>
 						<div class="row">
-							<div class="span2"><label class="label text-left">预览：</label></div>
+							<div class="span2"><label class="label">预览：</label></div>
 							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						</div>
 						<div class="row">
@@ -1320,62 +1306,63 @@
 									<option value="">QR</option>
 									<option value="">PDF417</option>
 								</select>
-								</div>
-							</div>
-							<div class="span10 last-span">
-								<div class="row">
-									<div class="span3"><label class="label">值：</label></div>
-									<div class="span9 last-span"><input type="text" class="input"></div>
-								</div>
-								<div class="row">
-									<label class="label text-left">属性：</label>
-								</div>
-								<div class="row span-border">
-									<div class="row">
-										<div class="span4"><label class="label">高度：</label></div>
-										<div class="span5 last-span"><input type="text" class="input"></div>
-									</div>
-									<div class="row">
-										<div class="span4"><label class="label">校验字符：</label></div>
-										<div class="span5 last-span">
-											<select class="input" name="" id="">
-												<option value="">无</option>
-												<option value="">一个数字</option>
-											</select>
-										</div>
-									</div>
-									<div class="row">
-										<div class="span4"><label class="label">窄条：</label></div>
-										<div class="span5 last-span">
-										<select class="input" name="" id="">
-												<option value="">5mm</option>
-												<option value="">2mm</option>
-												<option value="">3mm</option>
-											</select>
-										</div>
-									</div>
-									<div class="row">
-										<div class="span4"><label class="label">宽度点数：</label></div>
-										<div class="span5">
-										22mm
-										</div>
-									</div>
-									<div class="row row-margin-bottom">
-										<div class="span4"><label class="label">类型：</label></div>
-										<div class="span5 last-span">
-											<select class="input" name="" id="">
-												<option value="">AUTO</option>
-												<option value="">CODE A</option>
-												<option value="">CODE B</option>
-											</select>
-										</div>
-									</div>
-
-								</div>
 							</div>
 						</div>
 						<div class="row">
-							<label class="label text-left">预览：</label>
+								<div class="row">
+									<div class="span4"><label class="label">值：</label></div>
+									<div class="span8 last-span"><input type="text" class="input"></div>
+								</div>
+								<div class="row">
+
+									<fieldset>
+										<legend>属性</legend>
+										<div class="row">
+											<div class="span4"><label class="label">高度：</label></div>
+											<div class="span5 last-span"><input type="text" class="input"></div>
+										</div>
+										<div class="row">
+											<div class="span4"><label class="label">校验字符：</label></div>
+											<div class="span5 last-span">
+												<select class="input" name="" id="">
+													<option value="">无</option>
+													<option value="">一个数字</option>
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="span4"><label class="label">窄条：</label></div>
+											<div class="span5 last-span">
+												<select class="input" name="" id="">
+														<option value="">5mm</option>
+														<option value="">2mm</option>
+														<option value="">3mm</option>
+												</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="span4"><label class="label">宽度点数：</label></div>
+											<div class="span5">
+											22mm
+											</div>
+										</div>
+										<div class="row">
+											<div class="span4"><label class="label">类型：</label></div>
+											<div class="span5 last-span">
+												<select class="input" name="" id="">
+													<option value="">AUTO</option>
+													<option value="">CODE A</option>
+													<option value="">CODE B</option>
+												</select>
+											</div>
+
+										</div>
+
+									</fieldset>
+								</div>
+						</div>
+						<div class="row">
+							<label class="label">预览：</label>
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
@@ -1387,18 +1374,20 @@
 					<div id="tiaomashuxing3">
 						<div class="row">
 							<div class="span10">
-								<label class="label text-left">字体：</label>
+								<label class="label">字体：</label>
 								<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
 							</div>
 							<div class="span10 last-span">
-								<label class="label text-left">样式：</label>
-								<div class="row span-border">
-									<div class="row"><input type="checkbox">粗体</div>
-									<div class="row"><input type="checkbox">斜体</div>
-									<div class="row row-margin-bottom"><input type="checkbox">下划线</div>
+								<div class="row">
+									<fieldset>
+										<legend>样式</legend>
+										<div class="row"><input type="checkbox">粗体</div>
+										<div class="row"><input type="checkbox">斜体</div>
+										<div class="row"><input type="checkbox">下划线</div>
+									</fieldset>
 								</div>
 								<div class="row">
-									<label class="label text-left">单位：</label>
+									<label class="label">单位：</label>
 								</div>
 								<div class="row">
 									<select class="input" name="" id="">
@@ -1407,13 +1396,13 @@
 									</select>
 								</div>
 								<div class="row">
-									<label class="label text-left">高度：</label>
+									<label class="label">高度：</label>
 								</div>
 								<div class="row"><input type="text" class="input"></div>
 							</div>
 						</div>
 						<div class="row">
-							<label class="label text-left">预览：</label>
+							<label class="label">预览：</label>
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
@@ -1424,39 +1413,45 @@
 					</div>
 					<div id="tiaomashuxing4">
 						<div class="row">
-							<div class="span6"><button class="button">新建数据源</button></div>
-						</div>
-						<div class="row span-border">
-							<ul class="node">
-								<li>
-									<span class="node-name">日期</span>
-									<ul class="node-child">
-										<li>变量1</li>
-										<li>变量2</li>
-										<li>变量3</li>
-									</ul>
-								</li>
-								<li>
-									<span class="node-name">表单</span>
-									<ul class="node-child">
-										<li>变量1</li>
-										<li>变量2</li>
-										<li>变量3</li>
-									</ul>
-								</li>
-								<li>
-									<span class="node-name">表查找</span>
-									<ul class="node-child">
-										<li>变量1</li>
-										<li>变量2</li>
-										<li>变量3</li>
-									</ul>
-								</li>
-								
-							</ul>
+							<input type="radio">固定
 						</div>
 						<div class="row">
-							<label class="label text-left">预览：</label>
+							<input type="radio">可变
+						</div>
+						<div class="row">
+							<fieldset>
+								<legend>数据源</legend>
+								<ul class="node">
+									<li>
+										<span class="node-name">日期</span>
+										<ul class="node-child">
+											<li>变量1</li>
+											<li>变量2</li>
+											<li>变量3</li>
+										</ul>
+									</li>
+									<li>
+										<span class="node-name">表单</span>
+										<ul class="node-child">
+											<li>变量1</li>
+											<li>变量2</li>
+											<li>变量3</li>
+										</ul>
+									</li>
+									<li>
+										<span class="node-name">表查找</span>
+										<ul class="node-child">
+											<li>变量1</li>
+											<li>变量2</li>
+											<li>变量3</li>
+										</ul>
+									</li>
+									
+								</ul>
+							</fieldset>
+						</div>
+						<div class="row">
+							<label class="label">预览：</label>
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
@@ -1466,6 +1461,275 @@
 
 					</div>
 					</form>
+				</div>
+			</div>
+		</div>
+		<!-- 条码向导 -->
+		<div class="property tabs" id="tiaomaxiangdao" title="条码设置向导" data-width="610" data-visibility="false">
+			<div class="row none">
+				<ul>
+					<li><a href="#tiaomaxiangdao1">步骤1</a></li>
+					<li><a href="#tiaomaxiangdao2">步骤2</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<div id="tiaomaxiangdao1">
+					<div class="row">
+						<div class="span18 tab-content-header">设置条码对象的类型和内容</div>
+					</div>
+					<div class="row">
+						<div class="span8">
+							<div class="row"><label for="" class="label">符号表示法</label></div>
+							<div class="row">
+								
+							</div>
+						</div>
+						<div class="span16 last-span">
+							<div class="row">
+							  <fieldset>
+							    <legend>数据源</legend>
+							    <div class="row">
+							    	<select name="" id="" class="input">
+							    		<option value="">固定数据</option>
+							    		<option value="">变量</option>
+							    	</select>
+							    </div>
+							    <div class="row">
+							    	<label for="" class="label">条码数据</label>
+							    	<input type="text" class="input">
+							    	<select name="" id="" class="input none">
+							    		<option value="">变量1</option>
+							    		<option value="">变量2</option>
+							    	</select>
+							    </div>
+							  </fieldset>
+							</div>
+							<div class="row">
+								<div class="span3"><label for="" class="label">人类可读：</label></div>
+								<div class="span5 last-span">
+							    	<select name="" id="" class="input">
+							    		<option value="">默认</option>
+							    		<option value="">。。。</option>
+							    	</select>
+								</div>
+								
+							</div>
+							<div class="row">
+							  <fieldset>
+							    <legend>预览</legend>
+							    <div class="row">
+							    	<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+							    </div>
+							  </fieldset>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tiaomaxiangdao2">
+					<div class="row">
+						<div class="span18 tab-content-header">设置条码对象属性</div>
+					</div>
+					<div class="row">
+						<div class="span11">
+							<div class="row row-no-margin">
+								<fieldset>
+									<legend>旋转</legend>
+									<div class="row">
+										<input type="range" step="90" min="0" max="270">
+									</div>
+								</fieldset>
+							</div>
+							<div class="row">
+								<fieldset>
+									<legend>位置和大小</legend>
+									<div class="row">
+										<div class="span5"><label for="">X(mm)：</label></div>
+										<div class="span5 last-span"><label for="">窄条宽(点)：</label></div>
+									</div>
+									<div class="row">
+										<div class="span5"><input type="number" class="input"></div>
+										<div class="span5 last-span"><input type="number" class="input"></div>
+									</div>
+									<div class="row">
+										<div class="span5"><label for="">Y(mm)：</label></div>
+										<div class="span5 last-span"><label for="">条高度(mm)：</label></div>
+									</div>
+									<div class="row">
+										<div class="span5"><input type="number" class="input"></div>
+										<div class="span5 last-span"><input type="number" class="input"></div>
+									</div>
+								</fieldset>
+							</div>
+							<div class="row">
+								<fieldset>
+									<legend>摘要</legend>
+									<div class="row"><label for="">条码宽度：<span>20</span> mm</label></div>
+									<div class="row row-no-margin"><label for="">条码高度：<span>30</span> mm</label></div>
+								</fieldset>
+							</div>
+						</div>
+						<div class="span13 last-span">
+							<fieldset>
+								<legend>预览</legend>
+								<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span4 span-right"><button class="button">取消</button></div>
+					<div class="span4 span-right"><button class="button">完成</button></div>
+					<div class="span4 span-right"><button class="button">下一步</button></div>
+					<div class="span4 span-right"><button class="button">上一步</button></div>
+				</div>
+			</div>
+		</div>
+		<!-- 文本向导 -->
+		<div class="property tabs" id="wenbenxiangdao" title="文本设置向导" data-width="610" data-visibility="false">
+			<div class="row none">
+				<ul>
+					<li><a href="#wenbenxiangdao3">步骤1</a></li>
+					<li><a href="#wenbenxiangdao2">步骤2</a></li>
+					<li><a href="#wenbenxiangdao1">步骤2</a></li>
+				</ul>
+			</div>
+			<div class="row">
+				<div id="wenbenxiangdao1">
+					<div class="row tab-content-header">设置文本对象的内容</div>
+					<div class="row">
+						<div class="span10">
+							<div class="row row-no-margin">
+								<fieldset>
+									<legend>数据源</legend>
+									<div class="row">
+								    	<select name="" id="" class="input">
+								    		<option value="">固定数据</option>
+								    		<option value="">变量</option>
+								    	</select>
+									</div>
+									<div class="row none">
+										<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+									</div>
+									<div class="row">
+										<div class="row">
+											<div class="span2"><label for="" class="label">类型</label></div>
+											<div class="span7 last-span">
+										    	<select name="" id="" class="input">
+										    		<option value="">表单</option>
+										    		<option value="">日期</option>
+										    		<option value="">表查找</option>
+										    	</select>
+											</div>
+										</div>
+										<div class="row">
+											<div class="span2"><label for="" class="label">名称</label></div>
+											<div class="span7 last-span">
+										    	<select name="" id="" class="input">
+										    		<option value="">变量1</option>
+										    		<option value="">变量2</option>
+										    		<option value="">变量3</option>
+										    	</select>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+						<div class="span14 last-span">
+							<fieldset>
+								<legend>预览</legend>
+								<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div id="wenbenxiangdao2">
+					<div class="row tab-content-header">设置文本对象的字体属性</div>
+					<div class="row">
+						<div class="span16">
+							<div class="row row-no-margin"><label for="" class="label">字体</label></div>
+							<div class="row">
+								
+							</div>
+						</div>
+						<div class="span8 last-span">
+							<div class="row">
+								<div class="span4"><label for="" class="label">字体大小</label></div>
+								<div class="span4 last-span"><input type="number" class="input"></div>
+							</div>
+							<div class="row">
+								<div class="span4"><label for="" class="label">文本颜色</label></div>
+								<div class="span4 last-span"><input type="color" class="input"></div>
+							</div>
+							<div class="row">
+								<fieldset>
+									<legend>样式</legend>
+									<label><input type="checkbox">粗体</label>
+									<label><input type="checkbox">斜体</label>
+									<label><input type="checkbox">下划线</label>
+								</fieldset>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<fieldset>
+							<legend>预览</legend>
+							<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+						</fieldset>
+					</div>
+				</div>
+				<div id="wenbenxiangdao3">
+					<div class="row tab-content-header">设置文本对象段落属性</div>
+					<div class="row">
+						<div class="span10">
+							<div class="row row-no-margin">
+								<fieldset>
+									<legend>对齐方式</legend>
+
+								</fieldset>
+							</div>
+							<div class="row">
+								<div class="span3"><label for="" class="label">行距(%)</label></div>
+								<div class="span3 last-span"><input type="number" class="input"></div>
+							</div>
+							<div class="row">
+								<fieldset>
+									<legend>旋转</legend>
+									<input type="range" step="90" min="0" max="270">
+								</fieldset>
+							</div>
+							<div class="row"><label class="label"><input type="checkbox">自动换行</label></div>
+							<div class="row">
+								<fieldset>
+									<legend>位置和大小 (mm)</legend>
+									<div class="row">
+										<div class="span1"><label for="" class="label">X</label></div>
+										<div class="span3"><input type="number" class="input"></div>
+										<div class="span2"><label for="" class="label">宽度</label></div>
+										<div class="span3 last-span"><input type="number" class="input"></div>
+									</div>
+									<div class="row">
+										<div class="span1"><label for="" class="label">Y</label></div>
+										<div class="span3"><input type="number" class="input"></div>
+										<div class="span2"><label for="" class="label">高度</label></div>
+										<div class="span3 last-span"><input type="number" class="input"></div>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+						<div class="span14 last-span">
+							<fieldset>
+								<legend>预览</legend>
+								<textarea name="" id="" cols="30" rows="10" class="input"></textarea>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span4 span-right"><button class="button">取消</button></div>
+					<div class="span4 span-right"><button class="button">完成</button></div>
+					<div class="span4 span-right"><button class="button">下一步</button></div>
+					<div class="span4 span-right"><button class="button">上一步</button></div>
 				</div>
 			</div>
 		</div>

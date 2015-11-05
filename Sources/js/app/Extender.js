@@ -1,11 +1,11 @@
 define(['knockout'],function (ko){
-	ko.extenders.numeric = function(target, precision) {
+	ko.extenders.numeric = function(target, setting) {
 	    //create a writable computed observable to intercept writes to our observable
 	    var result = ko.pureComputed({
 	        read: target,  //always return the original observables value
 	        write: function(newValue) {
 	            var current = target(),
-	                roundingMultiplier = Math.pow(10, precision),
+	                roundingMultiplier = Math.pow(10, setting.precision),
 	                newValueAsNum = isNaN(newValue) ? 0 : parseFloat(+newValue),
 	                valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
 	 

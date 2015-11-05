@@ -15,7 +15,6 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 			// });
 			util.Event.addEventListener("showLineProperty",this.open,this);
 			util.Event.addEventListener("hideLineProperty",this.close,this);
-
 		},
 		open: function (e,obj){
 			this.line(obj);

@@ -157,6 +157,9 @@ define(['knockout','mapping'],function (ko,map){
 
 	        self.ctx.font = self.font();
 	        self.ctx.textBaseline = "top";
+	        self.ctx.fillStyle = "#ffffff"
+	        self.ctx.fillRect(0,0,self.canvasWidth(),self.canvasHeight());
+	        self.ctx.fillStyle = "#000000"
 	        for(var i = 0 ; i < ar.length ; i++){
 		        self.ctx.fillText(ar[i],self.paddingLeft,y + (self.lineHeight() * i));
 	        }
