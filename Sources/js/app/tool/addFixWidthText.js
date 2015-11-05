@@ -18,6 +18,7 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 				self.newText.isFixedWidth(true);
 				self.newText.offsetX(self.x);
 				self.newText.offsetY(self.y);
+				self.newText.selected(true);
 				$(document).on("mousemove",self.onmousemove);
 				$(document).one("mouseup",self.onmouseup);
 			}
