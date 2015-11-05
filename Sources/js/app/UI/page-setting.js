@@ -8,4 +8,7 @@ define(['jquery'], function($){
 	$(document).on('click','.icon-table2',function(){
 		$('#form-dialog').dialog("open");
 	});
+	$(document).on('click','.exception',function(){
+		$('#exception-dialog').dialog("open");
+	});
 })

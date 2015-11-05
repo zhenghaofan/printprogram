@@ -179,8 +179,6 @@
 									<li>调整为相同宽度</li>
 									<li>调整为相同高度</li>
 									<li>调整为相同尺寸</li>
-									<li>横向间隔</li>
-									<li>纵向间隔</li>
 								</ul>
 							</li>
 							<li>向右旋转90度</li>
@@ -197,20 +195,17 @@
 						<ul>
 							<li>表单
 								<ul>
-									<li>添加</li>
-									<li>查看</li>
+									<li  data-bind="click: database.showAdddate">添加</li>
 								</ul>
 							</li>
 							<li>日期
 								<ul>
-									<li>添加</li>
-									<li>查看</li>
+									<li data-bind="click:database.showFormAttr">添加</li>
 								</ul>
 							</li>
 							<li>表查找
 								<ul>
-									<li>添加</li>
-									<li>查看</li>
+									<li data-bind="click: database.showAddwhenprinted">添加</li>
 								</ul>
 							</li>
 						</ul>
@@ -222,7 +217,7 @@
 					</li>
 					<li>帮助
 						<ul>
-							<li>异常提交</li>
+							<li class="exception">异常提交</li>
 							<li>帮助</li>
 							<li>关于</li>
 						</ul>
@@ -420,7 +415,7 @@
 				<button type="button" class="btn">
 					<span class="banner-icon" style="background-image:url(./Sources/img/29.png);background-size:17px;width:17px"></span>
 				</button>
-				<button type="button" class="btn">
+				<!-- <button type="button" class="btn">
 					<span class="banner-icon" style="background-image:url(./Sources/img/30.png);background-size:17px;background-position-y:3px;width:17px"></span>
 				</button>
 				<button type="button" class="btn">
@@ -428,7 +423,7 @@
 				</button>
 				<button type="button" class="btn">
 					<span class="banner-icon" style="background:url(./Sources/img/32.png) no-repeat;background-size:13px;background-position:2px 3px;width:17px"></span>
-				</button>
+				</button> -->
 				<button type="button" class="btn">
 					<span class="banner-icon" style="background:url(./Sources/img/33.png) no-repeat;background-size:16px;background-position:1px 1px;width:18px"></span>
 				</button>
@@ -632,6 +627,21 @@
 
 	<!-- objectcontext begin -->
 	<div id="dialogs" style="display:none;">
+
+		<!-- 异常提交 -->
+		<div class="property" id="exception-dialog" title="自定义表单" data-width="260" data-visibility="false" style="margin-left:18px;">
+			<div class="row">
+				<div class="span3"><label class="label">异常名称：</label></div>
+				<div class="span9"><input type="text" class="input"></div>
+				<div class="span3"><label class="label">描述：</label></div>
+				<div class="span9"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+				
+			</div>
+			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">确定</button></div>
+			</div>
+		</div>
 
 		<!-- 表单自定义 -->
 		<div class="property" id="form-setting-dialog" title="自定义表单" data-width="260" data-visibility="false" style="margin-left:18px;">
@@ -1125,7 +1135,8 @@
 					</div>
 					<div id="wenbenshuxing4">
 						<div class="row">
-							<div class="span6"><button class="button">新建数据源</button></div>
+							<input type="radio" name="radio">固定
+							<input type="radio" name="radio"> 可变
 						</div>
 						<div class="row span-border">
 							<ul class="node">
@@ -1309,23 +1320,34 @@
 										<div class="span4"><label class="label">校验字符：</label></div>
 										<div class="span5 last-span">
 											<select class="input" name="" id="">
-												<option value="">1</option>
-												<option value="">2</option>
-												<option value="">3</option>
+												<option value="">无</option>
+												<option value="">一个数字</option>
 											</select>
 										</div>
 									</div>
 									<div class="row">
-										<div class="span4"><label class="label">窄条宽度：</label></div>
-										<div class="span5 last-span"><input type="text" class="input"></div>
+										<div class="span4"><label class="label">窄条：</label></div>
+										<div class="span5 last-span">
+										<select class="input" name="" id="">
+												<option value="">5mm</option>
+												<option value="">2mm</option>
+												<option value="">3mm</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="span4"><label class="label">宽度点数：</label></div>
+										<div class="span5">
+										22mm
+										</div>
 									</div>
 									<div class="row row-margin-bottom">
 										<div class="span4"><label class="label">类型：</label></div>
 										<div class="span5 last-span">
 											<select class="input" name="" id="">
-												<option value="">1</option>
-												<option value="">2</option>
-												<option value="">3</option>
+												<option value="">AUTO</option>
+												<option value="">CODE A</option>
+												<option value="">CODE B</option>
 											</select>
 										</div>
 									</div>
