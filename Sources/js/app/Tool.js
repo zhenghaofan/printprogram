@@ -6,8 +6,9 @@ define([
 	'app/tool/addRect',
 	'app/tool/addText',
 	'app/tool/addFixWidthText',
-	'app/tool/addImage'
-],function (ko,util,selection,addline,addrect,addtext,addfixwidthtext,addimage){
+	'app/tool/addImage',
+	'app/tool/addCode'
+],function (ko,util,selection,addline,addrect,addtext,addfixwidthtext,addimage,addcode){
 	var tool = function (){
 		var self =this;
 		self.curTool = ko.observable();
@@ -20,15 +21,16 @@ define([
 			self.tools["addtext"] = new addtext(self);
 			self.tools["addfixwidthtext"] = new addfixwidthtext(self);
 			self.tools["addimage"] = new addimage(self);
+			self.tools["addcode"] = new addcode(self);
 			self.setDefaultTool();
 		};
 		self.setDefaultTool = function (){
 			self.changeTool("selection");
 		};
-		self.changeTool = function (tool){
+		self.changeTool = function (tool,flag){
 			if(util._isString(tool) && self.tools.hasOwnProperty(tool)){
 				if(self.curTool()) self.curTool().deactive();
-				self.tools[tool].active();
+				self.tools[tool].active(flag);
 				self.curTool(self.tools[tool]);
 			}
 		};

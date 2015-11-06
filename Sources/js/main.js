@@ -17,7 +17,7 @@ requirejs.config({
 });
 require(['knockout','app/App','jquery'],function (ko,app,$){
    ko.applyBindings(app);
-app.getStage().addDoc().curDoc().addCode();
+app.getStage().addDoc();
     function a (){
         app.getStage().loadData({
             docs: [

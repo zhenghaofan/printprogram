@@ -29,7 +29,7 @@ define(['knockout','mapping'],function (ko,map){
 			return self.fontSize() + self.lineSpacing();
 		});
 
-		self.content = ko.observable("如果 exec() 找到了匹配的文本，则返回一个结果\n数组。否则，返回 null。此数组的第 0 个元素是与正则表达式相匹配的文本，第 1 个元素是与 RegExpObject 的第 1 个子表达式相匹配的文本（如果有的话），第 2 个元素是与 RegExpObject 的第 2 个子表达式相匹配的文本（如果有的话），以此类推。除了数组元素和 length 属性之外，exec() 方法还返回两个属性。");
+		self.content = ko.observable("请输入文字");
 		self.align = ko.observable("left");//left center right justify
 		//style
 		self.bold = ko.observable(false);
