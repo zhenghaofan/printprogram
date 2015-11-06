@@ -196,12 +196,12 @@
 						<ul>
 							<li>表单
 								<ul>
-									<li  data-bind="click: database.showAddwhenprinted">添加</li>
+									<li  data-bind="click: database.showAddForm">添加</li>
 								</ul>
 							</li>
 							<li>日期
 								<ul>
-									<li data-bind="click:database.showAdddate">添加</li>
+									<li data-bind="click:database.showAddDate">添加</li>
 								</ul>
 							</li>
 							<li>表查找
@@ -230,28 +230,28 @@
 			<div id="settingbar" class="noprint" style="padding:8px 25px">
 				<div style="height:32px">
 				<button type="button" class="btn">
-					<span class="icon-file-text2">				
+					<span class="icon-file-text2" title="新建文档">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-folder-open">				
+					<span class="icon-folder-open" title="打开文档">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-floppy-disk">				
+					<span class="icon-floppy-disk" title="保存">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon print printer"></span>
+					<span class="banner-icon print printer" title="选择打印机"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon print printset"></span>
+					<span class="banner-icon print printset" title="修改打印机设置"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-file-text"></span>
+					<span class="icon-file-text" title="页面设置"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-printer"></span>
+					<span class="icon-printer" title="打印"></span>
 				</button>
 				<!-- <button type="button" class="btn">
 					<span class="icon-drawer">				
@@ -266,27 +266,27 @@
 					</span>
 				</button> -->
 				<button type="button" class="btn">
-					<span class="icon-scissors">				
+					<span class="icon-scissors" title="剪切">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-copy">				
+					<span class="icon-copy" title="复制">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-paste">				
+					<span class="icon-paste" title="粘贴">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-undo2">				
+					<span class="icon-undo2" title="撤销">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-redo2">				
+					<span class="icon-redo2" title="重做">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-table2">				
+					<span class="icon-table2" title="表单">				
 					</span>
 				</button>
 				<select name="" id="" class="sm-margin-right">
@@ -298,23 +298,23 @@
 					<option value="">400</option>
 				</select>
 				<button type="button" class="btn">
-					<span class="icon-search">				
+					<span class="icon-search" title="缩放">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-zoom-out">				
+					<span class="icon-zoom-out" title="缩小">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-zoom-in">				
+					<span class="icon-zoom-in" title="放大">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-enlarge2">				
+					<span class="icon-enlarge2" title="缩放至宽度">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-shrink2">				
+					<span class="icon-shrink2" title="缩放至页面">				
 					</span>
 				</button>
 				</div>
@@ -326,35 +326,35 @@
 					<option value="">15px</option>
 				</select>
 				<button type="button" class="btn">
-					<span class="icon-bold">				
+					<span class="icon-bold" title="加粗">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-italic">				
+					<span class="icon-italic" title="斜体">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-underline">				
+					<span class="icon-underline" title="下划线">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-sort-amount-desc">				
+					<span class="icon-sort-amount-desc" title="自动换行">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-paragraph-left">				
+					<span class="icon-paragraph-left" title="左对齐">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-paragraph-center">				
+					<span class="icon-paragraph-center" title="居中">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-paragraph-right">				
+					<span class="icon-paragraph-right" title="右对齐">				
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="icon-paragraph-justify">				
+					<span class="icon-paragraph-justify" title="调整文本">				
 					</span>
 				</button>
 				</div>
@@ -368,17 +368,17 @@
 					<!-- <span class="icon-printer">	
 						<span class="icon-equalizer2"></span>			
 					</span> -->
-					<span class="banner-icon print printset2"></span>
+					<span class="banner-icon print printset2" title="打印机属性"></span>
 					
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon print printdel" style="height:12px"></span>
+					<span class="banner-icon print printdel" style="height:12px" title="删除"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon print printorder"></span>
+					<span class="banner-icon print printorder" title="顺序"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon print printnone"></span>
+					<span class="banner-icon print printnone" title="不打印"></span>
 				</button>
 				<!-- <button type="button" class="btn">
 					<span class="icon-printer">	
@@ -394,32 +394,32 @@
 					</span>
 				</button> -->
 				<button type="button" class="btn">
-					<span class="icon-unlocked">			
+					<span class="icon-unlocked" title="锁定">			
 					</span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/22.png);background-size:17px;background-position-y:3px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/22.png);background-size:17px;background-position-y:3px;width:17px" title="左侧"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/23.png);background-size:17px;background-position-y:3px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/23.png);background-size:17px;background-position-y:3px;width:17px" title="水平居中"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/24.png);background-size:17px;background-position-y:3px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/24.png);background-size:17px;background-position-y:3px;width:17px" title="右侧"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/25.png);background-size:17px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/25.png);background-size:17px;width:17px" title="底部"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/26.png);background-size:17px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/26.png);background-size:17px;width:17px" title="垂直居中"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/27.png);background-size:17px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/27.png);background-size:17px;width:17px" title="顶部"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/28.png);background-size:17px;background-position-y:2px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/28.png);background-size:17px;background-position-y:2px;width:17px" title="在文档中垂直居中"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background-image:url(./Sources/img/29.png);background-size:17px;width:17px"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/29.png);background-size:17px;width:17px" title="在文档中水平居中"></span>
 				</button>
 				<!-- <button type="button" class="btn">
 					<span class="banner-icon" style="background-image:url(./Sources/img/30.png);background-size:17px;background-position-y:3px;width:17px"></span>
@@ -431,13 +431,13 @@
 					<span class="banner-icon" style="background:url(./Sources/img/32.png) no-repeat;background-size:13px;background-position:2px 3px;width:17px"></span>
 				</button> -->
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background:url(./Sources/img/33.png) no-repeat;background-size:16px;background-position:1px 1px;width:18px"></span>
+					<span class="banner-icon" style="background:url(./Sources/img/33.png) no-repeat;background-size:16px;background-position:1px 1px;width:18px" title="调整为相同宽度"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background:url(./Sources/img/34.png) no-repeat;background-size:14px;background-position:3px 2px;width:17px"></span>
+					<span class="banner-icon" style="background:url(./Sources/img/34.png) no-repeat;background-size:14px;background-position:3px 2px;width:17px" title="调整为相同高度"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon" style="background:url(./Sources/img/35.png) no-repeat;background-size:14px;background-position:2px 3px;width:17px"></span>
+					<span class="banner-icon" style="background:url(./Sources/img/35.png) no-repeat;background-size:14px;background-position:2px 3px;width:17px" title="调整为相同尺寸"></span>
 				</button>
 
 			</div>
@@ -493,26 +493,26 @@
 						<div class="content">
 							<ul class="node" data-bind="with: database">
 								<li>
-									<span data-bind="text: '日期 ('+date().length+')'" class="node-name"></span>
-									<ul class="node-child" data-bind="foreach: date">
-										<li data-bind="text: name"></li>
+									<span data-bind="text: '日期 ('+dates().length+')'" class="node-name"></span>
+									<ul class="node-child" id="dateattr" data-bind="foreach: dates">
+										<li data-bind="text: datename"></li>
 									</ul>
 									<ul class="rightmenu menu">
-										<li data-bind="click: showAdddate">添加</li>
+										<li data-bind="click: showAddDate">添加</li>
 										<li>向导</li>
 									</ul>
 								</li>
 								<li>
-									<span data-bind="text: '表单 ('+whenprinted().length+')'" class="node-name"></span>
-									<ul class="node-child" id="formattr" data-bind="foreach: whenprinted">
-										<li data-bind="text: name"></li>
+									<span data-bind="text: '表单 ('+forms().length+')'" class="node-name"></span>
+									<ul class="node-child" id="formattr" data-bind="foreach: forms">
+										<li data-bind="text: attrname"></li>
 										<ul class="rightmenu menu">
 											<li data-bind="click:$parent.showFormAttr()">属性</li>
 											<li>删除</li>
 										</ul>
 									</ul>
 									<ul class="rightmenu menu">
-										<li data-bind="click: showAddwhenprinted">添加</li>
+										<li data-bind="click: showAddForm">添加</li>
 										<li>向导</li>
 									</ul>									
 								</li>
@@ -633,7 +633,7 @@
 	<div id="dialogs" style="display:none;">
 
 		<!-- 异常提交 -->
-		<div class="property" id="exception-dialog" title="自定义表单" data-width="260" data-visibility="false" style="margin-left:18px;">
+		<div class="property" id="exception-dialog" title="异常提交" data-width="260" data-visibility="false" style="margin-left:18px;">
 			<div class="row">
 				<div class="span3"><label class="label">异常名称：</label></div>
 				<div class="span9"><input type="text" class="input"></div>
@@ -774,14 +774,14 @@
 		<div class="property" id="riqi" title="日期" data-width="510" data-visibility="false">
 			<div class="row">
 				<div class="span4"><label class="label">名称：</label></div>
-				<div class="span16 last-span"><input type="text" class="input"></div>
+				<div class="span16 last-span"><input type="text" class="input" id="datename"></div>
 			</div>
 			<div class="row">
 				<div class="span4"><label class="label">日期类型：</label></div>
 				<div class="span16 last-span">
 					<select class="input" name="" id="">
-			  			<option value="">日期1</option>
-			  			<option value="">日期2</option>
+			  			<option value="">本机时间</option>
+			  			<option value="">服务器时间</option>
 			  		</select>
 				</div>
 			</div>
@@ -805,7 +805,7 @@
 			</div>
 			<div class="row">
 				<div class="span4 last-span span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+				<div class="span4 span-right"><button class="button" id="addDateAttr">确定</button></div>
 			</div>
 		</div>
 		<!-- 表查找 -->
@@ -918,8 +918,24 @@
 
 			</div>
 			<div class="row">
-				<div class="span2"><label class="label">旋转：</label></div>
-				<div class="span18 last-span"></div>
+				<!-- <div class="span2"><label class="label">旋转：</label></div>
+				<div class="span18 last-span"></div> -->
+				<div class="row">
+							<ul class="degree">
+								<li>0</li>
+								<li>90</li>
+								<li>180</li>
+								<li>270</li>
+							</ul>
+							<div class="span4"><label class="label">旋转：</label>
+								<!-- v-model无效 
+								<input type="hidden" v-model="degree" id='degree' />
+								-->
+							<div class="slider">
+							</div>
+							</div>
+							
+						</div>
 			</div>
 			<div class="row">
 				<div class="span2"><label class="label">选项：</label></div>
@@ -965,8 +981,20 @@
 							</fieldset>
 						</div>
 						<div class="row">
-							<div class="span2"><label class="label">旋转：</label></div>
-							<div class="span18 last-span"></div>
+							<ul class="degree">
+								<li>0</li>
+								<li>90</li>
+								<li>180</li>
+								<li>270</li>
+							</ul>
+							<div class="span4"><label class="label">旋转：</label>
+								<!-- v-model无效 
+								<input type="hidden" v-model="degree" id='degree' />
+								-->
+							<div class="slider">
+							</div>
+							</div>
+							
 						</div>
 						<div class="row">
 							<div class="span2"><label class="label">选项：</label></div>
@@ -994,7 +1022,7 @@
 				<div class="span4 span-border-right">
 					<ul>
 						<li><a href="#wenbenshuxing1">常规</a></li>
-						<li><a href="#wenbenshuxing2">视图</a></li>
+						<li><a href="#wenbenshuxing2">字符</a></li>
 						<li><a href="#wenbenshuxing3">段落</a></li>
 						<li><a href="#wenbenshuxing4">数据源</a></li>
 					</ul>
@@ -1024,8 +1052,20 @@
 							</fieldset>
 						</div>
 						<div class="row">
-							<div class="span4"><label class="label">旋转：</label></div>
-							<div class="span16 last-span"></div>
+							<ul class="degree">
+								<li>0</li>
+								<li>90</li>
+								<li>180</li>
+								<li>270</li>
+							</ul>
+							<div class="span4"><label class="label">旋转：</label>
+								<!-- v-model无效 
+								<input type="hidden" v-model="degree" id='degree' />
+								-->
+							<div class="slider">
+							</div>
+							</div>
+							
 						</div>
 						<div class="row">
 							<div class="span4"><label class="label">选项：</label></div>
@@ -1209,8 +1249,20 @@
 
 			</div>
 			<div class="row">
-				<div class="span2"><label class="label">旋转：</label></div>
-				<div class="span18 last-span"></div>
+				<ul class="degree">
+					<li>0</li>
+					<li>90</li>
+					<li>180</li>
+					<li>270</li>
+				</ul>
+				<div class="span4"><label class="label">旋转：</label>
+					<!-- v-model无效 
+					<input type="hidden" v-model="degree" id='degree' />
+					-->
+				<div class="slider">
+				</div>
+				</div>
+				
 			</div>
 			<div class="row">
 				<div class="span2"><label class="label">选项：</label></div>
@@ -1269,7 +1321,7 @@
 								<!-- v-model无效 
 								<input type="hidden" v-model="degree" id='degree' />
 								-->
-							<div id="slider">
+							<div class="slider">
 							</div>
 							</div>
 							

@@ -22,22 +22,7 @@ define(['jquery','vue'],function($,vue){
 				$('#tiaomashuxing').dialog('open');
 			});	
 
-			$(function(){
-				$('#slider').slider({
-				  	min: 0,
-				  	max: 270,
-				  	range: "min",
-				  	value: 0,
-				  	step: 90,
-				  	slide: function( event, ui ) {
-
-				  		// $(this).find('#degree').val(ui.value);	
-				  		// console.log($('#degree').val());		  		
-				  		self.degree = ui.value;
-					}
-					
-				});	
-			});	
+			
 		},
 
 		initVm: function(){

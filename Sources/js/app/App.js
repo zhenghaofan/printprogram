@@ -107,6 +107,22 @@
 				}
 			});
 
+			$(function(){
+				$('.slider').slider({
+				  	min: 0,
+				  	max: 270,
+				  	range: "min",
+				  	value: 0,
+				  	step: 90,
+				  	slide: function( event, ui ) {
+
+				  		// $(this).find('#degree').val(ui.value);	
+				  		// console.log($('#degree').val());		  		
+				  		self.degree = ui.value;
+					}
+					
+				});	
+			});	
 			// if(document.location.hash="#disign"){
 			// 	$('#page-initial').dialog("open");
 			// }

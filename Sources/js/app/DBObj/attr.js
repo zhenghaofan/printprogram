@@ -2,7 +2,7 @@ define(['knockout'],function (ko){
 
 	var attr = function (){
 
-		this.name = ko.observable() ;
+		this.attrname = ko.observable() ;
 	};
 
 	return attr;
