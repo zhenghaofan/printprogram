@@ -1,7 +1,7 @@
-define(function (){
-	var t = function (){
-		this.name = "日期";
+define(['knockout'],function (ko){
+	var date = function (){
+		this.datename = ko.observable();
 	};
 
-	return t;
+	return date;
 });
