@@ -30,6 +30,9 @@
 		self.ruler        = ruler;
 		self.ui           = new ui(self);
 
+		//fps
+		self.currentTime = 0;
+		self.fps = 0;
 		
 
 	    //方法
@@ -134,6 +137,9 @@
 
 		self.getDoc = function (){
 			return self.curDoc();
+		};
+		self.updateFPS = function (){
+
 		};
 	    self.init();
 

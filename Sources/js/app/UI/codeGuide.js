@@ -16,7 +16,6 @@ define(['jquery','jqueryUI'],function ($,ui){
 	};
 	g.prototype = {
 		init: function (){
-			console.log(this.pane.tabs("instance"));
 		},
 		show: function (){
 			this.pane.dialog("open");
