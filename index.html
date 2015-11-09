@@ -323,7 +323,17 @@
 					<option value="">黑体</option>
 				</select>
 				<select name="" id="" class="sm-margin-right">
-					<option value="">15px</option>
+					<option value="">5</option>
+					<option value="">6</option>
+					<option value="">7</option>
+					<option value="">8</option>
+					<option value="">9</option>
+					<option value="">10</option>
+					<option value="">11</option>
+					<option value="">12</option>
+					<option value="">13</option>
+					<option value="">14</option>
+					<option value="">15</option>
 				</select>
 				<button type="button" class="btn">
 					<span class="icon-bold" title="加粗">				
@@ -368,14 +378,14 @@
 					<!-- <span class="icon-printer">	
 						<span class="icon-equalizer2"></span>			
 					</span> -->
-					<span class="banner-icon print printset2" title="打印机属性"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/36.png);background-size:15px;background-position-y:2px;width:17px;background-repeat:no-repeat" title="属性"></span>
 					
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon print printdel" style="height:12px" title="删除"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/37.png);background-size:16px;background-position-y:2px;width:17px;background-repeat:no-repeat;height:18px" title="删除"></span>
 				</button>
 				<button type="button" class="btn">
-					<span class="banner-icon print printorder" title="顺序"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/38.png);background-size:16px;background-position-y:3px;width:17px;background-repeat:no-repeat;height:18px" title="顺序"></span>
 				</button>
 				<button type="button" class="btn">
 					<span class="banner-icon print printnone" title="不打印"></span>
@@ -452,6 +462,7 @@
 								<li data-bind="css: {curTool: curTool().name == 'addfixwidthtext'},click: changeTool.bind($data,'addfixwidthtext'),clickBubble: false">固定文本</li>
 								<li data-bind="click: changeTool.bind($data,'addtext','true'),,clickBubble: false">向导</li>
 								<li>新建数据源</li>
+
 							</ul>
 						</li>
 						<li data-bind="css: {curTool: curTool().name == 'addcode'},click: changeTool.bind($data,'addcode')">
@@ -460,6 +471,7 @@
 								<li>固定条码</li>
 								<li data-bind="click: changeTool.bind($data,'addcode','true'),,clickBubble: false">向导</li>
 								<li>新建数据源</li>
+
 							</ul>
 						</li>
 						<li data-bind="css: {curTool: curTool().name == 'addimage'},click: changeTool.bind($data,'addimage')"><span class="icon-image sidebar-icon" style="line-height:54px;color:#E0E0E0"></span>
@@ -631,6 +643,34 @@
 
 	<!-- objectcontext begin -->
 	<div id="dialogs" style="display:none;">
+
+		<!-- 新建向导 -->
+		<div class="property" id="guide-dialog" title="新建向导" data-width="510" data-visibility="false" style="margin-left:18px;">
+			<div class="row">
+				<span>选择数据库类型</span>
+			</div>
+			<div class="row">
+				<div class="span3"><button class="button">Access</button></div>
+				<div class="span3"><button class="button">SQL Server</button></div>
+				<div class="span3"><button class="button">ODBC</button></div>
+				<div class="span3"><button class="button">Oracle</button></div>				
+				
+			</div>
+			<div class="row" style="margin-top:50px">
+				<div class="span3"><label class="label">名称：</label></div>
+				<div class="span9"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
+				<div class="span3"><label class="label">描述：</label></div>
+				<div class="span9"><input type="text" class="input"></div>
+			</div>
+			<div class="row" style="margin-right: 22px;margin-top: 50px;">
+				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button">完成</button></div>
+				<div class="span4 span-right"><button class="button">下一步</button></div>
+				<div class="span4 span-right"><button class="button">上一步</button></div>
+			</div>
+		</div>
 
 		<!-- 异常提交 -->
 		<div class="property" id="exception-dialog" title="异常提交" data-width="260" data-visibility="false" style="margin-left:18px;">
@@ -826,12 +866,13 @@
 						</div>
 						<div class="row">
 							<div class="span4"><label class="label">选择数据源：</label></div>
-							<div class="span16 last-span">
+							<div class="span6">
 								<select class="input" name="" id="">
 						  			<option value="">ABO1</option>
 						  			<option value="">ABO2</option>
 						  		</select>
 							</div>
+							<div class="span4 last-span"><button class="button newguide">新建向导</button></div>
 						</div>
 						<div class="row">
 							<div class="span4"><label class="label">创建模式：</label></div>
@@ -1141,24 +1182,6 @@
 							</div>
 						</div>
 						<div class="row"><input type="checkbox">自动换行</div>
-						<div class="row">
-							<fieldset>
-								<div class="row"><input type="checkbox">固定高度调整宽度</div>
-								<div class="row">
-									<div class="span4"><label class="label">行数：</label></div>
-									<div class="span12">
-										<input type="text" class="input">
-									</div>
-									
-								</div>
-								<div class="row">
-									<div class="span4"><label class="label">最小宽度：</label></div>
-									<div class="span12">
-										<input type="text" class="input">
-									</div>
-								</div>
-							</fieldset>
-						</div>
 						<div class="row">
 							<label class="label">预览：</label>
 						</div>

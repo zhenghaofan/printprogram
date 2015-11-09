@@ -11,4 +11,7 @@ define(['jquery'], function($){
 	$(document).on('click','.exception',function(){
 		$('#exception-dialog').dialog("open");
 	});
+	$(document).on('click','.newguide',function(){
+		$('#guide-dialog').dialog("open");
+	});
 })
