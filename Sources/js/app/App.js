@@ -20,8 +20,10 @@
  	'app/UI/page-setting',
  	'app/UI/login2',
  	'app/UI/login1',
- 	'app/UI/Menu'
-],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu){
+ 	'app/UI/Menu',
+ 	'app/UI/guideCtrl',
+ 	'app/UI/form-setting'
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet){
  	
  	var App = function (){
 		//属性

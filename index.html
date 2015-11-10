@@ -641,35 +641,122 @@
 	<div id="dialogs" style="display:none;">
 
 		<!-- 新建向导 -->
-		<div class="property" id="guide-dialog" title="新建向导" data-width="510" data-visibility="false" style="margin-left:18px;">
-			<div class="row">
-				<span>选择数据库类型</span>
+		<div class="property" id="guide-dialog" title="新建数据库向导" data-width="510" data-visibility="false" style="margin-left:18px;">
+			<!-- 第一步 -->
+			<template v-if="firstStep">
+				<div class="row">
+					<span>选择数据库类型</span>
+				</div>
+				<div class="row">
+					<div class="span3"><button class="button {{selected ===1 ? 'db-border' : ''}}" v-on="click:step(1);">Access</button></div>
+					<div class="span3"><button class="button {{selected ===2 ? 'db-border' : ''}}" v-on="click:step(2)" >SQL Server</button></div>
+					<div class="span3"><button class="button {{selected ===3 ? 'db-border' : ''}}" v-on="click:step(3)">ODBC</button></div>
+					<div class="span3"><button class="button {{selected ===4 ? 'db-border' : ''}}" v-on="click:step(4)">Oracle</button></div>
+				</div> 
+				<div class="row md-margin-top">
+					<div class="span3"><label class="label">名称：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">描述：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+			<!-- 下一步 -->
+			<template v-if="type === 1 && !firstStep">
+				<div class="row">
+					<span>选择Access文件</span>
+				</div>
+				<div class="row">
+					<div class="span3">文件名称：</div>	
+					<div class="span7">						
+						<input type="file">
+					</div>			
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">用户名：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">密码：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+			<template v-if="type === 2 && !firstStep">
+				<div class="row">
+					<span>登录 SQL Server</span>
+				</div>
+				<div class="row">
+					<div class="span3">服务器名称</div>	
+					<div class="span7">
+						<select name="" id="">
+							<option value="">www.baidu.com</option>
+						</select>
+					</div>			
+				</div>
+				<div class="row">
+					<div class="span5">
+						<input class="" type="checkbox">Windows验证
+					</div>
+					<div class="span5">
+						<input class="" type="checkbox">数据库验证
+					</div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">用户名：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">密码：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+
+			<template v-if="type === 4 && !firstStep">
+				<div class="row">
+					<span>登录 Oracle Server</span>
+				</div>
+				<div class="row">
+					<div class="span3">服务器名称</div>	
+					<div class="span7">
+						<select name="" id="">
+							<option value="">www.baidu.com</option>
+						</select>
+					</div>			
+				</div>
+				<div class="row">
+					<div class="span5">
+						<input class="" type="checkbox">Windows验证
+					</div>
+					<div class="span5">
+						<input class="" type="checkbox">数据库验证
+					</div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">用户名：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">密码：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+
+			<div class="row" v-if="!firstStep">
+				<button>测试连接</button>
 			</div>
-			<div class="row">
-				<div class="span3"><button class="button">Access</button></div>
-				<div class="span3"><button class="button">SQL Server</button></div>
-				<div class="span3"><button class="button">ODBC</button></div>
-				<div class="span3"><button class="button">Oracle</button></div>				
-				
+			<div class="row md-margin-top md-margin-right">
+				<div class="span4 span-right"><button class="button" v-on="click:close">取消</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:close">完成</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:toggle" disabled="{{!disabled}}" v-show="type != 3">下一步</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:toggle" disabled="{{disabled}}" v-show="type != 3">上一步</button></div>
 			</div>
-			<div class="row" style="margin-top:50px">
-				<div class="span3"><label class="label">名称：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
-			</div>
-			<div class="row">
-				<div class="span3"><label class="label">描述：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
-			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 50px;">
-				<div class="span4 span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">完成</button></div>
-				<div class="span4 span-right"><button class="button">下一步</button></div>
-				<div class="span4 span-right"><button class="button">上一步</button></div>
-			</div>
+
+			
 		</div>
 
 		<!-- 异常提交 -->
-		<div class="property" id="exception-dialog" title="异常提交" data-width="260" data-visibility="false" style="margin-left:18px;">
+		<div class="property" id="exception-dialog" title="异常提交" data-width="260" data-visibility="false" style="margin-left:18px;"> 
 			<div class="row">
 				<div class="span3"><label class="label">异常名称：</label></div>
 				<div class="span9"><input type="text" class="input"></div>
@@ -677,7 +764,7 @@
 				<div class="span9"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 				
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+			<div class="row sm-margin-top md-margin-right">
 				<div class="span4 span-right"><button class="button">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
@@ -687,20 +774,20 @@
 		<div class="property" id="form-setting-dialog" title="自定义表单" data-width="260" data-visibility="false" style="margin-left:18px;">
 			<div class="row">
 				<div class="span3"><label class="label">名称：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
-				<div class="span3"><label class="label">长度：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
+				<div class="span9"><input type="text" class="input" v-model="title"></div>
 				<div class="span3"><label class="label">宽度：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
+				<div class="span9"><input type="text" class="input" v-model="formWidth"></div>
+				<div class="span3"><label class="label">高度：</label></div>
+				<div class="span9"><input type="text" class="input" v-model="formHeight"></div>
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+			<div class="row sm-margin-top md-margin-right">
 				<div class="span4 span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:save">确定</button></div>
 			</div>
 		</div>
 
 		<!-- 表单 -->
-		<div class="property" id="form-dialog" title="表单" data-width="310" data-visibility="false" style="margin-left:18px;">
+		<div class="property" id="form-dialog" v-attr="title:title" data-visibility="false">
 			<div class="row">
 				<div class="span3"><label class="label">变量1：</label></div>
 				<div class="span6"><input type="text" class="input"></div>
@@ -709,7 +796,7 @@
 				<div class="span3"><label class="label">变量2：</label></div>
 				<div class="span6"><input type="text" class="input"></div>
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+			<div class="row sm-margin-top md-margin-right">
 				<div class="span4 span-right"><button class="button">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
@@ -723,7 +810,7 @@
 			<div class="row">
 				<div class="span8"><button class="button">打开新的标签格式</button></div>
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+			<div class="row sm-margin-top md-margin-right">
 				<div class="span4 span-right"><button class="button">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
@@ -737,7 +824,7 @@
 				<div class="span6 last-span"><input type="text" class="input"></div>
 			</div>
 			
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
+			<div class="row sm-margin-top md-margin-right">
 				<div class="span4 span-right"><button class="button">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
