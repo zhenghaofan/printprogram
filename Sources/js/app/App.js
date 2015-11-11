@@ -22,8 +22,12 @@
  	'app/UI/login1',
  	'app/UI/Menu',
  	'app/UI/guideCtrl',
- 	'app/UI/form-setting'
-],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet){
+ 	'app/UI/form-setting',
+ 	'app/UI/text',
+ 	'app/UI/image',
+ 	'app/UI/rect',
+ 	'app/UI/line'
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet,text,image,rect,line){
  	
  	var App = function (){
 		//属性

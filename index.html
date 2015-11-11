@@ -502,8 +502,12 @@
 							<ul class="node" data-bind="with: database">
 								<li>
 									<span data-bind="text: '日期 ('+dates().length+')'" class="node-name"></span>
-									<ul class="node-child" id="dateattr" data-bind="foreach: dates">
+									<ul class="node-child" id="dateAttr" data-bind="foreach: dates">
 										<li data-bind="text: datename"></li>
+										<ul class="rightmenu menu">
+											<li data-bind="click:$parent.showDateAttr()">属性</li>
+											<li>删除</li>
+										</ul>
 									</ul>
 									<ul class="rightmenu menu">
 										<li data-bind="click: showAddDate">添加</li>
@@ -512,7 +516,7 @@
 								</li>
 								<li>
 									<span data-bind="text: '表单 ('+forms().length+')'" class="node-name"></span>
-									<ul class="node-child" id="formattr" data-bind="foreach: forms">
+									<ul class="node-child" id="formAttr" data-bind="foreach: forms">
 										<li data-bind="text: attrname"></li>
 										<ul class="rightmenu menu">
 											<li data-bind="click:$parent.showFormAttr()">属性</li>
@@ -522,7 +526,7 @@
 									<ul class="rightmenu menu">
 										<li data-bind="click: showAddForm">添加</li>
 										<li>向导</li>
-									</ul>									
+									</ul>
 								</li>
 								<li>
 									<span data-bind="text: '表查找 ('+tablelookup().length+')'" class="node-name"></span>
@@ -564,38 +568,42 @@
 								<span data-bind="text: '条码 ('+code().length+')'" class="node-name"></span>
 								<ul data-bind="foreach: code" class="node-child" id="barcode">
 									<li data-bind="text: name"></li>
-								</ul>
-								<ul class="rightmenu menu">
-									<li id="barAttr">属性</li>
-									<li data-bind="click: $parent.removeObject">删除</li>
+									<ul class="rightmenu menu">
+										<li id="barAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							<li>
 								<span data-bind="text: '图片 ('+image().length+')'" class="node-name"></span>
-								<ul data-bind="foreach: image" class="node-child">
+								<ul data-bind="foreach: image" class="node-child" id="image">
 									<li data-bind="text: name"></li>
+									<ul class="rightmenu menu">
+										<li id="imageAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							<li>
 								<span data-bind="text: '直线 ('+line().length+')'" class="node-name"></span>
-								<ul data-bind="foreach: line" class="node-child">
+								<ul data-bind="foreach: line" class="node-child" id="line">
 									<li data-bind="text: name">
-										<ul class="rightmenu menu">
-											<li>属性</li>
-											<li data-bind="click: $parent.removeObject">删除</li>
-										</ul>
 									</li>
+									<ul class="rightmenu menu">
+										<li id="lineAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							<li>
 								<span data-bind="text: '矩形 ('+rect().length+')'" class="node-name"></span>
-								<ul data-bind="foreach: rect" class="node-child">
+								<ul data-bind="foreach: rect" class="node-child" id="rect">
 									<li data-bind="text: name">
-										<ul class="rightmenu menu">
-											<li>属性</li>
-											<li data-bind="click: $parent.removeObject">删除</li>
-										</ul>
 									</li>
+									<ul class="rightmenu menu">
+										<li id="rectAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							
@@ -1277,8 +1285,12 @@
 					</div>
 					<div id="wenbenshuxing4">
 						<div class="row">
-							<input type="radio" name="radio">固定
-							<input type="radio" name="radio"> 可变
+							<div class="row">
+							<input type="radio">固定
+						</div>
+						<div class="row">
+							<input type="radio">可变
+						</div>
 						</div>
 						<div class="row">
 							<fieldset>

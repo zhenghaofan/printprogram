@@ -1,4 +1,4 @@
-define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],function (ko,$,Date,Attr,tablelookup){
+define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],function (ko,$,_date,Attr,tablelookup){
 	var database = function (){
 		var self = this;
 		self.dates = ko.observableArray();
@@ -16,30 +16,27 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 		self.initDate = function(){
 			$(document).on('click','#addDateAttr',function(){
 				var datename = $('#datename').val();
+				console.log(datename);
 				self.addDate(datename);
 			});
-			$(document).on('contextmenu','#dateattr li',function(e){
+			$(document).on('contextmenu','#dateAttr li',function(e){
+				$('#dateAttr>ul').menu();
 				e.preventDefault();
-				$(this).siblings('.rightmenu.menu').show().position({
+				$('#dateAttr').children('.rightmenu.menu').show().position({
 						my: "left top",
 						of: e
 					});
 			});
 		}
-		self.addDate = function (datename){
-			var date = new Date();
-			date.datename = datename; 
-			self.dates.push(date);
-			$('#riqi').dialog('close');
-		};
 		self.initForm = function(){
 			$(document).on('click','#addFormAttr',function(){
 				var attrname = $('#formname').val();
 				self.addAttr(attrname);
 			});
-			$(document).on('contextmenu','#formattr li',function(e){
+			$(document).on('contextmenu','#formAttr li',function(e){
+				$('#formAttr>ul').menu();
 				e.preventDefault();
-				$(this).siblings('.rightmenu.menu').show().position({
+				$('#formAttr').children('.rightmenu.menu').show().position({
 						my: "left top",
 						of: e
 					});
@@ -51,6 +48,12 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 			self.forms.push(attr);
 			$("#biaodanshuru").dialog('close');
 		};
+		self.addDate = function (datename){
+			var date = new _date();
+			date.datename = datename; 
+			self.dates.push(date);
+			$('#riqi').dialog('close');
+		};
 		self.addTablelookup = function (){
 			self.tablelookup.push(new tablelookup);
 		};
@@ -58,6 +61,9 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 			$("#riqi").dialog( "open" );
 		};
 		self.showFormAttr = function(){
+			console.log(this);
+		}
+		self.showDateAttr = function(){
 			console.log(this);
 		}
 		self.showAddForm = function (){
