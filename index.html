@@ -530,8 +530,12 @@
 								</li>
 								<li>
 									<span data-bind="text: '表查找 ('+tablelookup().length+')'" class="node-name"></span>
-									<ul class="node-child" data-bind="foreach: tablelookup">
-										<li data-bind="text: name"></li>
+									<ul class="node-child" data-bind="foreach: tablelookup" id="formFindAttr">
+										<li data-bind="text: formFindName"></li>
+										<ul class="rightmenu menu">
+											<li data-bind="click:$parent.showFormFind()">属性</li>
+											<li>删除</li>
+										</ul>
 									</ul>
 									<ul class="rightmenu menu">
 										<li data-bind="click: showAddtablelookup">添加</li>
@@ -953,7 +957,7 @@
 					<div id="biaochazhao1">
 						<div class="row">
 							<div class="span4"><label class="label">名称：</label></div>
-							<div class="span16 last-span"><input type="text" class="input"></div>
+							<div class="span16 last-span"><input type="text" class="input" id="formFindName"></div>
 						</div>
 						<div class="row">
 							<div class="span4"><label class="label">选择数据源：</label></div>
@@ -987,7 +991,7 @@
 						</div>
 						<div class="row">
 							<div class="span4 last-span span-right"><button class="button">取消</button></div>
-							<div class="span4 span-right"><button class="button">确定</button></div>
+							<div class="span4 span-right"><button class="button" id="addFormFind">确定</button></div>
 						</div>
 
 					</div>

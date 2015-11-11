@@ -1,7 +1,7 @@
-define(function (){
-	var t = function (){
-		this.name = "表查找";
+define(['knockout'],function (ko){
+	var formFind = function (){
+		this.formFindName = ko.observable();
 	};
 
-	return t;
+	return formFind;
 });

@@ -9,9 +9,10 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 		self.init = function (){
 			// self.addDate();
 			// self.addWhenprinted();
+			// self.addTablelookup();
 			self.initDate();
 			self.initForm();
-			self.addTablelookup();
+			self.initFormFind();
 		};
 		self.initDate = function(){
 			$(document).on('click','#addDateAttr',function(){
@@ -42,6 +43,22 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 					});
 			});
 		};
+
+		self.initFormFind = function(){
+			$(document).on('click','#addFormFind',function(){
+				var ffname = $('#formFindName').val();
+				self.addFormFind(ffname);
+			});
+			$(document).on('contextmenu','#formFindAttr li',function(e){
+				$('#formFindAttr>ul').menu();
+				e.preventDefault();
+				$('#formFindAttr').children('.rightmenu.menu').show().position({
+						my: "left top",
+						of: e
+					});
+			});
+		};
+
 		self.addAttr = function (attrname){
 			var attr = new Attr();
 			attr.attrname = attrname;
@@ -54,8 +71,11 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 			self.dates.push(date);
 			$('#riqi').dialog('close');
 		};
-		self.addTablelookup = function (){
-			self.tablelookup.push(new tablelookup);
+		self.addFormFind = function (ffname){
+			var formfind = new tablelookup();
+			formfind.formFindName = ffname;
+			self.tablelookup.push(formfind);
+			$('#biaochazhao').dialog('close');
 		};
 		self.showAddDate = function (){
 			$("#riqi").dialog( "open" );
@@ -64,6 +84,9 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 			console.log(this);
 		}
 		self.showDateAttr = function(){
+			console.log(this);
+		}
+		self.showFormFind = function(){
 			console.log(this);
 		}
 		self.showAddForm = function (){
