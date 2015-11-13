@@ -14,4 +14,8 @@ define(['jquery'], function($){
 	$(document).on('click','.newguide',function(){
 		$('#guide-dialog').dialog("open");
 	});
+	// $(document).on('click','#property',function(e){
+	// 	console.log(e);
+	// 	e.dispatchEvent('showLineProperty');
+	// });
 })
