@@ -505,7 +505,7 @@
 									<ul class="node-child" id="dateAttr" data-bind="foreach: dates">
 										<li data-bind="text: datename"></li>
 										<ul class="rightmenu menu">
-											<li data-bind="click:$parent.showDateAttr()">属性</li>
+											<li data-bind="click:$parent.showDateAttr.bind($data)">属性</li>
 											<li>删除</li>
 										</ul>
 									</ul>
@@ -519,7 +519,7 @@
 									<ul class="node-child" id="formAttr" data-bind="foreach: forms">
 										<li data-bind="text: attrname"></li>
 										<ul class="rightmenu menu">
-											<li data-bind="click:$parent.showFormAttr()">属性</li>
+											<li data-bind="click:$parent.showFormAttr.bind($data)">属性</li>
 											<li>删除</li>
 										</ul>
 									</ul>
@@ -533,7 +533,7 @@
 									<ul class="node-child" data-bind="foreach: tablelookup" id="formFindAttr">
 										<li data-bind="text: formFindName"></li>
 										<ul class="rightmenu menu">
-											<li data-bind="click:$parent.showFormFind()">属性</li>
+											<li data-bind="click:$parent.showFormFind.bind($data)">属性</li>
 											<li>删除</li>
 										</ul>
 									</ul>
@@ -842,6 +842,44 @@
 			</div>
 		</div>
 			
+		<!-- 日期 -->
+		<div class="property" id="riqi" title="日期" data-width="510" data-visibility="false">
+			<div class="row">
+				<div class="span4"><label class="label">名称：</label></div>
+				<div class="span16 last-span"><input type="text" class="input" id="datename"></div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">日期类型：</label></div>
+				<div class="span16 last-span">
+					<select class="input" name="" id="">
+			  			<option value="">本机时间</option>
+			  			<option value="">服务器时间</option>
+			  		</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">日期格式：</label></div>
+				<div class="span16 last-span">
+					<select class="input" name="" id="">
+			  			<option value="">03/06/2015</option>
+			  			<option value="">03-06-2015</option>
+			  			<option value="">2015年5月10日</option>
+			  		</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span"><label class="label">预览：</label></div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span">
+					<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button" id="closeDate">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="addDateAttr" data-bind="click:database.opDate">确定</button></div>
+			</div>
+		</div>
 		<!-- 表单输入 -->
 			<div class="property" id="biaodanshuru" title="表单输入" data-width="510" data-visibility="false">
 			<div class="row">
@@ -901,46 +939,8 @@
 				<div class="span10 last-span"><input type="text" class="input"></div>
 			</div>
 			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 last-span span-right"><button class="button" id="closeForm">取消</button></div>
 				<div class="span4 span-right"><button class="button" id="addFormAttr">确定</button></div>
-			</div>
-		</div>
-		<!-- 日期 -->
-		<div class="property" id="riqi" title="日期" data-width="510" data-visibility="false">
-			<div class="row">
-				<div class="span4"><label class="label">名称：</label></div>
-				<div class="span16 last-span"><input type="text" class="input" id="datename"></div>
-			</div>
-			<div class="row">
-				<div class="span4"><label class="label">日期类型：</label></div>
-				<div class="span16 last-span">
-					<select class="input" name="" id="">
-			  			<option value="">本机时间</option>
-			  			<option value="">服务器时间</option>
-			  		</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span4"><label class="label">日期格式：</label></div>
-				<div class="span16 last-span">
-					<select class="input" name="" id="">
-			  			<option value="">03/06/2015</option>
-			  			<option value="">03-06-2015</option>
-			  			<option value="">2015年5月10日</option>
-			  		</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span20 last-span"><label class="label">预览：</label></div>
-			</div>
-			<div class="row">
-				<div class="span20 last-span">
-					<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button" id="addDateAttr">确定</button></div>
 			</div>
 		</div>
 		<!-- 表查找 -->
@@ -990,7 +990,7 @@
 							<div class="span4 last-span span-right"><button class="button">测试</button></div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button" id="closeFormFind">取消</button></div>
 							<div class="span4 span-right"><button class="button" id="addFormFind">确定</button></div>
 						</div>
 
