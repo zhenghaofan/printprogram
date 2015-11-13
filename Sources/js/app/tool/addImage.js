@@ -12,7 +12,7 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 		    document.body.ondragover = function () { return false; };
 		    document.body.ondragend = function () { return false; };
 		    document.body.ondrop = self.readfile;
-
+		    document.getElementById('readLocalFile').onchange = self.readfile;
 		};
 		self.addImage = function (data){
 			var img = new Image();
@@ -20,6 +20,7 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 				var doc = stage.curDoc();
 				console.log(self.x);
 				self.newImage = doc.addImage({dataURL:data,offsetX:self.x,offsetY:self.y});
+				//stage.updateCanvas();
 			};
 			img.onerror = function (){
 
@@ -28,12 +29,22 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 		};
 		self.readfile = function (e){
 	        e.preventDefault();
+	        var file,
+	        	reader = new FileReader();
+	        if(e.type == "drop"){
+		        file = e.dataTransfer.files[0];
 
-	        var file = e.dataTransfer.files[0],
-	            reader = new FileReader();
+	        }else if(e.type == "change"){
+	        	file = e.target.files[0];
+	        }
 
 	        reader.onload = function (event) {
 	            if(file.type.indexOf("image") > -1){
+	            	console.log(e);
+		        	if(!e.clientX) {
+		        		e.clientX = 120;
+		        		e.clientY = 230;
+		        	}
 		        	stage.updateMouseXY(e);
 					self.x = stage.mouseX();
 					self.y = stage.mouseY();
@@ -42,13 +53,16 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 	            }
 	        };
 	        reader.readAsDataURL(file);
-	        
+	         
 	        return false;
 		};
 		self.setDefaultTool = function (){
 			self.parent.setDefaultTool();
 		};
 		self.active = function (){
+			console.log("dif");
+			document.getElementById('readLocalFile').click();
+			self.setDefaultTool();
 		};
 		self.deactive = function (){
 		};

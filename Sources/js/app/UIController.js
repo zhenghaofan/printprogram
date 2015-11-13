@@ -1,4 +1,4 @@
-define(['jquery','knockout','app/tool/ControlPoint'],function ($,ko,cp){
+define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 	var ui = function (stage){
 		var self = this;
 		self.stage = stage;

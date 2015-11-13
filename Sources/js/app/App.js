@@ -26,14 +26,12 @@
  	'app/UI/text',
  	'app/UI/image',
  	'app/UI/rect',
- 	'app/UI/line'
-],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet,text,image,rect,line){
+ 	'app/UI/line',
+ 	'app/UI/textGuide',
+ 	'app/UI/codeGuide'
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet,text,image,rect,line,textguide,codeguide){
  	
  	var App = function (){
-		//属性
-		this.idCounter   = 0;
-		this.state       = ko.observable('edit');
-		//鼠标相对canvas坐标 
 		this.stage = 		stage;
 		this.tool = tool;
 		this.database    = database;
@@ -47,6 +45,9 @@
 		this.imageproperty = lineproperty;
 		this.rectproperty = lineproperty;
 		this.textproperty = lineproperty;
+
+		this.textguide = textguide;
+		this.codeguide = codeguide;
 
 		this.menu = menu;
 		this.login2 = login2;

@@ -460,14 +460,18 @@
 							<span class="icon-font-size sidebar-icon" style="line-height:54px;color:#E0E0E0"></span>
 							<ul>
 								<li data-bind="css: {curTool: curTool().name == 'addfixwidthtext'},click: changeTool.bind($data,'addfixwidthtext'),clickBubble: false">固定文本</li>
-								<li>向导</li>
+								<li data-bind="click: changeTool.bind($data,'addtext','true'),,clickBubble: false">向导</li>
+								<li>新建数据源</li>
+
 							</ul>
 						</li>
-						<li>
+						<li data-bind="css: {curTool: curTool().name == 'addcode'},click: changeTool.bind($data,'addcode')">
 							<span class="icon-barcode sidebar-icon" style="line-height:54px;color:#E0E0E0"></span>
 							<ul>
 								<li>固定条码</li>
-								<li>向导</li>
+								<li data-bind="click: changeTool.bind($data,'addcode','true'),,clickBubble: false">向导</li>
+								<li>新建数据源</li>
+
 							</ul>
 						</li>
 						<li data-bind="css: {curTool: curTool().name == 'addimage'},click: changeTool.bind($data,'addimage')"><span class="icon-image sidebar-icon" style="line-height:54px;color:#E0E0E0"></span>
@@ -506,7 +510,7 @@
 										<li data-bind="text: datename"></li>
 										<ul class="rightmenu menu">
 											<li data-bind="click:$parent.showDateAttr.bind($data)">属性</li>
-											<li>删除</li>
+											<li data-bind="click:$parent.removeDateAttr">删除</li>
 										</ul>
 									</ul>
 									<ul class="rightmenu menu">
@@ -520,7 +524,7 @@
 										<li data-bind="text: attrname"></li>
 										<ul class="rightmenu menu">
 											<li data-bind="click:$parent.showFormAttr.bind($data)">属性</li>
-											<li>删除</li>
+											<li data-bind="click:$parent.removeFormAttr">删除</li>
 										</ul>
 									</ul>
 									<ul class="rightmenu menu">
@@ -534,7 +538,7 @@
 										<li data-bind="text: formFindName"></li>
 										<ul class="rightmenu menu">
 											<li data-bind="click:$parent.showFormFind.bind($data)">属性</li>
-											<li>删除</li>
+											<li data-bind="click:$parent.removeFormFind">删除</li>
 										</ul>
 									</ul>
 									<ul class="rightmenu menu">
@@ -800,13 +804,15 @@
 
 		<!-- 表单 -->
 		<div class="property" id="form-dialog" v-attr="title:title" data-visibility="false">
+			<div data-bind="foreach:database.forms">
 			<div class="row">
-				<div class="span3"><label class="label">变量1：</label></div>
+				<div class="span6"><label class="label" data-bind="text:attrname+':'"></label></div>
 				<div class="span6"><input type="text" class="input"></div>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<div class="span3"><label class="label">变量2：</label></div>
 				<div class="span6"><input type="text" class="input"></div>
+			</div> -->
 			</div>
 			<div class="row sm-margin-top md-margin-right">
 				<div class="span4 span-right"><button class="button">取消</button></div>
@@ -1224,7 +1230,7 @@
 								<div class="row row-no-margin">
 									<label class="label">字体：</label>
 								</div>
-								<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
+								<div class="row row-no-margin"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 							</div>
 							<div class="span10 last-span">
 								<div class="row">
@@ -1753,8 +1759,8 @@
 				<div class="row">
 					<div class="span4 span-right"><button class="button">取消</button></div>
 					<div class="span4 span-right"><button class="button">完成</button></div>
-					<div class="span4 span-right"><button class="button">下一步</button></div>
-					<div class="span4 span-right"><button class="button">上一步</button></div>
+					<div class="span4 span-right"><button class="button" data-bind="click: codeguide.next">下一步</button></div>
+					<div class="span4 span-right"><button class="button" data-bind="click: codeguide.last">上一步</button></div>
 				</div>
 			</div>
 		</div>
@@ -1762,9 +1768,9 @@
 		<div class="property tabs" id="wenbenxiangdao" title="文本设置向导" data-width="610" data-visibility="false">
 			<div class="row none">
 				<ul>
-					<li><a href="#wenbenxiangdao3">步骤1</a></li>
+					<li><a href="#wenbenxiangdao1">步骤1</a></li>
 					<li><a href="#wenbenxiangdao2">步骤2</a></li>
-					<li><a href="#wenbenxiangdao1">步骤2</a></li>
+					<li><a href="#wenbenxiangdao3">步骤2</a></li>
 				</ul>
 			</div>
 			<div class="row">
@@ -1902,8 +1908,8 @@
 				<div class="row">
 					<div class="span4 span-right"><button class="button">取消</button></div>
 					<div class="span4 span-right"><button class="button">完成</button></div>
-					<div class="span4 span-right"><button class="button">下一步</button></div>
-					<div class="span4 span-right"><button class="button">上一步</button></div>
+					<div class="span4 span-right"><button class="button" data-bind="click: textguide.next">下一步</button></div>
+					<div class="span4 span-right"><button class="button" data-bind="click: textguide.last">上一步</button></div>
 				</div>
 			</div>
 		</div>
@@ -1925,6 +1931,7 @@
 			</ul>
 		</div>
 	</div>
+	<input type="file" style="display:none;" id="readLocalFile">
 	<script data-baseurl="./Sources/js" data-main="./Sources/js/main" src="./Sources/js/lib/require.js" id="mainJS"></script>
 	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js"></' + 'script>')</script>
 

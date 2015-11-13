@@ -62,7 +62,7 @@ define(['jquery','knockout','app/Util'],function ($,ko,util){
 			var i = 0,
 				x = 0,
 				y = 0,
-				mm = util.getDPI()[0]/25.4 * 2;//
+				mm = util.getDPI()[0]/25.4;//
 
 
 			this.hctx.clearRect(0,0,this.hWidth(),this.rulerWidth);

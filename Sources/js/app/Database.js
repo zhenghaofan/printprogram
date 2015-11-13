@@ -104,20 +104,33 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 		self.showAddtablelookup = function (){
 			$("#biaochazhao").dialog("open");
 		};
+
 		self.showDateAttr = function(m){
 			// console.log(m);
 			self.op = false;
 			$('#datename').val(m.datename);
 			$('#riqi').dialog('open');
 		}
+		self.removeDateAttr = function(){
+			self.dates.remove(this);
+		}
+
 		self.showFormAttr = function(m){
 			$('#formname').val(m.attrname);
 			$('#biaodanshuru').dialog('open');
 		}
+		self.removeFormAttr = function(){
+			self.forms.remove(this);
+		}
+
 		self.showFormFind = function(m){
 			$('#formFindName').val(m.formFindName);
 			$('#biaochazhao').dialog('open');
 		}
+		self.removeFormFind = function(){
+			self.tablelookup.remove(this);
+		}
+
 		self.init();
 
 	};

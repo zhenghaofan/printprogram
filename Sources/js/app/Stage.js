@@ -30,8 +30,7 @@
 		self.ruler        = ruler;
 		self.ui           = new ui(self);
 
-		
-
+  
 	    //方法
 	    self.init = function (){
 	    	self.resizeCanvas(self.canvasWidth(),self.canvasHeight());
@@ -61,7 +60,7 @@
 	    };
 		self.setCurDoc = function (doc){
 			self.curDocIndex(self.docs.indexOf(doc));
-			util.Event.dispatch("changDoc",self,self.curDoc());
+			util.Event.dispatch("changeDoc",self,self.curDoc());
 			self.updateCanvas();
 			self.updateRuler();
 		};
@@ -73,7 +72,7 @@
 			var l = self.docs().length - 1;
 			l = l < 0 ? 0 : l;
 			self.curDocIndex(l);
-			util.Event.dispatch("changDoc",self,self.curDoc());
+			util.Event.dispatch("changeDoc",self,self.curDoc());
 			self.updateCanvas();
 			self.updateRuler();
 		};
