@@ -189,7 +189,7 @@
 							<li>置于底层</li>
 							<li>可打印/不可打印</li>
 							<li>锁定/解除锁定</li>
-							<li>属性</li>
+							<li data-bind="click:stagerightmenu.showProperty">属性</li>
 						</ul>
 					</li>
 					<li>数据源
@@ -822,7 +822,7 @@
 				
 			</div>
 			<div class="row sm-margin-top md-margin-right">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="exceptionSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -838,7 +838,7 @@
 				<div class="span9"><input type="text" class="input" v-model="formHeight"></div>
 			</div>
 			<div class="row sm-margin-top md-margin-right">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="formSetSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button" v-on="click:save">确定</button></div>
 			</div>
 		</div>
@@ -856,7 +856,7 @@
 			</div> -->
 			</div>
 			<div class="row sm-margin-top md-margin-right">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="formSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -864,13 +864,13 @@
 		<!-- 初始化 -->
 		<div class="property" id="page-initial" title="向导" data-width="260" data-visibility="false" style="margin-left:18px;">
 			<div class="row">
-				<div class="span8"><button class="button">开始新的标签格式</button></div>
+				<div class="span8"><button class="button">新建标签格式</button></div>
 			</div>
 			<div class="row">
-				<div class="span8"><button class="button">打开新的标签格式</button></div>
+				<div class="span8"><button class="button">打开现有的标签</button></div>
 			</div>
 			<div class="row sm-margin-top md-margin-right">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="initSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -884,7 +884,7 @@
 			</div>
 			
 			<div class="row sm-margin-top md-margin-right">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="pageSetSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -1126,7 +1126,7 @@
 				<div class="span4"><input type="checkbox">锁定</div>
 			</div>
 			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 last-span span-right"><button class="button" id="rectSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -1185,7 +1185,7 @@
 							<div class="span4"><input type="checkbox">锁定</div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button" id="picSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1260,7 +1260,7 @@
 							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1302,7 +1302,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1329,7 +1329,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1380,7 +1380,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1439,8 +1439,8 @@
 				<div class="span4"><input type="checkbox">锁定</div>
 			</div>
 			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+				<div class="span4 last-span span-right"><button class="button" id="lineSubmit">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="lineAttrSubmit">确定</button></div>
 			</div>
 		</div>
 		<!-- 条码属性 -->
@@ -1505,7 +1505,7 @@
 							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button" v-on="click: barSubmit">确定</button></div>
 						</div>
 					</div>
@@ -1587,7 +1587,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1627,7 +1627,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1676,7 +1676,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1798,7 +1798,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="span4 span-right"><button class="button">取消</button></div>
+					<div class="span4 span-right"><button class="button" id="barGuideSubmit">取消</button></div>
 					<div class="span4 span-right"><button class="button">完成</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: codeguide.next">下一步</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: codeguide.last">上一步</button></div>
@@ -1947,7 +1947,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="span4 span-right"><button class="button">取消</button></div>
+					<div class="span4 span-right"><button class="button" id="textGuideSubmit">取消</button></div>
 					<div class="span4 span-right"><button class="button">完成</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: textguide.next">下一步</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: textguide.last">上一步</button></div>

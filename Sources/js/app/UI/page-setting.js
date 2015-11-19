@@ -14,8 +14,46 @@ define(['jquery'], function($){
 	$(document).on('click','.newguide',function(){
 		$('#guide-dialog').dialog("open");
 	});
-	// $(document).on('click','#property',function(e){
-	// 	console.log(e);
-	// 	e.dispatchEvent('showLineProperty');
-	// });
+	$(document).on('click','#lineAttrSubmit',function(){
+		$('#zhixianshuxing').dialog('close');
+	});
+	$(document).on('click','#lineAttrSubmit',function(){
+		$('#zhixianshuxing').dialog('close');
+	});
+	$(document).on('click','#exceptionSubmit',function(){
+		$('#exception-dialog').dialog('close');
+	});
+	$(document).on('click','#formSetSubmit',function(){
+		$('#form-setting-dialog').dialog('close');
+	});
+	$(document).on('click','#formSubmit',function(){
+		$('#form-dialog').dialog('close');
+	});
+	$(document).on('click','#initSubmit',function(){
+		$('#page-initial').dialog('close');
+	});
+	$(document).on('click','#pageSetSubmit',function(){
+		$('#page-setting-dialog').dialog('close');
+	});
+	$(document).on('click','#rectSubmit',function(){
+		$('#juxingshuxing').dialog('close');
+	});
+	$(document).on('click','#picSubmit',function(){
+		$('#tupianshuxing').dialog('close');
+	});
+	$(document).on('click','.textSubmit',function(){
+		$('#wenbenshuxing').dialog('close');
+	});
+	$(document).on('click','#lineSubmit',function(){
+		$('#zhixianshuxing').dialog('close');
+	});
+	$(document).on('click','.barSubmit',function(){
+		$('#tiaomashuxing').dialog('close');
+	});
+	$(document).on('click','#barGuideSubmit',function(){
+		$('#tiaomaxiangdao').dialog('close');
+	});
+	$(document).on('click','#textGuideSubmit',function(){
+		$('#wenbenxiangdao').dialog('close');
+	});
 })
