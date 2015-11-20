@@ -12,7 +12,7 @@ define(['jquery','vue'],function($,vue){
 			var self = this;
 			$(document).on('contextmenu','#barcode li',function(e){
 				e.preventDefault();
-				$('#barcode').siblings('.rightmenu.menu').show().position({
+				$('#barcode').children('.rightmenu.menu').show().position({
 						my: "left top",
 						of: e
 					});
