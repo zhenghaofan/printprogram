@@ -53,7 +53,6 @@ define(['sammy','knockout','app/Util','app/UI/login2','app/UI/login1'],function 
 			self.router.run();
 		},
 		setLocation: function (e,url){
-			console.log(url);
 			this.router.setLocation(url);
 		},
 		checkLogin: function (){

@@ -144,6 +144,8 @@ define([
 			var objects = self.sortByIndex();
 			// self.resizeCanvas(self.canvasWidth(),self.canvasHeight());
 			//self.ctx.clearRect(0,0,self.canvasWidth(),self.canvasHeight());
+			//self.ctx.scale(0.5,0.5);
+			//self.ctx.rotate(20);
 			self.ctx.fillStyle = self.backgroudcolor();
 			self.ctx.lineWidth = 1;
 			self.ctx.strokeStyle = "#144DD4";

@@ -29,7 +29,6 @@ define([
 		};
 		self.changeTool = function (tool,flag){
 			if(util._isString(tool) && self.tools.hasOwnProperty(tool)){
-							console.log(tool);
 
 				if(self.curTool()) self.curTool().deactive();
 				self.tools[tool].active(flag);

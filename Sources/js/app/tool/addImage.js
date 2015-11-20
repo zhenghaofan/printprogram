@@ -1,4 +1,12 @@
 define(['jquery','app/Stage','app/Util'],function ($,stage,util){
+	function resetFormElement(e) {
+	  e.wrap('<form>').closest('form').get(0).reset();
+	  e.unwrap();
+
+	  // Prevent form submission
+	  //e.stopPropagation();
+	  //e.preventDefault();
+	}
 	var addimage = function (parent){
 		var self = this;
 		self.parent = parent;
@@ -18,7 +26,6 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 			var img = new Image();
 			img.onload = function (){
 				var doc = stage.curDoc();
-				console.log(self.x);
 				self.newImage = doc.addImage({dataURL:data,offsetX:self.x,offsetY:self.y});
 				//stage.updateCanvas();
 			};
@@ -40,7 +47,6 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 
 	        reader.onload = function (event) {
 	            if(file.type.indexOf("image") > -1){
-	            	console.log(e);
 		        	if(!e.clientX) {
 		        		e.clientX = 120;
 		        		e.clientY = 230;
@@ -53,16 +59,15 @@ define(['jquery','app/Stage','app/Util'],function ($,stage,util){
 	            }
 	        };
 	        reader.readAsDataURL(file);
-	         
+	        if(e.type == "change") self.setDefaultTool();
+	        resetFormElement($("#readLocalFile"));
 	        return false;
 		};
 		self.setDefaultTool = function (){
 			self.parent.setDefaultTool();
 		};
 		self.active = function (){
-			console.log("dif");
 			document.getElementById('readLocalFile').click();
-			self.setDefaultTool();
 		};
 		self.deactive = function (){
 		};

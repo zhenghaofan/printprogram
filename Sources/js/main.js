@@ -10,6 +10,7 @@ requirejs.config({
         mapping: 'lib/knockout.mapping',
         sammy: 'lib/sammy.min',
         kinetic: 'lib/kinetic.min',
+        snap: 'snap.svg',
         object: 'app/object',
         DBObj: 'app/DBObj',
         vue:'lib/vue'

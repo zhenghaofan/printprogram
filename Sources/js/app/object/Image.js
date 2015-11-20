@@ -28,7 +28,9 @@ define(['knockout','mapping'],function (ko,map){
 				self.height(img.height);
 				self.updateCanvas();
 			};
-			img.src = self.dataURL();
+			var data = self.dataURL();
+			if(data) 
+			img.src = data;
 			return true;
 		});
 
