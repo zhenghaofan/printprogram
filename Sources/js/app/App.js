@@ -21,9 +21,15 @@
  	'app/UI/login2',
  	'app/UI/login1',
  	'app/UI/Menu',
+ 	'app/UI/guideCtrl',
+ 	'app/UI/form-setting',
+ 	'app/UI/text',
+ 	'app/UI/image',
+ 	'app/UI/rect',
+ 	'app/UI/line',
  	'app/UI/textGuide',
  	'app/UI/codeGuide'
-],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,textguide,codeguide){
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet,text,image,rect,line,textguide,codeguide){
  	
  	var App = function (){
 		this.stage = 		stage;

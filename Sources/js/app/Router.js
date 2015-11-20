@@ -1,4 +1,4 @@
-define(['sammy','knockout','app/Util','app/UI/login2','app/UI/login1'],function (sammy,ko,util,login2,login1){
+define(['sammy','knockout','app/Util','app/UI/login2','app/UI/login1','jquery'],function (sammy,ko,util,login2,login1,$){
 	var router = function (){
 		this.router = null;
 		this.login1 = login1;
@@ -37,6 +37,8 @@ define(['sammy','knockout','app/Util','app/UI/login2','app/UI/login1'],function 
 						self.router.setLocation('#login2');
 					}else {
 						self.state('disign');
+						$('#page-initial').dialog("open");
+
 					}
 				});
 				this.get('#prodution',function (){

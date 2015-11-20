@@ -11,7 +11,7 @@ define(['jquery','vue'],function($,vue){
 			var self = this;
 			$(document).on('contextmenu','#text li',function(e){
 				e.preventDefault();
-				$('#text').siblings('.rightmenu.menu').show().position({
+				$('#text').children('.rightmenu.menu').show().position({
 						my: "left top",
 						of: e
 					});

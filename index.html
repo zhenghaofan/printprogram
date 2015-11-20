@@ -189,7 +189,7 @@
 							<li>置于底层</li>
 							<li>可打印/不可打印</li>
 							<li>锁定/解除锁定</li>
-							<li>属性</li>
+							<li data-bind="click:stagerightmenu.showProperty">属性</li>
 						</ul>
 					</li>
 					<li>数据源
@@ -378,7 +378,7 @@
 					<!-- <span class="icon-printer">	
 						<span class="icon-equalizer2"></span>			
 					</span> -->
-					<span class="banner-icon" style="background-image:url(./Sources/img/36.png);background-size:15px;background-position-y:2px;width:17px;background-repeat:no-repeat" title="属性"></span>
+					<span class="banner-icon" style="background-image:url(./Sources/img/36.png);background-size:15px;background-position-y:2px;width:17px;background-repeat:no-repeat" id="property" title="属性" data-bind="click:stagerightmenu.showProperty"></span>
 					
 				</button>
 				<button type="button" class="btn">
@@ -506,8 +506,53 @@
 							<ul class="node" data-bind="with: database">
 								<li>
 									<span data-bind="text: '日期 ('+dates().length+')'" class="node-name"></span>
-									<ul class="node-child" id="dateattr" data-bind="foreach: dates">
-										<li data-bind="text: datename"></li>
+									<ul class="node-child" id="dateAttr" data-bind="foreach: { data: dates, as: 'date' }">
+										<li>
+											<span data-bind="text: date.datename"></span>
+											<ul class="rightmenu menu">
+												<li data-bind="click:$parent.showDateAttr">属性</li>
+												<li data-bind="click:$parent.removeDateAttr">删除</li>
+											</ul>
+										
+
+											<div class="property" id="riqi" title="日期" style="display:none">
+												<div class="row">
+													<div class="span4"><label class="label">名称：</label></div>
+													<div class="span16 last-span"><input type="text" class="input" id="datename" data-bind="date.datename"></div>
+												</div>
+												<div class="row">
+													<div class="span4"><label class="label">日期类型：</label></div>
+													<div class="span16 last-span">
+														<select class="input" name="" id="">
+												  			<option value="">本机时间</option>
+												  			<option value="">服务器时间</option>
+												  		</select>
+													</div>
+												</div>
+												<div class="row">
+													<div class="span4"><label class="label">日期格式：</label></div>
+													<div class="span16 last-span">
+														<select class="input" name="" id="">
+												  			<option value="">03/06/2015</option>
+												  			<option value="">03-06-2015</option>
+												  			<option value="">2015年5月10日</option>
+												  		</select>
+													</div>
+												</div>
+												<div class="row">
+													<div class="span20 last-span"><label class="label">预览：</label></div>
+												</div>
+												<div class="row">
+													<div class="span20 last-span">
+														<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
+													</div>
+												</div>
+												<div class="row">
+													<div class="span4 last-span span-right"><button class="button" id="closeDate">取消</button></div>
+													<div class="span4 span-right"><button class="button" id="addDateAttr" data-bind="click:database.opDate">确定</button></div>
+												</div>
+											</div>
+										</li>
 									</ul>
 									<ul class="rightmenu menu">
 										<li data-bind="click: showAddDate">添加</li>
@@ -516,22 +561,26 @@
 								</li>
 								<li>
 									<span data-bind="text: '表单 ('+forms().length+')'" class="node-name"></span>
-									<ul class="node-child" id="formattr" data-bind="foreach: forms">
+									<ul class="node-child" id="formAttr" data-bind="foreach: forms">
 										<li data-bind="text: attrname"></li>
 										<ul class="rightmenu menu">
-											<li data-bind="click:$parent.showFormAttr()">属性</li>
-											<li>删除</li>
+											<li data-bind="click:$parent.showFormAttr.bind($data)">属性</li>
+											<li data-bind="click:$parent.removeFormAttr">删除</li>
 										</ul>
 									</ul>
 									<ul class="rightmenu menu">
 										<li data-bind="click: showAddForm">添加</li>
 										<li>向导</li>
-									</ul>									
+									</ul>
 								</li>
 								<li>
 									<span data-bind="text: '表查找 ('+tablelookup().length+')'" class="node-name"></span>
-									<ul class="node-child" data-bind="foreach: tablelookup">
-										<li data-bind="text: name"></li>
+									<ul class="node-child" data-bind="foreach: tablelookup" id="formFindAttr">
+										<li data-bind="text: formFindName"></li>
+										<ul class="rightmenu menu">
+											<li data-bind="click:$parent.showFormFind.bind($data)">属性</li>
+											<li data-bind="click:$parent.removeFormFind">删除</li>
+										</ul>
 									</ul>
 									<ul class="rightmenu menu">
 										<li data-bind="click: showAddtablelookup">添加</li>
@@ -568,38 +617,42 @@
 								<span data-bind="text: '条码 ('+code().length+')'" class="node-name"></span>
 								<ul data-bind="foreach: code" class="node-child" id="barcode">
 									<li data-bind="text: name"></li>
-								</ul>
-								<ul class="rightmenu menu">
-									<li id="barAttr">属性</li>
-									<li data-bind="click: $parent.removeObject">删除</li>
+									<ul class="rightmenu menu">
+										<li id="barAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							<li>
 								<span data-bind="text: '图片 ('+image().length+')'" class="node-name"></span>
-								<ul data-bind="foreach: image" class="node-child">
+								<ul data-bind="foreach: image" class="node-child" id="image">
 									<li data-bind="text: name"></li>
+									<ul class="rightmenu menu">
+										<li id="imageAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							<li>
 								<span data-bind="text: '直线 ('+line().length+')'" class="node-name"></span>
-								<ul data-bind="foreach: line" class="node-child">
+								<ul data-bind="foreach: line" class="node-child" id="line">
 									<li data-bind="text: name">
-										<ul class="rightmenu menu">
-											<li>属性</li>
-											<li data-bind="click: $parent.removeObject">删除</li>
-										</ul>
 									</li>
+									<ul class="rightmenu menu">
+										<li id="lineAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							<li>
 								<span data-bind="text: '矩形 ('+rect().length+')'" class="node-name"></span>
-								<ul data-bind="foreach: rect" class="node-child">
+								<ul data-bind="foreach: rect" class="node-child" id="rect">
 									<li data-bind="text: name">
-										<ul class="rightmenu menu">
-											<li>属性</li>
-											<li data-bind="click: $parent.removeObject">删除</li>
-										</ul>
 									</li>
+									<ul class="rightmenu menu">
+										<li id="rectAttr">属性</li>
+										<li data-bind="click: $parent.removeObject">删除</li>
+									</ul>
 								</ul>
 							</li>
 							
@@ -645,35 +698,122 @@
 	<div id="dialogs" style="display:none;">
 
 		<!-- 新建向导 -->
-		<div class="property" id="guide-dialog" title="新建向导" data-width="510" data-visibility="false" style="margin-left:18px;">
-			<div class="row">
-				<span>选择数据库类型</span>
+		<div class="property" id="guide-dialog" title="新建数据库向导" data-width="510" data-visibility="false" style="margin-left:18px;">
+			<!-- 第一步 -->
+			<template v-if="firstStep">
+				<div class="row">
+					<span>选择数据库类型</span>
+				</div>
+				<div class="row">
+					<div class="span3"><button class="button {{selected ===1 ? 'db-border' : ''}}" v-on="click:step(1);">Access</button></div>
+					<div class="span3"><button class="button {{selected ===2 ? 'db-border' : ''}}" v-on="click:step(2)" >SQL Server</button></div>
+					<div class="span3"><button class="button {{selected ===3 ? 'db-border' : ''}}" v-on="click:step(3)">ODBC</button></div>
+					<div class="span3"><button class="button {{selected ===4 ? 'db-border' : ''}}" v-on="click:step(4)">Oracle</button></div>
+				</div> 
+				<div class="row md-margin-top">
+					<div class="span3"><label class="label">名称：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">描述：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+			<!-- 下一步 -->
+			<template v-if="type === 1 && !firstStep">
+				<div class="row">
+					<span>选择Access文件</span>
+				</div>
+				<div class="row">
+					<div class="span3">文件名称：</div>	
+					<div class="span7">						
+						<input type="file">
+					</div>			
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">用户名：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">密码：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+			<template v-if="type === 2 && !firstStep">
+				<div class="row">
+					<span>登录 SQL Server</span>
+				</div>
+				<div class="row">
+					<div class="span3">服务器名称</div>	
+					<div class="span7">
+						<select name="" id="">
+							<option value="">www.baidu.com</option>
+						</select>
+					</div>			
+				</div>
+				<div class="row">
+					<div class="span5">
+						<input class="" type="checkbox">Windows验证
+					</div>
+					<div class="span5">
+						<input class="" type="checkbox">数据库验证
+					</div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">用户名：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">密码：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+
+			<template v-if="type === 4 && !firstStep">
+				<div class="row">
+					<span>登录 Oracle Server</span>
+				</div>
+				<div class="row">
+					<div class="span3">服务器名称</div>	
+					<div class="span7">
+						<select name="" id="">
+							<option value="">www.baidu.com</option>
+						</select>
+					</div>			
+				</div>
+				<div class="row">
+					<div class="span5">
+						<input class="" type="checkbox">Windows验证
+					</div>
+					<div class="span5">
+						<input class="" type="checkbox">数据库验证
+					</div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">用户名：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+				<div class="row">
+					<div class="span3"><label class="label">密码：</label></div>
+					<div class="span9"><input type="text" class="input"></div>
+				</div>
+			</template>
+
+			<div class="row" v-if="!firstStep">
+				<button>测试连接</button>
 			</div>
-			<div class="row">
-				<div class="span3"><button class="button">Access</button></div>
-				<div class="span3"><button class="button">SQL Server</button></div>
-				<div class="span3"><button class="button">ODBC</button></div>
-				<div class="span3"><button class="button">Oracle</button></div>				
-				
+			<div class="row md-margin-top md-margin-right">
+				<div class="span4 span-right"><button class="button" v-on="click:close">取消</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:close">完成</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:toggle" disabled="{{!disabled}}" v-show="type != 3">下一步</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:toggle" disabled="{{disabled}}" v-show="type != 3">上一步</button></div>
 			</div>
-			<div class="row" style="margin-top:50px">
-				<div class="span3"><label class="label">名称：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
-			</div>
-			<div class="row">
-				<div class="span3"><label class="label">描述：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
-			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 50px;">
-				<div class="span4 span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">完成</button></div>
-				<div class="span4 span-right"><button class="button">下一步</button></div>
-				<div class="span4 span-right"><button class="button">上一步</button></div>
-			</div>
+
+			
 		</div>
 
 		<!-- 异常提交 -->
-		<div class="property" id="exception-dialog" title="异常提交" data-width="260" data-visibility="false" style="margin-left:18px;">
+		<div class="property" id="exception-dialog" title="异常提交" data-width="260" data-visibility="false" style="margin-left:18px;"> 
 			<div class="row">
 				<div class="span3"><label class="label">异常名称：</label></div>
 				<div class="span9"><input type="text" class="input"></div>
@@ -681,8 +821,8 @@
 				<div class="span9"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 				
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+			<div class="row sm-margin-top md-margin-right">
+				<div class="span4 span-right"><button class="button" id="exceptionSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -691,30 +831,32 @@
 		<div class="property" id="form-setting-dialog" title="自定义表单" data-width="260" data-visibility="false" style="margin-left:18px;">
 			<div class="row">
 				<div class="span3"><label class="label">名称：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
-				<div class="span3"><label class="label">长度：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
+				<div class="span9"><input type="text" class="input" v-model="title"></div>
 				<div class="span3"><label class="label">宽度：</label></div>
-				<div class="span9"><input type="text" class="input"></div>
+				<div class="span9"><input type="text" class="input" v-model="formWidth"></div>
+				<div class="span3"><label class="label">高度：</label></div>
+				<div class="span9"><input type="text" class="input" v-model="formHeight"></div>
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
-				<div class="span4 span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+			<div class="row sm-margin-top md-margin-right">
+				<div class="span4 span-right"><button class="button" id="formSetSubmit">取消</button></div>
+				<div class="span4 span-right"><button class="button" v-on="click:save">确定</button></div>
 			</div>
 		</div>
 
 		<!-- 表单 -->
-		<div class="property" id="form-dialog" title="表单" data-width="310" data-visibility="false" style="margin-left:18px;">
+		<div class="property" id="form-dialog" v-attr="title:title" data-visibility="false">
+			<div data-bind="foreach:database.forms">
 			<div class="row">
-				<div class="span3"><label class="label">变量1：</label></div>
+				<div class="span6"><label class="label" data-bind="text:attrname+':'"></label></div>
 				<div class="span6"><input type="text" class="input"></div>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<div class="span3"><label class="label">变量2：</label></div>
 				<div class="span6"><input type="text" class="input"></div>
+			</div> -->
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+			<div class="row sm-margin-top md-margin-right">
+				<div class="span4 span-right"><button class="button" id="formSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -722,13 +864,13 @@
 		<!-- 初始化 -->
 		<div class="property" id="page-initial" title="向导" data-width="260" data-visibility="false" style="margin-left:18px;">
 			<div class="row">
-				<div class="span8"><button class="button">开始新的标签格式</button></div>
+				<div class="span8"><button class="button">新建标签格式</button></div>
 			</div>
 			<div class="row">
-				<div class="span8"><button class="button">打开新的标签格式</button></div>
+				<div class="span8"><button class="button">打开现有的标签</button></div>
 			</div>
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+			<div class="row sm-margin-top md-margin-right">
+				<div class="span4 span-right"><button class="button" id="initSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -741,12 +883,50 @@
 				<div class="span6 last-span"><input type="text" class="input"></div>
 			</div>
 			
-			<div class="row" style="margin-right: 22px;margin-top: 20px;">
-				<div class="span4 span-right"><button class="button">取消</button></div>
+			<div class="row sm-margin-top md-margin-right">
+				<div class="span4 span-right"><button class="button" id="pageSetSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
 			
+		<!-- 日期 -->
+		<!-- <div class="property" id="riqi" title="日期" data-width="510" data-visibility="false">
+			<div class="row">
+				<div class="span4"><label class="label">名称：</label></div>
+				<div class="span16 last-span"><input type="text" class="input" id="datename" data-bind="database.dateObj.datename"></div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">日期类型：</label></div>
+				<div class="span16 last-span">
+					<select class="input" name="" id="">
+			  			<option value="">本机时间</option>
+			  			<option value="">服务器时间</option>
+			  		</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4"><label class="label">日期格式：</label></div>
+				<div class="span16 last-span">
+					<select class="input" name="" id="">
+			  			<option value="">03/06/2015</option>
+			  			<option value="">03-06-2015</option>
+			  			<option value="">2015年5月10日</option>
+			  		</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span"><label class="label">预览：</label></div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span">
+					<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button" id="closeDate">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="addDateAttr" data-bind="click:database.opDate">确定</button></div>
+			</div>
+		</div> -->
 		<!-- 表单输入 -->
 			<div class="property" id="biaodanshuru" title="表单输入" data-width="510" data-visibility="false">
 			<div class="row">
@@ -806,46 +986,8 @@
 				<div class="span10 last-span"><input type="text" class="input"></div>
 			</div>
 			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 last-span span-right"><button class="button" id="closeForm">取消</button></div>
 				<div class="span4 span-right"><button class="button" id="addFormAttr">确定</button></div>
-			</div>
-		</div>
-		<!-- 日期 -->
-		<div class="property" id="riqi" title="日期" data-width="510" data-visibility="false">
-			<div class="row">
-				<div class="span4"><label class="label">名称：</label></div>
-				<div class="span16 last-span"><input type="text" class="input" id="datename"></div>
-			</div>
-			<div class="row">
-				<div class="span4"><label class="label">日期类型：</label></div>
-				<div class="span16 last-span">
-					<select class="input" name="" id="">
-			  			<option value="">本机时间</option>
-			  			<option value="">服务器时间</option>
-			  		</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span4"><label class="label">日期格式：</label></div>
-				<div class="span16 last-span">
-					<select class="input" name="" id="">
-			  			<option value="">03/06/2015</option>
-			  			<option value="">03-06-2015</option>
-			  			<option value="">2015年5月10日</option>
-			  		</select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span20 last-span"><label class="label">预览：</label></div>
-			</div>
-			<div class="row">
-				<div class="span20 last-span">
-					<textarea class="input" name="" id="" cols="30" rows="10"></textarea>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button" id="addDateAttr">确定</button></div>
 			</div>
 		</div>
 		<!-- 表查找 -->
@@ -862,7 +1004,7 @@
 					<div id="biaochazhao1">
 						<div class="row">
 							<div class="span4"><label class="label">名称：</label></div>
-							<div class="span16 last-span"><input type="text" class="input"></div>
+							<div class="span16 last-span"><input type="text" class="input" id="formFindName"></div>
 						</div>
 						<div class="row">
 							<div class="span4"><label class="label">选择数据源：</label></div>
@@ -895,8 +1037,8 @@
 							<div class="span4 last-span span-right"><button class="button">测试</button></div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
-							<div class="span4 span-right"><button class="button">确定</button></div>
+							<div class="span4 last-span span-right"><button class="button" id="closeFormFind">取消</button></div>
+							<div class="span4 span-right"><button class="button" id="addFormFind">确定</button></div>
 						</div>
 
 					</div>
@@ -984,7 +1126,7 @@
 				<div class="span4"><input type="checkbox">锁定</div>
 			</div>
 			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
+				<div class="span4 last-span span-right"><button class="button" id="rectSubmit">取消</button></div>
 				<div class="span4 span-right"><button class="button">确定</button></div>
 			</div>
 		</div>
@@ -1043,7 +1185,7 @@
 							<div class="span4"><input type="checkbox">锁定</div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button" id="picSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1118,7 +1260,7 @@
 							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1160,7 +1302,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1187,15 +1329,19 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
 					</div>
 					<div id="wenbenshuxing4">
 						<div class="row">
-							<input type="radio" name="radio">固定
-							<input type="radio" name="radio"> 可变
+							<div class="row">
+							<input type="radio">固定
+						</div>
+						<div class="row">
+							<input type="radio">可变
+						</div>
 						</div>
 						<div class="row">
 							<fieldset>
@@ -1234,7 +1380,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1293,8 +1439,8 @@
 				<div class="span4"><input type="checkbox">锁定</div>
 			</div>
 			<div class="row">
-				<div class="span4 last-span span-right"><button class="button">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+				<div class="span4 last-span span-right"><button class="button" id="lineSubmit">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="lineAttrSubmit">确定</button></div>
 			</div>
 		</div>
 		<!-- 条码属性 -->
@@ -1359,7 +1505,7 @@
 							<div class="span18 last-span"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						</div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button" v-on="click: barSubmit">确定</button></div>
 						</div>
 					</div>
@@ -1441,7 +1587,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1481,7 +1627,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1530,7 +1676,7 @@
 						</div>
 						<div class="row"><textarea name="" id="" cols="30" rows="10" class="input"></textarea></div>
 						<div class="row">
-							<div class="span4 last-span span-right"><button class="button">取消</button></div>
+							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
 							<div class="span4 span-right"><button class="button">确定</button></div>
 						</div>
 
@@ -1652,7 +1798,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="span4 span-right"><button class="button">取消</button></div>
+					<div class="span4 span-right"><button class="button" id="barGuideSubmit">取消</button></div>
 					<div class="span4 span-right"><button class="button">完成</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: codeguide.next">下一步</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: codeguide.last">上一步</button></div>
@@ -1801,7 +1947,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="span4 span-right"><button class="button">取消</button></div>
+					<div class="span4 span-right"><button class="button" id="textGuideSubmit">取消</button></div>
 					<div class="span4 span-right"><button class="button">完成</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: textguide.next">下一步</button></div>
 					<div class="span4 span-right"><button class="button" data-bind="click: textguide.last">上一步</button></div>
