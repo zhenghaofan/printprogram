@@ -43,8 +43,8 @@ define(['jquery','vue'],function($,vue){
 						// console.log(self.degree);
 						e.preventDefault();						
 						// console.log(this.$el);
-						console.log(this.$data.print);
-						console.log(this.$data.lock);
+						// console.log(this.$data.print);
+						// console.log(this.$data.lock);
 					}
 				}
 			});
@@ -54,7 +54,7 @@ define(['jquery','vue'],function($,vue){
 		}
 
 
-	}
+	};
 
-	return new Barcode;
+	return new Barcode();
 });

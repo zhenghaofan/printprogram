@@ -966,6 +966,12 @@
 				<div class="span6 last-span"><input type="text" class="input"></div>
 			</div>
 			<div class="row">
+				<div class="span4"><label class="label">最大长度：</label></div>
+				<div class="span6"><input type="text" class="input"></div>
+				<div class="span4"><label class="label">固定长度：</label></div>
+				<div class="span6 last-span"><input type="text" class="input"></div>
+			</div>
+			<div class="row">
 				<div class="span10"><input type="checkbox"><label for="">计数器</label></div>
 				<div class="span10 last-span"><input type="checkbox"><label for="">以表单形式显示</label></div>	
 			</div>
@@ -1070,10 +1076,10 @@
 			</div>
 		</div>
 		<!-- 矩形属性 -->
-		<div class="property" id="juxingshuxing" title="矩形属性" data-width="510" data-visibility="false">
+		<div class="property" id="juxingshuxing" title="矩形属性" data-width="510" data-visibility="false" data-bind="with: rectproperty.rect()">
 			<div class="row">
 				<div class="span2"><label class="label">名称：</label></div>
-				<div class="span18 last-span"><input type="text" class="input"></div>
+				<div class="span18 last-span"><input type="text" class="input" data-bind="value: name"></div>
 			</div>
 			<div class="row">
 				<div class="span20 last-span">
@@ -1081,19 +1087,19 @@
 						<legend>位置和尺寸</legend>
 						<div class="row">
 							<div class="span3"><label class="label">X：</label></div>
-							<div class="span6"><input type="text" class="input"></div>
-							<div class="span3"><label class="label">横坐标：</label></div>
-							<div class="span6 last-span"><input type="text" class="input"></div>
+							<div class="span6"><input type="text" class="input" data-bind="value: offsetX"></div>
+							<div class="span3"><label class="label">宽度：</label></div>
+							<div class="span6 last-span"><input type="text" class="input" data-bind="value:width"></div>
 						</div>
 						<div class="row">
 							<div class="span3"><label class="label">Y：</label></div>
-							<div class="span6"><input type="text" class="input"></div>
-							<div class="span3"><label class="label">纵坐标：</label></div>
-							<div class="span6 last-span"><input type="text" class="input"></div>
+							<div class="span6"><input type="text" class="input" data-bind="value:offsetY"></div>
+							<div class="span3"><label class="label">高度：</label></div>
+							<div class="span6 last-span"><input type="text" class="input" data-bind="value:height"></div>
 						</div>
 						<div class="row">
 							<div class="span3"><label class="label">线宽：</label></div>
-							<div class="span6"><input type="text" class="input"></div>
+							<div class="span6"><input type="text" class="input" data-bind="value:lineWidth"></div>
 
 						</div>
 					</fieldset>
@@ -1101,8 +1107,6 @@
 
 			</div>
 			<div class="row">
-				<!-- <div class="span2"><label class="label">旋转：</label></div>
-				<div class="span18 last-span"></div> -->
 				<div class="row">
 							<ul class="degree">
 								<li>0</li>
@@ -1111,9 +1115,6 @@
 								<li>270</li>
 							</ul>
 							<div class="span4"><label class="label">旋转：</label>
-								<!-- v-model无效 
-								<input type="hidden" v-model="degree" id='degree' />
-								-->
 							<div class="slider">
 							</div>
 							</div>
@@ -1127,7 +1128,7 @@
 			</div>
 			<div class="row">
 				<div class="span4 last-span span-right"><button class="button" id="rectSubmit">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+				<div class="span4 span-right"><button class="button rectAttrSubmit" data-bind="click:$root.rectproperty.whenClickConfirm">确定</button></div>
 			</div>
 		</div>
 		<!-- 图片属性 -->
@@ -1425,11 +1426,8 @@
 					<li>270</li>
 				</ul>
 				<div class="span4"><label class="label">旋转：</label>
-					<!-- v-model无效 
-					<input type="hidden" v-model="degree" id='degree' />
-					-->
-				<div class="slider">
-				</div>
+					<div class="slider">
+					</div>
 				</div>
 				
 			</div>
@@ -1455,7 +1453,6 @@
 					</ul>
 				</div>
 				<div class="span20 last-span">
-					<form action="" id="barcodeForm">
 					<div id="tiaomashuxing1">
 						<div class="row">
 							<div class="span2"><label class="label">名称：</label></div>
@@ -1681,7 +1678,6 @@
 						</div>
 
 					</div>
-					</form>
 				</div>
 			</div>
 		</div>

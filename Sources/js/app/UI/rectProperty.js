@@ -1,8 +1,15 @@
 define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko,stage,util){
 	var a = function (){
-		this.target = $("#juxingshuxing");
-		this.rect = ko.observable();
-		this.init();
+		var self = this;
+		self.target = $("#juxingshuxing");
+		self.rect = ko.observable();
+		self.whenClickConfirm = function (){
+			var rect = self.rect();
+			if(rect){
+				rect.updateCanvas();
+			}
+		};
+		self.init();
 	};
 	a.prototype = {
 		init: function (){
@@ -27,5 +34,5 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 			this.target.dialog("close");
 		}
 	};
-	return new a;
+	return new a();
 });

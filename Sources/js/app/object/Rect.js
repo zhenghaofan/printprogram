@@ -13,7 +13,7 @@ define(['knockout','mapping'],function (ko,map){
 		self.offsetY = ko.observable(20);
 		self.angle = ko.observable(0);
 		self.ratio = ko.observable(1);
-      self.selected   = ko.observable(false);
+      	self.selected   = ko.observable(false);
 		self.width = ko.observable(400);
 		self.height = ko.observable(300);
 		self.lineWidth = ko.observable(2);
@@ -44,7 +44,7 @@ define(['knockout','mapping'],function (ko,map){
 					UI_LEFT_TOP_Y : self.offsetY(),
 					UI_RIGHT_BOTTOM_X : self.offsetX() + self.width() + self.lineWidth(),
 					UI_RIGHT_BOTTOM_Y : self.offsetY() + self.height() + self.lineWidth()
-				}
+				};
 			},
 			write: function (info){
 				self.offsetX(info.UI_LEFT_TOP_X);
@@ -111,7 +111,7 @@ define(['knockout','mapping'],function (ko,map){
 			self.redraw();
 			if (self.parent) {
 				self.parent.updateCanvas();
-			};
+			}
 		};
 		self.resizeCanvas = function (x,y){
 			self.cvs.width = x;

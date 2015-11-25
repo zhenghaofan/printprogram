@@ -16,8 +16,7 @@ define([
 
 		self.parent         = parent;
 		self.cvs            = parent.cvs;
-		self.ctx            = parent.ctx;
-		
+		self.ctx            = parent.ctx;		
 		self.id             = idCounter++;
 		self.name           = ko.observable('document ' + (self.id+1));
 		self.width          = ko.observable(1200);
@@ -43,7 +42,7 @@ define([
 		self.curRect           = ko.observable();
 
 		self.objects = ko.computed(function (){
-			return self.text().concat(self.code(),self.image(),self.line(),self.rect())
+			return self.text().concat(self.code(),self.image(),self.line(),self.rect());
 		});
 
 		//zindex 值大的在数组左边
@@ -54,7 +53,7 @@ define([
 		});
 		self.selectedObjects = ko.computed(function (){
 			return self.objects().filter(function (obj){
-				return obj.selected() == true;
+				return obj.selected() === true;
 			});
 		});
 		self.objectsInPoint = [];
@@ -130,7 +129,7 @@ define([
 			};
 			if (d) {
 				map.fromJS(d,mapRule,self);
-			};
+			}
 		};
 		self.getData = function (){
 			return map.toJS(self);
@@ -141,7 +140,7 @@ define([
 
 			if (self.parent) {
 				self.parent.updateCanvas();
-			};
+			}
 		};
 		self.removeObject = function (obj){
 			self.objects.remove(obj);
@@ -249,7 +248,7 @@ define([
 			for(var i = 0 ; i < objects.length ; i++){
 				if(objects[i].isInPoint(x,y)){
 					arr.push(objects[i]);
-				};
+				}
 			}
 			self.objectsInPoint = arr;
 

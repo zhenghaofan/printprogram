@@ -43,7 +43,7 @@
 		this.lineproperty = lineproperty;
 		this.codeproperty = lineproperty;
 		this.imageproperty = lineproperty;
-		this.rectproperty = lineproperty;
+		this.rectproperty = rectproperty;
 		this.textproperty = lineproperty;
 
 		this.textguide = textguide;
@@ -62,7 +62,7 @@
 			var self = this;
 	    	$("#menubar,#toolbar").on("mouseleave",function (){
 	    		$(document).click();
-	    	})
+	    	});
 			$('#menu>li ul,.menu').menu();
 			$(document).delegate(".node>li>span","click",function (){
 				$(this).parent().toggleClass("open");
@@ -124,7 +124,7 @@
 
 				  		// $(this).find('#degree').val(ui.value);	
 				  		// console.log($('#degree').val());		  		
-				  		self.degree = ui.value;
+				  		// self.degree = ui.value;
 					}
 					
 				});	

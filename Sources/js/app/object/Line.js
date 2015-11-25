@@ -14,7 +14,7 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 		self.offsetY = ko.observable(50).extend({numeric: {precision: 0,defaultValue: 50}});
 		self.angle = ko.observable(0);
 		self.ratio = ko.observable(1);
-      self.selected   = ko.observable(false);
+      	self.selected   = ko.observable(false);
 		self.lineType = ko.observable("h");
 		self.lineLength = ko.observable(200).extend({numeric: {precision: 0,defaultValue: 200}});
 		self.lineWidth = ko.observable(2).extend({numeric: {precision: 0,defaultValue: 2}});
@@ -41,7 +41,7 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineLength(),
 							UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth(),
 							UI_TYPE : "horizontal"
-						}
+						};
 					}else {
 						return {
 							UI_LEFT_TOP_X : self.offsetX(),
@@ -49,7 +49,7 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineLength(),
 							UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth() + (MIN_LINE_WIDTH - self.lineWidth()) /2,
 							UI_TYPE : "horizontal"
-						}
+						};
 					}
 				}else if(self.lineType() == "v") {
 					//
@@ -60,7 +60,7 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineWidth(),
 							UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineLength(),
 							UI_TYPE : "vertical"
-						}
+						};
 					}else {
 						return {
 							UI_LEFT_TOP_X : self.offsetX() - (MIN_LINE_WIDTH - self.lineWidth()) / 2,
@@ -68,7 +68,7 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineWidth() + (MIN_LINE_WIDTH - self.lineWidth()) / 2,
 							UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineLength(),
 							UI_TYPE : "vertical"
-						}
+						};
 					}
 				}
 			},
@@ -116,7 +116,7 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 			self.redraw();
 			if (self.parent) {
 				self.parent.updateCanvas();
-			};
+			}
 		};
 		self.resizeCanvas = function (x,y){
 			self.cvs.width = x;

@@ -1,7 +1,6 @@
 define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko,stage,util){
 	var a = function (){
 		var self = this;
-
 		self.target = $("#zhixianshuxing");
 		self.line = ko.observable();
 		self.whenClickConfirm = function (){
@@ -34,5 +33,5 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 			this.target.dialog("close");
 		}
 	};
-	return new a;
+	return new a();
 });

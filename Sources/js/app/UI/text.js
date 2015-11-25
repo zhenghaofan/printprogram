@@ -53,7 +53,7 @@ define(['jquery','vue'],function($,vue){
 		}
 
 
-	}
+	};
 
-	return new Text;
+	return new Text();
 });

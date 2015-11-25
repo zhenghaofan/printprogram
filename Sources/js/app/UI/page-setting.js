@@ -17,9 +17,6 @@ define(['jquery'], function($){
 	$(document).on('click','#lineAttrSubmit',function(){
 		$('#zhixianshuxing').dialog('close');
 	});
-	$(document).on('click','#lineAttrSubmit',function(){
-		$('#zhixianshuxing').dialog('close');
-	});
 	$(document).on('click','#exceptionSubmit',function(){
 		$('#exception-dialog').dialog('close');
 	});
@@ -35,7 +32,7 @@ define(['jquery'], function($){
 	$(document).on('click','#pageSetSubmit',function(){
 		$('#page-setting-dialog').dialog('close');
 	});
-	$(document).on('click','#rectSubmit',function(){
+	$(document).on('click','#rectSubmit,.rectAttrSubmit',function(){
 		$('#juxingshuxing').dialog('close');
 	});
 	$(document).on('click','#picSubmit',function(){
@@ -56,4 +53,4 @@ define(['jquery'], function($){
 	$(document).on('click','#textGuideSubmit',function(){
 		$('#wenbenxiangdao').dialog('close');
 	});
-})
+});
