@@ -1,8 +1,16 @@
 define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko,stage,util){
 	var a = function (){
-		this.target = $("#zhixianshuxing");
-		this.line = ko.observable();
-		this.init();
+		var self = this;
+
+		self.target = $("#zhixianshuxing");
+		self.line = ko.observable();
+		self.whenClickConfirm = function (){
+			var line = self.line();
+			if(line){
+				line.updateCanvas();
+			}
+		};
+		self.init();
 	};
 	a.prototype = {
 		init: function (){

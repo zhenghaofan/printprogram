@@ -353,17 +353,17 @@ define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 		};
 		self.on_drag = function (){
 			//直接设置offset
-			self.target.offsetX(self.stage.mouseX() - self.offset_top_left_x);
-			self.target.offsetY(self.stage.mouseY() - self.offset_top_left_y);
+			// self.target.offsetX(self.stage.mouseX() - self.offset_top_left_x);
+			// self.target.offsetY(self.stage.mouseY() - self.offset_top_left_y);
 			//标准方式
-			// var info = {
-			// 	UI_LEFT_TOP_X : self.stage.mouseX() - self.offset_top_left_x,
-			// 	UI_LEFT_TOP_Y : self.stage.mouseY() - self.offset_top_left_y,
-			// 	UI_RIGHT_BOTTOM_X : self.stage.mouseX() - self.offset_bottom_right_x,
-			// 	UI_RIGHT_BOTTOM_Y : self.stage.mouseY() - self.offset_bottom_right_y
-			// };
+			var info = {
+				UI_LEFT_TOP_X : self.stage.mouseX() - self.offset_top_left_x,
+				UI_LEFT_TOP_Y : self.stage.mouseY() - self.offset_top_left_y,
+				UI_RIGHT_BOTTOM_X : self.stage.mouseX() - self.offset_bottom_right_x,
+				UI_RIGHT_BOTTOM_Y : self.stage.mouseY() - self.offset_bottom_right_y
+			};
 			// //console.log(info);
-			// self.target.UI_INFO(info);
+			self.target.UI_INFO(info);
 			self.stage.updateCanvas();//TODO 此处不必重绘画布，待优化
 
 		};

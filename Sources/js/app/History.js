@@ -40,7 +40,6 @@ define(['knockout','app/Stage','app/Util'],function (ko,stage,util){
 		},
 		pushHistory: function (){
 			var doc = this.doc();
-			console.log(doc);
 			if(doc){
 				doc._history.splice(doc._historyIndex + 1,doc._history.length - doc._historyIndex - 1,doc.getData());
 				if(doc._history.length > 20) doc._history.shift();

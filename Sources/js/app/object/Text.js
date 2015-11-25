@@ -121,12 +121,7 @@ define(['knockout','mapping'],function (ko,map){
 			if(data){
 				map.fromJS(data,mapRule,self);
 			}
-			//self.addAutoUpdateEvent();
 			self.redraw();
-			//
-			// self.eventWithoutRedraw.subscribe(function (){
-			// 	self.updateCanvas();
-			// });
 		};
 		self.updateCanvas = function (){
 			self.redraw();
@@ -139,6 +134,22 @@ define(['knockout','mapping'],function (ko,map){
 			self.cvs.height = y;
 			self.cvs.style.width = x + "px";
 			self.cvs.style.height = x + "px";
+		};
+		self.render = function (cvs){
+
+	        var ar = self.splitContent(),
+	        	x = self.paddingLeft + self.offsetX(),
+	            y = self.paddingTop + self.offsetY(),
+	            ctx = cvs.getContext("2d");
+
+	        ctx.font = self.font();
+	        ctx.textBaseline = "top";
+	        ctx.fillStyle = "#ffffff"
+	        //ctx.fillRect(0,0,self.canvasWidth(),self.canvasHeight());
+	        ctx.fillStyle = "#000000";
+	        for(var i = 0 ; i < ar.length ; i++){
+		        self.ctx.fillText(ar[i],x,y + (self.lineHeight() * i));
+	        }
 		};
 		self.redraw = function (){
 			self.resizeCanvas(self.canvasWidth(),self.canvasHeight());
@@ -159,7 +170,7 @@ define(['knockout','mapping'],function (ko,map){
 	        self.ctx.textBaseline = "top";
 	        self.ctx.fillStyle = "#ffffff"
 	        self.ctx.fillRect(0,0,self.canvasWidth(),self.canvasHeight());
-	        self.ctx.fillStyle = "#000000"
+	        self.ctx.fillStyle = "#000000";
 	        for(var i = 0 ; i < ar.length ; i++){
 		        self.ctx.fillText(ar[i],self.paddingLeft,y + (self.lineHeight() * i));
 	        }

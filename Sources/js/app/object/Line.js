@@ -1,4 +1,4 @@
-define(['knockout','mapping'],function (ko,map){
+define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 	var MIN_LINE_WIDTH = 10;
 	var line = function (parent,data){
 		var self = this;
@@ -10,14 +10,14 @@ define(['knockout','mapping'],function (ko,map){
 		self.name = ko.observable("线条");
 		self.type = "line";
 		self.zIndex = ko.observable(0);
-		self.offsetX = ko.observable(50);
-		self.offsetY = ko.observable(50);
+		self.offsetX = ko.observable(50).extend({numeric: {precision: 0,defaultValue: 50}});
+		self.offsetY = ko.observable(50).extend({numeric: {precision: 0,defaultValue: 50}});
 		self.angle = ko.observable(0);
 		self.ratio = ko.observable(1);
       self.selected   = ko.observable(false);
 		self.lineType = ko.observable("h");
-		self.lineLength = ko.observable(1000);
-		self.lineWidth = ko.observable(2);
+		self.lineLength = ko.observable(200).extend({numeric: {precision: 0,defaultValue: 200}});
+		self.lineWidth = ko.observable(2).extend({numeric: {precision: 0,defaultValue: 2}});
 		self.lineColor = ko.observable("#000000");
 
 		//自动计算canvas大小

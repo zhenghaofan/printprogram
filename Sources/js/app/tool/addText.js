@@ -32,7 +32,6 @@ define(['jquery','app/Stage','app/Util','app/UI/textGuide'],function ($,stage,ut
 		self.active = function (flag){
 			$(stage.cvs).on("mousedown",self.onmousedown);
 			self.withGuide = flag == "true" ? true : false;
-			console.log(self.withGuide);
 		};
 		self.deactive = function (){
 			$(stage.cvs).off("mousedown",self.onmousedown);

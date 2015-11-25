@@ -1,16 +1,19 @@
 define([
 	'knockout',
 	'mapping',
+	'app/Transform',
 	'app/Util',
 	'object/text',
 	'object/code',
 	'object/image',
 	'object/line',
 	'object/rect'
-],function (ko,map,util,text,code,image,line,rect){
+],function (ko,map,transform,util,text,code,image,line,rect){
 	var idCounter = 0;
 	var doc = function (parent,data){
 		var self            = this;
+		// self.matrix = new transform;
+
 		self.parent         = parent;
 		self.cvs            = parent.cvs;
 		self.ctx            = parent.ctx;
@@ -60,8 +63,12 @@ define([
 		self.scrollLeft = 0;
 		self.scrollRight = 0;
 		//counter
-
 		
+		// self.computMatrix = ko.computed(function (){
+		// 	self.matrix.scale(self.ratio(),self.ratio());
+		// 	self.matrix.rotate(self.angle());
+		// });
+
 		self.init = function (){
 			self.loadData(data);
 			//self.resizeCanvas(self.canvasWidth(),self.canvasHeight());
@@ -132,7 +139,6 @@ define([
 			//self.redraw();
 			//self.draw();
 
-			console.log("aa");
 			if (self.parent) {
 				self.parent.updateCanvas();
 			};

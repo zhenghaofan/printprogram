@@ -109,7 +109,11 @@
 			var doc = self.curDoc();
 			if(doc){
 				self.resizeCanvas(doc.width(),doc.height());
+				//var m = doc.matrix.getMatrix();
+				//self.ctx.save();
+				//self.ctx.transform(m[0],m[1],m[2],m[3],m[4],m[5]);
 				doc.redraw();
+				//self.ctx.restore();
 				//self.ctx.drawImage(c,0,0);
 				self.updateUI();
 

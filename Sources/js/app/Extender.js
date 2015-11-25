@@ -6,7 +6,7 @@ define(['knockout'],function (ko){
 	        write: function(newValue) {
 	            var current = target(),
 	                roundingMultiplier = Math.pow(10, setting.precision),
-	                newValueAsNum = isNaN(newValue) ? 0 : parseFloat(+newValue),
+	                newValueAsNum = isNaN(newValue) ? setting.defaultValue : parseFloat(+newValue),
 	                valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
 	 
 	            //only write if it changed
