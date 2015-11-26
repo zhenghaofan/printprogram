@@ -15,13 +15,13 @@ define([
 		self.tools = {};
 
 		self.init = function (){
-			self.tools["selection"] = new selection(self);
-			self.tools["addline"] = new addline(self);
-			self.tools["addrect"] = new addrect(self);
-			self.tools["addtext"] = new addtext(self);
-			self.tools["addfixwidthtext"] = new addfixwidthtext(self);
-			self.tools["addimage"] = new addimage(self);
-			self.tools["addcode"] = new addcode(self);
+			self.tools.selection = new selection(self);
+			self.tools.addline = new addline(self);
+			self.tools.addrect = new addrect(self);
+			self.tools.addtext = new addtext(self);
+			self.tools.addfixwidthtext = new addfixwidthtext(self);
+			self.tools.addimage = new addimage(self);
+			self.tools.addcode = new addcode(self);
 			self.setDefaultTool();
 		};
 		self.setDefaultTool = function (){
@@ -37,5 +37,5 @@ define([
 		};
 
 	};
-	return new tool;
+	return new tool();
 });

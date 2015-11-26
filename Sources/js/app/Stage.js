@@ -53,7 +53,7 @@
 				map.fromJS(data,mapRule,self);
 				self.selectLastDoc();
 				self.updateCanvas();
-			};
+			}
 	    };
 	    self.getData = function (){
 	    	return map.toJS(self);
@@ -141,5 +141,5 @@
 	    self.init();
 
 	};
-	return new Stage;
+	return new Stage();
  });

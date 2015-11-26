@@ -1,10 +1,9 @@
-define(['knockout','mapping','app/Extender'],function (ko,map,extender){
+define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,ko,map,extender){
 	var MIN_LINE_WIDTH = 10;
 	var line = function (parent,data){
 		var self = this;
 		self.cvs = document.createElement("canvas");
 		self.ctx = self.cvs.getContext("2d");
-
 		self.id = null;
 		self.parent = parent;
 		self.name = ko.observable("线条");
@@ -107,10 +106,15 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 				map.fromJS(data,mapRule,self);
 			}
 			self.redraw();
+
 			//
 			// self.cache.subscribe(function (){
 			// 	self.updateCanvas();
 			// });
+		};
+
+		self.setLineType = function(type){
+			self.lineType = ko.observable(type);
 		};
 		self.updateCanvas = function (){
 			self.redraw();
@@ -129,14 +133,14 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 			//self.ctx.translate(0.5,0.5);
 			//self.ctx.clearRect(0,0,self.canvasWidth(),self.canvasHeight());
 			//
-
+			
 			self.ctx.beginPath();
 			self.ctx.lineWidth= self.lineWidth();
 			self.ctx.strokeStyle=self.lineColor();
-			if(self.lineType() == "h"){
+			if(self.lineType() === "h"){
 				self.ctx.moveTo(0,self.lineWidth() / 2);
 				self.ctx.lineTo(self.lineLength(),self.lineWidth() / 2);
-			}else if (self.lineType() == "v"){
+			}else if (self.lineType() === "v"){
 				self.ctx.moveTo(self.lineWidth() / 2,0);
 				self.ctx.lineTo(self.lineWidth() / 2,self.lineLength());
 			}
@@ -184,6 +188,29 @@ define(['knockout','mapping','app/Extender'],function (ko,map,extender){
 					return (self.offsetX() - (MIN_LINE_WIDTH - self.lineWidth()) / 2) <= x && x <= (self.offsetX() + self.lineWidth() + (MIN_LINE_WIDTH - self.lineWidth()) / 2) && self.offsetY() <= y && y <= (self.offsetY() + self.lineLength());
 				}
 			}
+		};
+		ko.bindingHandlers.slide = {
+		    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		    	self.angle = 0;
+		        $(element).slider({
+				  	min: 0,
+				  	max: 270,
+				  	range: "min",
+				  	value: 0,
+				  	step: 90,
+				  	slide: function( event, ui ) {
+
+				  		self.angle = ui.value;
+				  		// self.degree = ui.value;
+					}
+					
+				});	
+		    },
+		    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		        // This will be called once when the binding is first applied to an element,
+		        // and again whenever any observables/computeds that are accessed change
+		        // Update the DOM element based on the supplied values here.
+		    }
 		};
 		self.init();
 	};

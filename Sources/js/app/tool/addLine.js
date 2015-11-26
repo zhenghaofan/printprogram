@@ -2,7 +2,7 @@ define(['jquery','app/Stage','object/Line','app/Util'],function ($,stage,line,ut
 	var addline = function (parent){
 		var self = this;
 		self.parent = parent;
-		self.name = "addline"
+		self.name = "addline";
 		self.newLine = null;
 		//mouse position
 		self.x = 0;

@@ -57,5 +57,5 @@ define(['app/Stage','jquery','jqueryUI','knockout','app/Util'],function (stage,$
 			}
 		}
 	};
-	return new menu;
+	return new menu();
 });

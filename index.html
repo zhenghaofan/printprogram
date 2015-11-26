@@ -1075,131 +1075,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- 矩形属性 -->
-		<div class="property" id="juxingshuxing" title="矩形属性" data-width="510" data-visibility="false" data-bind="with: rectproperty.rect()">
-			<div class="row">
-				<div class="span2"><label class="label">名称：</label></div>
-				<div class="span18 last-span"><input type="text" class="input" data-bind="value: name"></div>
-			</div>
-			<div class="row">
-				<div class="span20 last-span">
-					<fieldset class="label-right">
-						<legend>位置和尺寸</legend>
-						<div class="row">
-							<div class="span3"><label class="label">X：</label></div>
-							<div class="span6"><input type="text" class="input" data-bind="value: offsetX"></div>
-							<div class="span3"><label class="label">宽度：</label></div>
-							<div class="span6 last-span"><input type="text" class="input" data-bind="value:width"></div>
-						</div>
-						<div class="row">
-							<div class="span3"><label class="label">Y：</label></div>
-							<div class="span6"><input type="text" class="input" data-bind="value:offsetY"></div>
-							<div class="span3"><label class="label">高度：</label></div>
-							<div class="span6 last-span"><input type="text" class="input" data-bind="value:height"></div>
-						</div>
-						<div class="row">
-							<div class="span3"><label class="label">线宽：</label></div>
-							<div class="span6"><input type="text" class="input" data-bind="value:lineWidth"></div>
 
-						</div>
-					</fieldset>
-			</div>
-
-			</div>
-			<div class="row">
-				<div class="row">
-							<ul class="degree">
-								<li>0</li>
-								<li>90</li>
-								<li>180</li>
-								<li>270</li>
-							</ul>
-							<div class="span4"><label class="label">旋转：</label>
-							<div class="slider">
-							</div>
-							</div>
-							
-						</div>
-			</div>
-			<div class="row">
-				<div class="span2"><label class="label">选项：</label></div>
-				<div class="span4"><input type="checkbox">可打印</div>
-				<div class="span4"><input type="checkbox">锁定</div>
-			</div>
-			<div class="row">
-				<div class="span4 last-span span-right"><button class="button" id="rectSubmit">取消</button></div>
-				<div class="span4 span-right"><button class="button rectAttrSubmit" data-bind="click:$root.rectproperty.whenClickConfirm">确定</button></div>
-			</div>
-		</div>
-		<!-- 图片属性 -->
-		<div class="property" id="tupianshuxing" title="图片属性" data-width="610" data-visibility="false">
-			<div class="row tabs">
-				<div class="span4 span-border-right">
-					<ul>
-						<li><a href="#tupianshuxing1">常规</a></li>
-						<li><a href="#tupianshuxing2">图片设置</a></li>
-					</ul>
-				</div>
-				<div class="span20 last-span">
-					<div id="tupianshuxing1">
-						<div class="row">
-							<div class="span2"><label class="label">名称：</label></div>
-							<div class="span18 last-span"><input type="text" class="input"></div>
-						</div>
-						<div class="row">
-							<fieldset class="label-right">
-								<legend>位置和尺寸</legend>
-								<div class="row">
-									<div class="span3"><label class="label">X：</label></div>
-									<div class="span6"><input type="text" class="input"></div>
-									<div class="span3"><label class="label">横坐标：</label></div>
-									<div class="span6 last-span"><input type="text" class="input"></div>
-								</div>
-								<div class="row">
-									<div class="span3"><label class="label">Y：</label></div>
-									<div class="span6"><input type="text" class="input"></div>
-									<div class="span3"><label class="label">纵坐标：</label></div>
-									<div class="span6 last-span"><input type="text" class="input"></div>
-								</div>
-
-							</fieldset>
-						</div>
-						<div class="row">
-							<ul class="degree">
-								<li>0</li>
-								<li>90</li>
-								<li>180</li>
-								<li>270</li>
-							</ul>
-							<div class="span4"><label class="label">旋转：</label>
-								<!-- v-model无效 
-								<input type="hidden" v-model="degree" id='degree' />
-								-->
-							<div class="slider">
-							</div>
-							</div>
-							
-						</div>
-						<div class="row">
-							<div class="span2"><label class="label">选项：</label></div>
-							<div class="span4"><input type="checkbox">可打印</div>
-							<div class="span4"><input type="checkbox">锁定</div>
-						</div>
-						<div class="row">
-							<div class="span4 last-span span-right"><button class="button" id="picSubmit">取消</button></div>
-							<div class="span4 span-right"><button class="button">确定</button></div>
-						</div>
-
-					</div>
-					<div id="tupianshuxing2">
-						<div class="row">
-							<div class="span16"><input type="file"></div>
-							<div class="span4 last-span"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<!-- 左侧栏属性框开始 -->	
+		
 		<!-- 文本属性 -->
 		<div class="property" id="wenbenshuxing" title="文本属性" data-width="610" data-visibility="false">
 			<div class="row tabs">
@@ -1387,58 +1265,6 @@
 
 					</div>
 				</div>
-			</div>
-		</div>
-		<!-- 直线属性 -->
-		<div class="property" id="zhixianshuxing" title="直线属性" data-width="510" data-visibility="false" data-bind="with: lineproperty.line()">
-			<div class="row">
-				<div class="span2"><label class="label">名称：</label></div>
-				<div class="span18 last-span"><input type="text" class="input" data-bind="value: name"></div>
-			</div>
-			<div class="row">
-				<fieldset class="label-right">
-					<legend>位置和尺寸</legend>
-					<div class="row">
-						<div class="span3"><label class="label">X：</label></div>
-						<div class="span6"><input type="text" class="input" data-bind="value: offsetX"></div>
-						<div class="span3"><label class="label">宽度：</label></div>
-						<div class="span6 last-span"><input type="text" class="input" data-bind="value: lineLength"></div>
-					</div>
-					<div class="row">
-						<div class="span3"><label class="label">Y：</label></div>
-						<div class="span6"><input type="text" class="input" data-bind="value: offsetY"></div>
-						<div class="span3"><label class="label">高度：</label></div>
-						<div class="span6 last-span"><input type="text" class="input"></div>
-					</div>
-					<div class="row">
-						<div class="span3"><label class="label">线宽：</label></div>
-						<div class="span6"><input type="text" class="input" data-bind="value: lineWidth"></div>
-
-					</div>
-				</fieldset>
-
-			</div>
-			<div class="row">
-				<ul class="degree">
-					<li>0</li>
-					<li>90</li>
-					<li>180</li>
-					<li>270</li>
-				</ul>
-				<div class="span4"><label class="label">旋转：</label>
-					<div class="slider">
-					</div>
-				</div>
-				
-			</div>
-			<div class="row">
-				<div class="span2"><label class="label">选项：</label></div>
-				<div class="span4"><input type="checkbox" checked="checked">可打印</div>
-				<div class="span4"><input type="checkbox">锁定</div>
-			</div>
-			<div class="row">
-				<div class="span4 last-span span-right"><button class="button" id="lineSubmit">取消</button></div>
-				<div class="span4 span-right"><button class="button" id="lineAttrSubmit" data-bind="click: $root.lineproperty.whenClickConfirm">确定</button></div>
 			</div>
 		</div>
 		<!-- 条码属性 -->
@@ -1681,6 +1507,187 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- 图片属性 -->
+		<div class="property" id="tupianshuxing" title="图片属性" data-width="610" data-visibility="false">
+			<div class="row tabs">
+				<div class="span4 span-border-right">
+					<ul>
+						<li><a href="#tupianshuxing1">常规</a></li>
+						<li><a href="#tupianshuxing2">图片设置</a></li>
+					</ul>
+				</div>
+				<div class="span20 last-span">
+					<div id="tupianshuxing1">
+						<div class="row">
+							<div class="span2"><label class="label">名称：</label></div>
+							<div class="span18 last-span"><input type="text" class="input"></div>
+						</div>
+						<div class="row">
+							<fieldset class="label-right">
+								<legend>位置和尺寸</legend>
+								<div class="row">
+									<div class="span3"><label class="label">X：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">横坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+								<div class="row">
+									<div class="span3"><label class="label">Y：</label></div>
+									<div class="span6"><input type="text" class="input"></div>
+									<div class="span3"><label class="label">纵坐标：</label></div>
+									<div class="span6 last-span"><input type="text" class="input"></div>
+								</div>
+
+							</fieldset>
+						</div>
+						<div class="row">
+							<ul class="degree">
+								<li>0</li>
+								<li>90</li>
+								<li>180</li>
+								<li>270</li>
+							</ul>
+							<div class="span4"><label class="label">旋转：</label>
+								<!-- v-model无效 
+								<input type="hidden" v-model="degree" id='degree' />
+								-->
+							<div class="slider">
+							</div>
+							</div>
+							
+						</div>
+						<div class="row">
+							<div class="span2"><label class="label">选项：</label></div>
+							<div class="span4"><input type="checkbox">可打印</div>
+							<div class="span4"><input type="checkbox">锁定</div>
+						</div>
+						<div class="row">
+							<div class="span4 last-span span-right"><button class="button" id="picSubmit">取消</button></div>
+							<div class="span4 span-right"><button class="button">确定</button></div>
+						</div>
+
+					</div>
+					<div id="tupianshuxing2">
+						<div class="row">
+							<div class="span16"><input type="file"></div>
+							<div class="span4 last-span"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 矩形属性 -->
+		<div class="property" id="juxingshuxing" title="矩形属性" data-width="510" data-visibility="false" data-bind="with: rectproperty.rect()">
+			<div class="row">
+				<div class="span2"><label class="label">名称：</label></div>
+				<div class="span18 last-span"><input type="text" class="input" data-bind="value: name"></div>
+			</div>
+			<div class="row">
+				<div class="span20 last-span">
+					<fieldset class="label-right">
+						<legend>位置和尺寸</legend>
+						<div class="row">
+							<div class="span3"><label class="label">X：</label></div>
+							<div class="span6"><input type="text" class="input" data-bind="value: offsetX"></div>
+							<div class="span3"><label class="label">宽度：</label></div>
+							<div class="span6 last-span"><input type="text" class="input" data-bind="value:width"></div>
+						</div>
+						<div class="row">
+							<div class="span3"><label class="label">Y：</label></div>
+							<div class="span6"><input type="text" class="input" data-bind="value:offsetY"></div>
+							<div class="span3"><label class="label">高度：</label></div>
+							<div class="span6 last-span"><input type="text" class="input" data-bind="value:height"></div>
+						</div>
+						<div class="row">
+							<div class="span3"><label class="label">线宽：</label></div>
+							<div class="span6"><input type="text" class="input" data-bind="value:lineWidth"></div>
+
+						</div>
+					</fieldset>
+			</div>
+
+			</div>
+			<div class="row">
+				<div class="row">
+							<ul class="degree">
+								<li>0</li>
+								<li>90</li>
+								<li>180</li>
+								<li>270</li>
+							</ul>
+							<div class="span4"><label class="label">旋转：</label>
+							<div class="slider">
+							</div>
+							</div>
+							
+						</div>
+			</div>
+			<div class="row">
+				<div class="span2"><label class="label">选项：</label></div>
+				<div class="span4"><input type="checkbox">可打印</div>
+				<div class="span4"><input type="checkbox">锁定</div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button" id="rectSubmit">取消</button></div>
+				<div class="span4 span-right"><button class="button rectAttrSubmit" data-bind="click:$root.rectproperty.whenClickConfirm">确定</button></div>
+			</div>
+		</div>
+		<!-- 直线属性 -->
+		<div class="property" id="zhixianshuxing" title="直线属性" data-width="510" data-visibility="false" data-bind="with: lineproperty.line()">
+			<div class="row">
+				<div class="span2"><label class="label">名称：</label></div>
+				<div class="span18 last-span"><input type="text" class="input" data-bind="value: name"></div>
+			</div>
+			<div class="row">
+				<fieldset class="label-right">
+					<legend>位置和尺寸</legend>
+
+					<div class="row">
+						<div class="span3"><label class="label">X：</label></div>
+						<div class="span6"><input type="text" class="input" data-bind="value: offsetX"></div>
+						<div class="span3"><label class="label">Y：</label></div>
+						<div class="span6"><input type="text" class="input" data-bind="value: offsetY"></div>
+					</div>
+
+					<div class="row">
+						<div class="span3">
+							<label class="label" data-bind="text: lineType() === 'h' ? '宽度：' : '高度：'"></label>
+						</div>
+
+						<div class="span6">
+							<input type="text" class="input" data-bind="value: lineLength;" >
+						</div>
+						<div class="span3"><label class="label">线宽：</label></div>
+						<div class="span6"><input type="text" class="input" data-bind="value: lineWidth"></div>
+					</div>
+				</fieldset>
+
+			</div>
+			<div class="row">
+				<ul class="degree">
+					<li>0</li>
+					<li>90</li>
+					<li>180</li>
+					<li>270</li>
+				</ul>
+				<div class="span4"><label class="label">旋转：</label>
+					<div class="slider" data-bind="slide">
+					</div>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="span2"><label class="label">选项：</label></div>
+				<div class="span4"><input type="checkbox" checked="checked">可打印</div>
+				<div class="span4"><input type="checkbox" data-bind="checked:$root.tool.tools.addline.deactive()">锁定</div>
+			</div>
+			<div class="row">
+				<div class="span4 last-span span-right"><button class="button" id="lineSubmit">取消</button></div>
+				<div class="span4 span-right"><button class="button" id="lineAttrSubmit" data-bind="click: $parent.lineproperty.whenClickConfirm">确定</button></div>
+			</div>
+		</div>
+		
 		<!-- 条码向导 -->
 		<div class="property tabs" id="tiaomaxiangdao" title="条码设置向导" data-width="610" data-visibility="false">
 			<div class="row none">

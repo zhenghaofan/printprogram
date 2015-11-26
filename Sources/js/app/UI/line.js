@@ -29,7 +29,7 @@ define(['jquery','vue'],function($,vue){
 			this.vm = new vue({
 				el:"#wenbenshuxing",
 			});
-			console.log(self.degree);
+			// console.log(self.degree);
 			// this.vm.$watch(self.degree, function(){
 			// 	this.vm.$data.degree = self.degree;
 			// });
