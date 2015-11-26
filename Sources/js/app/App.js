@@ -41,10 +41,10 @@
 		//UI
 		this.objectsalign = objectsalign;
 		this.lineproperty = lineproperty;
-		this.codeproperty = lineproperty;
-		this.imageproperty = lineproperty;
+		this.codeproperty = codeproperty;
+		this.imageproperty = imageproperty;
 		this.rectproperty = rectproperty;
-		this.textproperty = lineproperty;
+		this.textproperty = textproperty;
 
 		this.textguide = textguide;
 		this.codeguide = codeguide;
