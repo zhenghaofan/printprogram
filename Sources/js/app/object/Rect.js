@@ -18,10 +18,11 @@ define(['knockout','mapping'],function (ko,map){
 		self.height = ko.observable(300);
 		self.lineWidth = ko.observable(2);
 		self.lineColor = ko.observable("#000000");
+		self.locked = ko.observable(false);
 
-		self.eventWithoutRedraw = ko.computed(function (){
-			return self.offsetX() + self.offsetY() + self.angle();
-		});
+		// self.eventWithoutRedraw = ko.computed(function (){
+		// 	return self.offsetX() + self.offsetY() + self.angle();
+		// });
 
 
 		self.halfLineWidth = ko.computed(function (){
@@ -164,6 +165,29 @@ define(['knockout','mapping'],function (ko,map){
 			if(self.autoUpdateEvent){
 				self.autoUpdateEvent = self.autoUpdateEvent.dispose();
 			}
+		};
+		ko.bindingHandlers.slide = {
+		    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		    	self.angle = 0;
+		        $(element).slider({
+				  	min: 0,
+				  	max: 270,
+				  	range: "min",
+				  	value: 0,
+				  	step: 90,
+				  	slide: function( event, ui ) {
+
+				  		self.angle = ui.value;
+				  		// self.degree = ui.value;
+					}
+					
+				});	
+		    },
+		    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		        // This will be called once when the binding is first applied to an element,
+		        // and again whenever any observables/computeds that are accessed change
+		        // Update the DOM element based on the supplied values here.
+		    }
 		};
 		self.init();
 	};

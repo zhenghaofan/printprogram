@@ -4,12 +4,6 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 		var self = this;
 		self.target = $("#juxingshuxing");
 		self.rect = ko.observable();
-		self.whenClickConfirm = function (){
-			var rect = self.rect();
-			if(rect){
-				rect.updateCanvas();
-			}
-		};
 		self.init();
 	};
 	a.prototype = {
@@ -33,6 +27,16 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 		},
 		close: function (){
 			this.target.dialog("close");
+		},
+		whenClickConfirm: function(){
+			var rotate = this.angle;
+			if(rotate / 90 === 1 || rotate / 90 === 3){
+					console.log('水平变垂直');
+					var width = this.width();
+					this.width(this.height());
+					this.height(width);
+				}
+			this.updateCanvas();
 		}
 	};
 	return new a();

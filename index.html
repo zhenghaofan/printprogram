@@ -1617,7 +1617,7 @@
 								<li>270</li>
 							</ul>
 							<div class="span4"><label class="label">旋转：</label>
-							<div class="slider">
+							<div class="slider" data-bind="slide">
 							</div>
 							</div>
 							
@@ -1625,8 +1625,8 @@
 			</div>
 			<div class="row">
 				<div class="span2"><label class="label">选项：</label></div>
-				<div class="span4"><input type="checkbox">可打印</div>
-				<div class="span4"><input type="checkbox">锁定</div>
+				<div class="span4"><input type="checkbox" checked="checked">可打印</div>
+				<div class="span4"><input type="checkbox" data-bind="checked:locked">锁定</div>
 			</div>
 			<div class="row">
 				<div class="span4 last-span span-right"><button class="button" id="rectSubmit">取消</button></div>
