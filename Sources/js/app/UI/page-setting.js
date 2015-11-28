@@ -1,4 +1,5 @@
 define(['jquery'], function($){
+	// 所有对话框事件
 	$(document).on('click','.page-setting,.icon-file-text',function(){
 		$('#page-setting-dialog').dialog("open");
 	});

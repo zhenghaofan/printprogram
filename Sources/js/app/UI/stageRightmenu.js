@@ -1,4 +1,5 @@
 define(['app/Stage','jquery','jqueryUI','knockout','app/Util'],function (stage,$,ui,ko,util){
+	// 右键菜单
 	var menu = function (){
 		this.selectedObject = ko.observableArray();
 		this.menu = $("#stageRightmenu");

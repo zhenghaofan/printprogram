@@ -24,5 +24,5 @@ define(['app/Stage','lib/canvas2image'],function (stage,canvas2image){
 				canvas2image.saveAsBMP(stage.cvs,doc.width(),doc.height());
 			}
 		}
-	}
+	};
 });

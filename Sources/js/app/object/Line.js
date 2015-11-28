@@ -18,7 +18,7 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 		self.lineLength = ko.observable(200).extend({numeric: {precision: 0,defaultValue: 200}});
 		self.lineWidth = ko.observable(2).extend({numeric: {precision: 0,defaultValue: 2}});
 		self.lineColor = ko.observable("#000000");
-
+		self.locked = ko.observable(false);
 		//自动计算canvas大小
 		self.canvasWidth = ko.computed(function (){
 			return self.lineType() == "h" ? self.lineLength() : self.lineWidth();
@@ -107,12 +107,13 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 			}
 			self.redraw();
 
-			//
 			// self.cache.subscribe(function (){
 			// 	self.updateCanvas();
 			// });
 		};
-
+		// self.lock = function(){
+		// 	$(self.cvs).off("mousemove");
+		// };
 		self.setLineType = function(type){
 			self.lineType = ko.observable(type);
 		};
@@ -189,6 +190,7 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 				}
 			}
 		};
+		
 		ko.bindingHandlers.slide = {
 		    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		    	self.angle = 0;

@@ -266,7 +266,6 @@ define([
 			var obj = self.objectsInPoint[0];
 			self.focusObject(obj);
 
-
 			if(f && obj){
 				obj.selected(true);
 				self.parent.updateCanvas();

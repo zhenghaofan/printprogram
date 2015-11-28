@@ -1,4 +1,5 @@
 define(['jquery','vue'],function($,vue){
+	// 新建数据库向导
 	new vue({
 		el: '#guide-dialog',
 		data:{
@@ -22,5 +23,5 @@ define(['jquery','vue'],function($,vue){
 		    }
 		  }
 		
-	})
+	});
 });

@@ -218,6 +218,11 @@ define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 			$(self.stage.cvs).on("mousemove",self.autoCursor);
 		};
 		self.onmousedown = function (){
+			if(self.target){
+				if(self.target.locked()){
+					return false;
+				}
+			}
 			if(self.UI_TYPE() == "all"){
 				if(self.e.isInPoint()){
 					// console.log("e");
@@ -339,7 +344,7 @@ define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 				// self.target.removeAutoUpdateEvent();
 				self.$document.on("mousemove",self.on_drag);
 				self.$document.one("mouseup",self.on_end_drag);
-
+				// console.log(self);
 				self.$body.css("cursor","move");
 				return true;
 			}
@@ -367,6 +372,10 @@ define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 			self.stage.updateCanvas();//TODO 此处不必重绘画布，待优化
 
 		};
+		// self.lock = function(){
+		// 	// $(self.target).off("mousemove",self.on_drag);
+		// 	self.onmousedown = function(){return false;};
+		// };
 		self.on_drag_e = function (){
 			var info = {
 				UI_LEFT_TOP_X : Math.min(self.test_line,self.stage.mouseX()),
@@ -374,6 +383,7 @@ define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 				UI_RIGHT_BOTTOM_X : Math.max(self.test_line,self.stage.mouseX()),
 				UI_RIGHT_BOTTOM_Y : self.y3()
 			};
+			console.log('on_drag_e');
 			self.target.UI_INFO(info);
 			self.target.updateCanvas();
 		};

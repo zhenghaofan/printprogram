@@ -52,5 +52,5 @@ define(['knockout','app/Stage','app/Util'],function (ko,stage,util){
 			util.Event.addEventListener("afterAddRect",this.pushHistory,this);
 		}
 	};
-	return new history;
+	return new history();
 });

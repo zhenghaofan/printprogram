@@ -1,4 +1,5 @@
 define(['jquery','jqueryUI'],function ($,ui){
+	// 条码向导
 	var g = function (){
 		var self = this;
 		self.pane = $("#tiaomaxiangdao");

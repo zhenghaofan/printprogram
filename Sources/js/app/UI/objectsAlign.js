@@ -67,5 +67,5 @@ define(['app/Stage'],function (stage){
 
 		}
 
-	}
+	};
 });

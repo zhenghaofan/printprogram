@@ -139,6 +139,6 @@
 		}
 
 	};
-	window.app = new App;
+	window.app = new App();
 	return window.app;
  });

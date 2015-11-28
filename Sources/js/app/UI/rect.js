@@ -1,5 +1,5 @@
 define(['jquery','vue'],function($,vue){
-
+// 右底部矩形属性
 	var Rect = function(){
 		this.vm = null;
 		this.init();
@@ -27,7 +27,7 @@ define(['jquery','vue'],function($,vue){
 		initVm: function(){
 			var self = this;
 			this.vm = new vue({
-				el:"#wenbenshuxing",
+				el:"#juxingshuxing",
 			});
 			// this.vm.$watch(self.degree, function(){
 			// 	this.vm.$data.degree = self.degree;
@@ -35,7 +35,7 @@ define(['jquery','vue'],function($,vue){
 		}
 
 
-	}
+	};
 
-	return new Rect;
+	return new Rect();
 });

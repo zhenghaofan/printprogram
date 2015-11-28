@@ -1,4 +1,5 @@
 define(['jquery','vue'],function($,vue){
+	// 表单长宽
 	var formSet = function(){
 		this.ls = this.fw = this.fh = this.vm = null;
 		this.initLocalStorage();
@@ -51,9 +52,9 @@ define(['jquery','vue'],function($,vue){
 			this.ls.removeItem('formWidth');
 			this.ls.removeItem('formHeight');
 		}
-	}
+	};
 
-	return new formSet;
+	return new formSet();
 	// vue.nextTick(function(){
 		// formSet.$watch('title',function(){
 

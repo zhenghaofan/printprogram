@@ -97,5 +97,5 @@ define(['knockout'],function (ko){
 			self.current(self.current() === "zh" ? "en" : "zh");
 		};
 	};
-	return new lang;
+	return new lang();
 });

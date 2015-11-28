@@ -4,7 +4,7 @@ define(['jquery','knockout','app/Util'],function ($,ko,util){
 			this.hctx           = this.h.getContext("2d");
 			this.v              = document.getElementById("v-ruler-canvas");
 			this.vctx           = this.v.getContext("2d");
-			this.c              = $("#cvs-container")
+			this.c              = $("#cvs-container");
 			this.minH           = ko.observable(0);
 			this.minV           = ko.observable(0);
 			this.docW           = ko.observable(0);
@@ -108,8 +108,8 @@ define(['jquery','knockout','app/Util'],function ($,ko,util){
 			this.docH(h);
 		},
 		setMinSize : function (h,v){
-			var h = h || $("#h-ruler").width();
-			var v = v || $("#v-ruler").height();
+			h = h || $("#h-ruler").width();
+			v = v || $("#v-ruler").height();
 			this.minH(h);
 			this.minV(v);
 		},
@@ -120,9 +120,9 @@ define(['jquery','knockout','app/Util'],function ($,ko,util){
 			this.v.style.top = "-" + this.offsetY() + "px";
 		},
 		update : function (w,h,r){
-			var w = w || this.docW();
-			var h = h || this.docH();
-			var r = r || this.ratio();
+			w = w || this.docW();
+			h = h || this.docH();
+			r = r || this.ratio();
 			this.setDocSize(w,h);
 			this.setMinSize();
 			this.setOffset();
@@ -135,5 +135,5 @@ define(['jquery','knockout','app/Util'],function ($,ko,util){
 			return this.mm1;
 		}
 	};
-	return new ruler;
+	return new ruler();
 });

@@ -1,5 +1,5 @@
 define(['jquery','vue'],function($,vue){
-
+// 右底部属性栏
 	var Barcode = function(){
 		this.vm = null;
 		this.degree = 0;

@@ -1,4 +1,5 @@
 define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko,stage,util){
+	// 矩形属性
 	var a = function (){
 		var self = this;
 		self.target = $("#juxingshuxing");

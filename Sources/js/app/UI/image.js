@@ -1,4 +1,5 @@
 define(['jquery','vue'],function($,vue){
+	// 右底部图片属性
 
 	var Image = function(){
 		this.vm = null;
@@ -27,7 +28,7 @@ define(['jquery','vue'],function($,vue){
 		initVm: function(){
 			var self = this;
 			this.vm = new vue({
-				el:"#wenbenshuxing",
+				el:"#tupianshuxing",
 			});
 			// this.vm.$watch(self.degree, function(){
 			// 	this.vm.$data.degree = self.degree;
@@ -35,7 +36,7 @@ define(['jquery','vue'],function($,vue){
 		}
 
 
-	}
+	};
 
-	return new Image;
+	return new Image();
 });

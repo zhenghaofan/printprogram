@@ -35,7 +35,7 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 					});
 			});
 
-		}
+		};
 
 		self.showAddDate = function (){
 			self.op = true;			
@@ -48,7 +48,7 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 			// this.datename = 'aa';
 			// $('#datename').val(this.datename);
 			$('#riqi').dialog('open');
-		}
+		};
 
 		self.opDate = function(){
 			var datename = $('#datename').val();
@@ -57,7 +57,7 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 			}else{
 				self.updateDate(datename);
 			}
-		}
+		};
 
 		self.addDate = function (datename){
 			var date = new _date();
@@ -74,11 +74,11 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 			// self.dateObj.datename = $('#datename').val();
 			$('#riqi').dialog('close');
 
-		}
+		};
 		
 		self.removeDateAttr = function(){
 			self.dates.remove(this);
-		}
+		};
 		
 
 		self.initForm = function(){
@@ -113,10 +113,10 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 		self.showFormAttr = function(m){
 			$('#formname').val(m.attrname);
 			$('#biaodanshuru').dialog('open');
-		}
+		};
 		self.removeFormAttr = function(){
 			self.forms.remove(this);
-		}
+		};
 
 		self.initFormFind = function(){
 			$(document).on('click','#addFormFind',function(){
@@ -151,13 +151,13 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 		self.showFormFind = function(m){
 			$('#formFindName').val(m.formFindName);
 			$('#biaochazhao').dialog('open');
-		}
+		};
 		self.removeFormFind = function(){
 			self.tablelookup.remove(this);
-		}
+		};
 
 		self.init();
 
 	};
-	return new database;
+	return new database();
 });

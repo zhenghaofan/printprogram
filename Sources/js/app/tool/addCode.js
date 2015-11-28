@@ -2,7 +2,7 @@ define(['jquery','app/Stage','app/Util','app/UI/codeGuide'],function ($,stage,ut
 	var a = function (parent){
 		var self = this;
 		self.parent = parent;
-		self.name = "addcode"
+		self.name = "addcode";
 		self.newCode = null;
 		//mouse position
 		self.x = 0;

@@ -1,9 +1,10 @@
-define(['jquery','app/Stage','object/Line','app/Util'],function ($,stage,line,util){
+define(['jquery','knockout','app/Stage','object/Line','app/Util'],function ($,ko,stage,line,util){
 	var addline = function (parent){
 		var self = this;
 		self.parent = parent;
 		self.name = "addline";
 		self.newLine = null;
+		self.locked = ko.observable(false);
 		//mouse position
 		self.x = 0;
 		self.y = 0;
@@ -36,6 +37,7 @@ define(['jquery','app/Stage','object/Line','app/Util'],function ($,stage,line,ut
 				line.offsetY(self.y);
 				line.lineLength(d_x);
 			}
+
 			self.newLine.updateCanvas();
 		};
 		self.onmouseup = function (){
@@ -53,6 +55,11 @@ define(['jquery','app/Stage','object/Line','app/Util'],function ($,stage,line,ut
 		self.deactive = function (){
 			$(stage.cvs).off("mousedown",self.onmousedown);
 		};
+		// self.lock = function(){
+		// 	util.Event.addEventListener('lock',function(){
+		// 		$(stage.cvs).off('mousemove',self.onmousemove);
+		// 	});
+		// };
 	};
 
 	return addline;

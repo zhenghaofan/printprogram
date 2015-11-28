@@ -1,5 +1,5 @@
 define(['jquery','vue'],function($,vue){
-
+//右底部直线属性
 	var Line = function(){
 		this.vm = null;
 		this.init();
@@ -27,7 +27,7 @@ define(['jquery','vue'],function($,vue){
 		initVm: function(){
 			var self = this;
 			this.vm = new vue({
-				el:"#wenbenshuxing",
+				el:"#zhixianshuxing",
 			});
 			// console.log(self.degree);
 			// this.vm.$watch(self.degree, function(){

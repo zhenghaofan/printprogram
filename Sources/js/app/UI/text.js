@@ -1,5 +1,5 @@
 define(['jquery','vue'],function($,vue){
-
+// 右底部文本属性
 	var Text = function(){
 		this.vm = null;
 		this.init();

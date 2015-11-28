@@ -1,4 +1,5 @@
 define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko,stage,util){
+	//文本属性
 	var a = function (){
 		this.target = $("#wenbenshuxing");
 		this.text = ko.observable();
@@ -27,5 +28,5 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 			this.target.dialog("close");
 		}
 	};
-	return new a;
+	return new a();
 });

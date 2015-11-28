@@ -1,4 +1,5 @@
 define(['jquery','jqueryUI'],function ($,ui){
+	// 文本向导
 	var g = function (){
 		var self = this;
 		self.pane = $("#wenbenxiangdao");
@@ -26,5 +27,5 @@ define(['jquery','jqueryUI'],function ($,ui){
 			this.pane.dialog("close");
 		}
 	};
-	return new g;
+	return new g();
 });

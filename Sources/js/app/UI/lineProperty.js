@@ -1,4 +1,5 @@
-define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko,stage,util){
+define(['jquery','jqueryUI','knockout','app/Stage','app/Util','app/UIController'],function ($,ui,ko,stage,util,appui){
+	// 直线属性
 	var a = function (){
 		var self = this;
 		self.target = $("#zhixianshuxing");
@@ -23,19 +24,19 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 		whenClickConfirm: function(){
 			var rotate = this.angle;
 			if(this.lineType()==='h'){
-				console.log(this.angle);
+				// console.log(this.angle);
 				if(rotate / 90 === 1 || rotate / 90 === 3){
 					console.log('水平变垂直');
 					this.lineType('v');
 				}
 			}else{
-				console.log(this.angle);
+				// console.log(this.angle);
 				if(rotate / 90 === 1 || rotate / 90 === 3){
 					console.log('垂直变水平');
 					this.lineType('h');
 				}
 			}
-
+			
 			this.updateCanvas();
 		}
 	};
