@@ -39,13 +39,13 @@ define(['jquery'], function($){
 	$(document).on('click','#picSubmit',function(){
 		$('#tupianshuxing').dialog('close');
 	});
-	$(document).on('click','.textSubmit',function(){
+	$(document).on('click','.textSubmit,.textAttrSubmit',function(){
 		$('#wenbenshuxing').dialog('close');
 	});
 	$(document).on('click','#lineSubmit',function(){
 		$('#zhixianshuxing').dialog('close');
 	});
-	$(document).on('click','.barSubmit',function(){
+	$(document).on('click','.barSubmit,.codeAttrSubmit',function(){
 		$('#tiaomashuxing').dialog('close');
 	});
 	$(document).on('click','#barGuideSubmit',function(){

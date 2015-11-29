@@ -2,6 +2,7 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 	var MIN_LINE_WIDTH = 10;
 	var line = function (parent,data){
 		var self = this;
+		self.lineSlider = null;
 		self.cvs = document.createElement("canvas");
 		self.ctx = self.cvs.getContext("2d");
 		self.id = null;
@@ -192,26 +193,23 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 		};
 		
 		ko.bindingHandlers.slide = {
+
 		    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-		    	self.angle = 0;
-		        $(element).slider({
+		    	$(element).slider({
 				  	min: 0,
 				  	max: 270,
 				  	range: "min",
-				  	value: 0,
-				  	step: 90,
-				  	slide: function( event, ui ) {
-
-				  		self.angle = ui.value;
-				  		// self.degree = ui.value;
-					}
-					
-				});	
+				  	step: 90
+				  	});
+		    	ko.utils.registerEventHandler(element,'slidechange',function(){
+		    		var observable = valueAccessor();
+		    		observable($(element).slider('value'));
+		    	});
 		    },
 		    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-		        // This will be called once when the binding is first applied to an element,
-		        // and again whenever any observables/computeds that are accessed change
-		        // Update the DOM element based on the supplied values here.
+		    	var value = ko.utils.unwrapObservable(valueAccessor());
+		    	$(element).slider('value',value);
+		        
 		    }
 		};
 		self.init();

@@ -29,12 +29,15 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 			this.target.dialog("close");
 		},
 		whenClickConfirm: function(){
-			var rotate = this.angle;
+			var rotate = this.angle();
 			if(rotate / 90 === 1 || rotate / 90 === 3){
-					console.log('水平变垂直');
 					var width = this.width();
 					this.width(this.height());
 					this.height(width);
+				}else{
+					var height = this.height();
+					this.width(height);
+					this.height(this.width());
 				}
 			this.updateCanvas();
 		}

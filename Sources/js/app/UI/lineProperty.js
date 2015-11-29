@@ -22,17 +22,20 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util','app/UIController'
 			this.target.dialog("close");
 		},
 		whenClickConfirm: function(){
-			var rotate = this.angle;
+			var rotate = this.angle();
+			console.log(rotate);
 			if(this.lineType()==='h'){
 				// console.log(this.angle);
 				if(rotate / 90 === 1 || rotate / 90 === 3){
-					console.log('水平变垂直');
 					this.lineType('v');
+				}else{
+					this.lineType('h');
 				}
 			}else{
 				// console.log(this.angle);
 				if(rotate / 90 === 1 || rotate / 90 === 3){
-					console.log('垂直变水平');
+					this.lineType('v');
+				}else{
 					this.lineType('h');
 				}
 			}

@@ -20,8 +20,7 @@ define(['knockout','jquery','DBObj/date','DBObj/attr','DBObj/tablelookup'],funct
 				width: 510,
 				autoOpen: false,
 				resizable: false,
-				modal: true
-			});
+				modal: true			});
 
 			$(document).on('click','#closeDate',function(){
 				$('#riqi').dialog('close');

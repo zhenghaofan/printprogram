@@ -28,6 +28,7 @@ define(['knockout','mapping','lib/barcode'],function (ko,map,barcode){
       self.crc        = true;
       self.showHRI    = ko.observable(false);
       self.b2d        = ko.observable(false);
+      self.locked = ko.observable(false);
       // barHeight: 50,
       // moduleSize: 5,
       // showHRI: true,
@@ -137,7 +138,7 @@ define(['knockout','mapping','lib/barcode'],function (ko,map,barcode){
           UI_LEFT_TOP_Y : self.offsetY(),
           UI_RIGHT_BOTTOM_X : self.offsetX() + self.canvasWidth(),
           UI_RIGHT_BOTTOM_Y : self.offsetY() + self.canvasHeight()
-        }
+        };
       },
       write: function (info){
         self.offsetX(info.UI_LEFT_TOP_X);
@@ -168,7 +169,7 @@ define(['knockout','mapping','lib/barcode'],function (ko,map,barcode){
       self.redraw();
       if (self.parent) {
         self.parent.updateCanvas();
-      };
+      }
     };
     self.resizeCanvas = function (x,y){
       self.cvs.width = x;
@@ -224,6 +225,29 @@ define(['knockout','mapping','lib/barcode'],function (ko,map,barcode){
       x = x || window.app.stage.mouseX();
       y = y || window.app.stage.mouseY();
       return self.offsetX() <= x && x <= (self.offsetX() + self.canvasWidth()) && self.offsetY() <= y && y <= (self.offsetY() + self.canvasHeight());
+    };
+    ko.bindingHandlers.slide = {
+        init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+          self.angle = 0;
+            $(element).slider({
+            min: 0,
+            max: 270,
+            range: "min",
+            value: 0,
+            step: 90,
+            slide: function( event, ui ) {
+
+              self.angle = ui.value;
+              // self.degree = ui.value;
+          }
+          
+        }); 
+        },
+        update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+            // This will be called once when the binding is first applied to an element,
+            // and again whenever any observables/computeds that are accessed change
+            // Update the DOM element based on the supplied values here.
+        }
     };
     self.init();
   };

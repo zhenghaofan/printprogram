@@ -19,11 +19,11 @@ define(['knockout','mapping'],function (ko,map){
 		self.offsetY = ko.observable(100);
 		self.angle = ko.observable(0);
 		self.ratio = ko.observable(1);
-      self.selected   = ko.observable(false);
+      	self.selected   = ko.observable(false);
 		self.width = ko.observable(520);
 		self.fontFamily = ko.observable("sans-serif");
 		self.fontSize = ko.observable(14);
-
+		self.locked = ko.observable(false);
 		self.lineSpacing = ko.observable(5);
 		self.lineHeight = ko.computed(function (){
 			return self.fontSize() + self.lineSpacing();
@@ -44,7 +44,7 @@ define(['knockout','mapping'],function (ko,map){
 
 		self.splitContent = ko.computed(function (){
 			var ogi = self.content();
-			if(self.isFixedWidth() == false){
+			if(self.isFixedWidth() === false){
 				self.ctx.font = self.font();
 				var lines = ogi.split("\n"),
 					maxWidth = 0,
@@ -103,7 +103,7 @@ define(['knockout','mapping'],function (ko,map){
 					UI_RIGHT_BOTTOM_X : self.offsetX() + self.canvasWidth(),
 					UI_RIGHT_BOTTOM_Y : self.offsetY() + self.canvasHeight(),
 					UI_TYPE: self.isFixedWidth() ? "horizontal":"none"
-				}
+				};
 			},
 			write: function (info){
 				self.offsetX(info.UI_LEFT_TOP_X);
@@ -127,7 +127,7 @@ define(['knockout','mapping'],function (ko,map){
 			self.redraw();
 			if (self.parent) {
 				self.parent.updateCanvas();
-			};
+			}
 		};
 		self.resizeCanvas = function (x,y){
 			self.cvs.width = x;
@@ -144,7 +144,7 @@ define(['knockout','mapping'],function (ko,map){
 
 	        ctx.font = self.font();
 	        ctx.textBaseline = "top";
-	        ctx.fillStyle = "#ffffff"
+	        ctx.fillStyle = "#ffffff";
 	        //ctx.fillRect(0,0,self.canvasWidth(),self.canvasHeight());
 	        ctx.fillStyle = "#000000";
 	        for(var i = 0 ; i < ar.length ; i++){
@@ -168,7 +168,7 @@ define(['knockout','mapping'],function (ko,map){
 
 	        self.ctx.font = self.font();
 	        self.ctx.textBaseline = "top";
-	        self.ctx.fillStyle = "#ffffff"
+	        self.ctx.fillStyle = "#ffffff";
 	        self.ctx.fillRect(0,0,self.canvasWidth(),self.canvasHeight());
 	        self.ctx.fillStyle = "#000000";
 	        for(var i = 0 ; i < ar.length ; i++){
@@ -208,6 +208,29 @@ define(['knockout','mapping'],function (ko,map){
 			if(self.autoUpdateEvent){
 				self.autoUpdateEvent = self.autoUpdateEvent.dispose();
 			}
+		};
+		ko.bindingHandlers.slide = {
+		    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		    	self.angle = 0;
+		        $(element).slider({
+				  	min: 0,
+				  	max: 270,
+				  	range: "min",
+				  	value: 0,
+				  	step: 90,
+				  	slide: function( event, ui ) {
+
+				  		self.angle = ui.value;
+				  		// self.degree = ui.value;
+					}
+					
+				});	
+		    },
+		    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		        // This will be called once when the binding is first applied to an element,
+		        // and again whenever any observables/computeds that are accessed change
+		        // Update the DOM element based on the supplied values here.
+		    }
 		};
 		self.init();
 	};

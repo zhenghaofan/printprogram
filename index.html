@@ -1079,7 +1079,7 @@
 		<!-- 左侧栏属性框开始 -->	
 		
 		<!-- 文本属性 -->
-		<div class="property" id="wenbenshuxing" title="文本属性" data-width="610" data-visibility="false">
+		<div class="property" id="wenbenshuxing" title="文本属性" data-width="610" data-visibility="false" data-bind="with: textproperty.text()">
 			<div class="row tabs">
 				<div class="span4 span-border-right">
 					<ul>
@@ -1093,22 +1093,22 @@
 					<div id="wenbenshuxing1">
 						<div class="row">
 							<div class="span2"><label class="label">名称：</label></div>
-							<div class="span18 last-span"><input type="text" class="input"></div>
+							<div class="span18 last-span"><input type="text" class="input" data-bind="value:name"></div>
 						</div>
 						<div class="row">
 							<fieldset class="label-right">
 								<legend>位置和尺寸</legend>
 								<div class="row">
 									<div class="span3"><label class="label">X：</label></div>
-									<div class="span6"><input type="text" class="input"></div>
-									<div class="span3"><label class="label">横坐标：</label></div>
-									<div class="span6 last-span"><input type="text" class="input"></div>
+									<div class="span6"><input type="text" class="input" data-bind="value:offsetX"></div>
+									<div class="span3"><label class="label">宽度：</label></div>
+									<div class="span6 last-span"><input type="text" class="input" data-bind="value:width"></div>
 								</div>
 								<div class="row">
 									<div class="span3"><label class="label">Y：</label></div>
-									<div class="span6"><input type="text" class="input"></div>
-									<div class="span3"><label class="label">纵坐标：</label></div>
-									<div class="span6 last-span"><input type="text" class="input"></div>
+									<div class="span6"><input type="text" class="input" data-bind="value:offsetY"></div>
+									<div class="span3"><label class="label">高度：</label></div>
+									<div class="span6 last-span"><input type="text" class="input" data-bind="value:lineHeight"></div>
 								</div>
 
 							</fieldset>
@@ -1124,15 +1124,15 @@
 								<!-- v-model无效 
 								<input type="hidden" v-model="degree" id='degree' />
 								-->
-							<div class="slider">
+							<div class="slider" data-bind="slide">
 							</div>
 							</div>
 							
 						</div>
 						<div class="row">
 							<div class="span4"><label class="label">选项：</label></div>
-							<div class="span4"><input type="checkbox">可打印</div>
-							<div class="span4"><input type="checkbox">锁定</div>
+							<div class="span4"><input type="checkbox" checked="checked">可打印</div>
+							<div class="span4"><input type="checkbox" data-bind="checked:locked">锁定</div>
 						</div>
 						<div class="row">
 							<div class="span2"><label class="label">预览：</label></div>
@@ -1140,7 +1140,7 @@
 						</div>
 						<div class="row">
 							<div class="span4 last-span span-right"><button class="button textSubmit">取消</button></div>
-							<div class="span4 span-right"><button class="button">确定</button></div>
+							<div class="span4 span-right"><button class="button textAttrSubmit" data-bind="click:$root.textproperty.whenClickConfirm">确定</button></div>
 						</div>
 
 					</div>
@@ -1268,7 +1268,7 @@
 			</div>
 		</div>
 		<!-- 条码属性 -->
-		<div class="property" id="tiaomashuxing" title="条码属性" data-width="610" data-visibility="false">
+		<div class="property" id="tiaomashuxing" title="条码属性" data-width="610" data-visibility="false" data-bind="with:codeproperty.code()">
 			<div class="row tabs">
 				<div class="span4 span-border-right">
 					<ul>
@@ -1282,22 +1282,22 @@
 					<div id="tiaomashuxing1">
 						<div class="row">
 							<div class="span2"><label class="label">名称：</label></div>
-							<div class="span18 last-span"><input type="text" class="input" v-model="barFormName"></div>
+							<div class="span18 last-span"><input type="text" class="input" data-bind="value:name"></div>
 						</div>
 						<div class="row">
 							<fieldset class="label-right">
 								<legend>位置和尺寸</legend>
 								<div class="row">
 									<div class="span3"><label class="label">X：</label></div>
-									<div class="span6"><input type="text" class="input" v-model="barX"></div>
-									<div class="span3"><label class="label">Y：</label></div>
-									<div class="span6 last-span"><input type="text" class="input" v-model="barY"></div>
+									<div class="span6"><input type="text" class="input" data-bind="value:offsetX"></div>
+									<div class="span3"><label class="label">每条宽度：</label></div>
+									<div class="span6 last-span"><input type="text" class="input" data-bind="value:barWidth"></div>
 								</div>
 								<div class="row">
-									<div class="span3"><label class="label">长度：</label></div>
-									<div class="span6"><input type="text" class="input" v-model="barWidth"></div>
-									<div class="span3"><label class="label">宽度：</label></div>
-									<div class="span6 last-span"><input type="text" class="input" v-model="barHeight"></div>
+									<div class="span3"><label class="label">Y：</label></div>
+									<div class="span6"><input type="text" class="input" data-bind="value:offsetY"></div>
+									<div class="span3"><label class="label">高度：</label></div>
+									<div class="span6 last-span"><input type="text" class="input" data-bind="value:barHeight"></div>
 								</div>
 
 							</fieldset>
@@ -1313,15 +1313,15 @@
 								<!-- v-model无效 
 								<input type="hidden" v-model="degree" id='degree' />
 								-->
-							<div class="slider">
+							<div class="slider" data-bind='slide'>
 							</div>
 							</div>
 							
 						</div>
 						<div class="row">
 							<div class="span4"><label class="label">选项：</label></div>
-							<div class="span4"><input type="checkbox" name="barOption" v-model="print">可打印</div>
-							<div class="span4"><input type="checkbox" name="barOption" v-model="lock">锁定</div>
+							<div class="span4"><input type="checkbox" name="barOption" v-model="print" checked="checked">可打印</div>
+							<div class="span4"><input type="checkbox" name="barOption" v-model="lock" data-bind="checked:locked">锁定</div>
 						</div>
 						<div class="row">
 							<div class="span2"><label class="label">预览：</label></div>
@@ -1329,7 +1329,7 @@
 						</div>
 						<div class="row">
 							<div class="span4 last-span span-right"><button class="button barSubmit">取消</button></div>
-							<div class="span4 span-right"><button class="button" v-on="click: barSubmit">确定</button></div>
+							<div class="span4 span-right"><button class="button codeAttrSubmit" data-bind="click:$root.codeproperty.whenClickConfirm">确定</button></div>
 						</div>
 					</div>
 					<div id="tiaomashuxing2">
@@ -1617,7 +1617,7 @@
 								<li>270</li>
 							</ul>
 							<div class="span4"><label class="label">旋转：</label>
-							<div class="slider" data-bind="slide">
+							<div class="slider" data-bind="slide:angle">
 							</div>
 							</div>
 							
@@ -1672,7 +1672,7 @@
 					<li>270</li>
 				</ul>
 				<div class="span4"><label class="label">旋转：</label>
-					<div class="slider" data-bind="slide">
+					<div class="slider" data-bind="slide:angle">
 					</div>
 				</div>
 				

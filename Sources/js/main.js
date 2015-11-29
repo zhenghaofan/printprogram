@@ -5,8 +5,10 @@ requirejs.config({
     baseUrl: './Sources/js',
     paths: {
         jquery:'lib/jquery',
-        jqueryUI: 'lib/jquery-ui.min',
-        knockout: 'lib/knockout-3.3.0',
+        // jqueryUI: 'lib/jquery-ui.min',
+        // knockout: 'lib/knockout-3.3.0',
+        jqueryUI: 'lib/jquery-ui',
+        knockout: 'lib/knockout.debug',
         mapping: 'lib/knockout.mapping',
         sammy: 'lib/sammy.min',
         kinetic: 'lib/kinetic.min',

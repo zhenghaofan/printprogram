@@ -26,6 +26,29 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 		},
 		close: function (){
 			this.target.dialog("close");
+		},
+		whenClickConfirm: function(){
+			// if(this.lineType()==='h'){
+			// 	// console.log(this.angle);
+			// 	if(rotate / 90 === 1 || rotate / 90 === 3){
+			// 		console.log('水平变垂直');
+			// 		this.lineType('v');
+			// 	}
+			// }else{
+			// 	// console.log(this.angle);
+			// 	if(rotate / 90 === 1 || rotate / 90 === 3){
+			// 		console.log('垂直变水平');
+			// 		this.lineType('h');
+			// 	}
+			// }
+			var rotate = this.angle;
+			// if(rotate / 90 === 1 || rotate / 90 === 3){
+			// 		console.log('水平变垂直');
+			// 		var width = this.width();
+			// 		this.width(this.lineHeight());
+			// 		this.lineHeight(width);
+			// 	}
+			this.updateCanvas();
 		}
 	};
 	return new a();
