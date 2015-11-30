@@ -20,14 +20,6 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 		self.lineWidth = ko.observable(2).extend({numeric: {precision: 0,defaultValue: 2}});
 		self.lineColor = ko.observable("#000000");
 		self.locked = ko.observable(false);
-		//自动计算canvas大小
-		self.canvasWidth = ko.computed(function (){
-			return self.lineType() == "h" ? self.lineLength() : self.lineWidth();
-		});
-		self.canvasHeight = ko.computed(function (){
-			return self.lineType() === "h" ? self.lineWidth() : self.lineLength();
-		});
-
 		self.typewithdirect = ko.computed({
 			read: function(){
 				if(self.lineType() === 'h' && !self.reverse()) return 'ph';
@@ -36,6 +28,72 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 				if(self.lineType() === 'v' && self.reverse()) return 'nv';
 			}
 		});
+
+		//自动计算canvas大小
+		self.canvasWidth = ko.computed({
+			// return self.lineType() == "h" ? self.lineLength() : self.lineWidth();
+			read: function (){
+				if(self.typewithdirect() === 'ph' && self.angle() === 0 || 
+				self.typewithdirect() === 'nh' && self.angle() === 180 || 
+				self.typewithdirect() === 'pv' && self.angle() === 270 || 
+				self.typewithdirect() === 'nv' && self.angle() === 90 ){ //正横
+					return self.lineLength();
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 90 || 
+				self.typewithdirect() === 'nh' && self.angle() === 270 || 
+				self.typewithdirect() === 'pv' && self.angle() === 0 || 
+				self.typewithdirect() === 'nv' && self.angle() === 180 ){ //正竖
+
+					return self.lineWidth();
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 180 || 
+				self.typewithdirect() === 'nh' && self.angle() === 0 || 
+				self.typewithdirect() === 'pv' && self.angle() === 90 || 
+				self.typewithdirect() === 'nv' && self.angle() === 270 ){ //负横
+					return self.lineLength();
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 270 || 
+				self.typewithdirect() === 'nh' && self.angle() === 90 || 
+				self.typewithdirect() === 'pv' && self.angle() === 180 || 
+				self.typewithdirect() === 'nv' && self.angle() === 0 ){ //负竖
+					return self.lineWidth();
+
+				}
+			
+			}
+		}
+		);
+		self.canvasHeight = ko.computed({
+			// return self.lineType() === "h" ? self.lineWidth() : self.lineLength();
+			read: function (){
+				if(self.typewithdirect() === 'ph' && self.angle() === 0 || 
+				self.typewithdirect() === 'nh' && self.angle() === 180 || 
+				self.typewithdirect() === 'pv' && self.angle() === 270 || 
+				self.typewithdirect() === 'nv' && self.angle() === 90 ){ //正横
+					return self.lineWidth();
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 90 || 
+				self.typewithdirect() === 'nh' && self.angle() === 270 || 
+				self.typewithdirect() === 'pv' && self.angle() === 0 || 
+				self.typewithdirect() === 'nv' && self.angle() === 180 ){ //正竖
+
+					return self.lineLength();
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 180 || 
+				self.typewithdirect() === 'nh' && self.angle() === 0 || 
+				self.typewithdirect() === 'pv' && self.angle() === 90 || 
+				self.typewithdirect() === 'nv' && self.angle() === 270 ){ //负横
+					return self.lineWidth();
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 270 || 
+				self.typewithdirect() === 'nh' && self.angle() === 90 || 
+				self.typewithdirect() === 'pv' && self.angle() === 180 || 
+				self.typewithdirect() === 'nv' && self.angle() === 0 ){ //负竖
+					return self.lineLength();
+
+				}
+			
+			}
+		});
+
 		//ui info
 
 		self.UI_INFO = ko.computed({
@@ -233,6 +291,9 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 			self.cvs.style.height = x + "px";
 		};
 		self.redraw = function (){
+			// console.log('canvasWidth:'+self.canvasWidth());
+			// console.log('canvasHeight:'+self.canvasHeight());
+			// console.log(self.cvs);
 			self.resizeCanvas(self.canvasWidth(),self.canvasHeight());
 			//self.ctx.translate(0.5,0.5);
 			//self.ctx.clearRect(0,0,self.canvasWidth(),self.canvasHeight());
@@ -241,13 +302,49 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 			self.ctx.beginPath();
 			self.ctx.lineWidth = self.lineWidth();
 			self.ctx.strokeStyle = self.lineColor();
-			if(self.lineType() === "h"){
-				self.ctx.moveTo(0,self.lineWidth() / 2);
-				self.ctx.lineTo(self.lineLength(),self.lineWidth() / 2);
-			}else if (self.lineType() === "v"){
-				self.ctx.moveTo(self.lineWidth() / 2,0);
-				self.ctx.lineTo(self.lineWidth() / 2,self.lineLength());
-			}
+			// if(self.lineType() === "h"){
+			// 	self.ctx.moveTo(0,self.lineWidth() / 2);
+			// 	self.ctx.lineTo(self.lineLength(),self.lineWidth() / 2);
+			// }else if (self.lineType() === "v"){
+			// 	self.ctx.moveTo(self.lineWidth() / 2,0);
+			// 	self.ctx.lineTo(self.lineWidth() / 2,self.lineLength());
+			// }
+
+
+			if(self.typewithdirect() === 'ph' && self.angle() === 0 || 
+				self.typewithdirect() === 'nh' && self.angle() === 180 || 
+				self.typewithdirect() === 'pv' && self.angle() === 270 || 
+				self.typewithdirect() === 'nv' && self.angle() === 90 ){ //正横
+
+					self.ctx.moveTo(0,self.lineWidth() / 2);
+					self.ctx.lineTo(self.lineLength(),self.lineWidth() / 2);
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 90 || 
+				self.typewithdirect() === 'nh' && self.angle() === 270 || 
+				self.typewithdirect() === 'pv' && self.angle() === 0 || 
+				self.typewithdirect() === 'nv' && self.angle() === 180 ){ //正竖
+
+					self.ctx.moveTo(self.lineWidth() / 2,0);
+					self.ctx.lineTo(self.lineWidth() / 2,self.lineLength());
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 180 || 
+				self.typewithdirect() === 'nh' && self.angle() === 0 || 
+				self.typewithdirect() === 'pv' && self.angle() === 90 || 
+				self.typewithdirect() === 'nv' && self.angle() === 270 ){ //负横
+
+					self.ctx.moveTo(0,self.lineWidth() / 2);
+					self.ctx.lineTo(-self.lineLength(),self.lineWidth() / 2);
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 270 || 
+				self.typewithdirect() === 'nh' && self.angle() === 90 || 
+				self.typewithdirect() === 'pv' && self.angle() === 180 || 
+				self.typewithdirect() === 'nv' && self.angle() === 0 ){ //负竖
+
+					self.ctx.moveTo(self.lineWidth() / 2,0);
+					self.ctx.lineTo(self.lineWidth() / 2,-self.lineLength());
+
+				}
+
 			self.ctx.stroke();
 			return self.cvs;
 		};
@@ -279,6 +376,7 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 		self.isInPoint = function (x,y){
 			x = x || window.app.stage.mouseX();
 			y = y || window.app.stage.mouseY();
+			// console.log('isInPoint');
 			if(self.lineType() == "h"){
 				if(self.lineWidth() >= MIN_LINE_WIDTH){
 					return self.offsetX() <= x && x <= (self.offsetX() + self.lineLength()) && self.offsetY() <= y && y <= (self.offsetY() + self.lineWidth());
@@ -311,6 +409,24 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 		    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		    	var value = ko.utils.unwrapObservable(valueAccessor());
 		    	$(element).slider('value',value);
+		        
+		    }
+		};
+
+		ko.bindingHandlers.spinner = {
+
+		    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		    	$(element).spinner({step:0.01});
+		    	// ko.utils.registerEventHandler(element,'change',function(){
+		    	// 	var observable = valueAccessor();
+		    	// 	console.log(observable());
+		    	// 	observable($(element).spinner('value'));
+		    	// });
+		    },
+		    update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		    	// var value = ko.utils.unwrapObservable(valueAccessor());
+		    	// console.log(value);
+		    	// $(element).spinner('value',value);
 		        
 		    }
 		};

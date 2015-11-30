@@ -22,36 +22,6 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util','app/UIController'
 			this.target.dialog("close");
 		},
 		whenClickConfirm: function(){
-			// var rotate = this.angle();
-			// if(this.lineType()==='h'){
-			// 	// console.log(this.angle);
-			// 	switch(rotate){
-			// 		case 90:
-			// 			this.lineType('v');
-			// 			break;
-			// 		case 180:
-			// 			this.reverse(true);
-			// 			break;
-			// 		case 270:
-			// 			this.lineType('v');
-			// 			this.reverse(true);
-			// 			break;
-			// 		default:
-			// 			break;
-			// 	}
-			// 	// if(rotate / 90 === 1 || rotate / 90 === 3){
-			// 	// 	this.lineType('v');
-			// 	// }else{
-			// 	// 	this.lineType('h');
-			// 	// }
-			// }else{
-			// 	// console.log(this.angle);
-			// 	if(rotate / 90 === 1 || rotate / 90 === 3){
-			// 		this.lineType('v');
-			// 	}else{
-			// 		this.lineType('h');
-			// 	}
-			// }
 			
 			this.updateCanvas();
 		}

@@ -128,6 +128,11 @@ define(['knockout','mapping'],function (ko,map){
 			self.ctx.beginPath();
 			self.ctx.lineWidth= self.lineWidth();
 			self.ctx.strokeStyle=self.lineColor();
+		// 	if(self.angle() === 90 || self.angle() === 270){				
+		// 		self.ctx.rect(self.halfLineWidth(),self.halfLineWidth(),self.height(),self.width());
+		// 	}else{
+		// 	self.ctx.rect(self.halfLineWidth(),self.halfLineWidth(),self.width(),self.height());
+		// }
 			self.ctx.rect(self.halfLineWidth(),self.halfLineWidth(),self.width(),self.height());
 			self.ctx.stroke();
 	        // this.ctx.restore();

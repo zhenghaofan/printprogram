@@ -34,6 +34,7 @@ define(['jquery','jqueryUI','knockout','app/Stage','app/Util'],function ($,ui,ko
 					var width = this.width();
 					this.width(this.height());
 					this.height(width);
+					
 				}else{
 					var height = this.height();
 					this.width(height);
