@@ -2,7 +2,6 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 	var MIN_LINE_WIDTH = 10;
 	var line = function (parent,data){
 		var self = this;
-		self.lineSlider = null;
 		self.cvs = document.createElement("canvas");
 		self.ctx = self.cvs.getContext("2d");
 		self.id = null;
@@ -13,7 +12,8 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 		self.offsetX = ko.observable(50).extend({numeric: {precision: 0,defaultValue: 50}});
 		self.offsetY = ko.observable(50).extend({numeric: {precision: 0,defaultValue: 50}});
 		self.angle = ko.observable(0);
-		self.ratio = ko.observable(1);
+		self.reverse = ko.observable(false);
+		self.ratio = ko.observable(1);//比例
       	self.selected   = ko.observable(false);
 		self.lineType = ko.observable("h");
 		self.lineLength = ko.observable(200).extend({numeric: {precision: 0,defaultValue: 200}});
@@ -25,34 +25,48 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 			return self.lineType() == "h" ? self.lineLength() : self.lineWidth();
 		});
 		self.canvasHeight = ko.computed(function (){
-			return self.lineType() == "h" ? self.lineWidth() : self.lineLength();
+			return self.lineType() === "h" ? self.lineWidth() : self.lineLength();
 		});
 
+		self.typewithdirect = ko.computed({
+			read: function(){
+				if(self.lineType() === 'h' && !self.reverse()) return 'ph';
+				if(self.lineType() === 'h' && self.reverse()) return 'nh';
+				if(self.lineType() === 'v' && !self.reverse()) return 'pv';
+				if(self.lineType() === 'v' && self.reverse()) return 'nv';
+			}
+		});
 		//ui info
 
 		self.UI_INFO = ko.computed({
 			read: function (){
-				if(self.lineType() == "h"){
-					//
+				if(self.typewithdirect() === 'ph' && self.angle() === 0 || 
+				self.typewithdirect() === 'nh' && self.angle() === 180 || 
+				self.typewithdirect() === 'pv' && self.angle() === 270 || 
+				self.typewithdirect() === 'nv' && self.angle() === 90 ){ //正横
 					if(self.lineWidth() >= MIN_LINE_WIDTH){
-						return {
-							UI_LEFT_TOP_X : self.offsetX(),
-							UI_LEFT_TOP_Y : self.offsetY(),
-							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineLength(),
-							UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth(),
-							UI_TYPE : "horizontal"
-						};
-					}else {
-						return {
-							UI_LEFT_TOP_X : self.offsetX(),
-							UI_LEFT_TOP_Y : self.offsetY() - (MIN_LINE_WIDTH - self.lineWidth()) / 2,
-							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineLength(),
-							UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth() + (MIN_LINE_WIDTH - self.lineWidth()) /2,
-							UI_TYPE : "horizontal"
-						};
-					}
-				}else if(self.lineType() == "v") {
-					//
+							return {
+								UI_LEFT_TOP_X : self.offsetX(),
+								UI_LEFT_TOP_Y : self.offsetY(),
+								UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineLength(),
+								UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth(),
+								UI_TYPE : "horizontal"
+							};
+
+						}else {
+							return {
+								UI_LEFT_TOP_X : self.offsetX(),
+								UI_LEFT_TOP_Y : self.offsetY() - (MIN_LINE_WIDTH - self.lineWidth()) / 2,
+								UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineLength(),
+								UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth() + (MIN_LINE_WIDTH - self.lineWidth()) /2,
+								UI_TYPE : "horizontal"
+							};
+						}
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 90 || 
+				self.typewithdirect() === 'nh' && self.angle() === 270 || 
+				self.typewithdirect() === 'pv' && self.angle() === 0 || 
+				self.typewithdirect() === 'nv' && self.angle() === 180 ){ //正竖
+
 					if(self.lineWidth() >= MIN_LINE_WIDTH){
 						return {
 							UI_LEFT_TOP_X : self.offsetX(),
@@ -70,10 +84,59 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 							UI_TYPE : "vertical"
 						};
 					}
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 180 || 
+				self.typewithdirect() === 'nh' && self.angle() === 0 || 
+				self.typewithdirect() === 'pv' && self.angle() === 90 || 
+				self.typewithdirect() === 'nv' && self.angle() === 270 ){ //负横
+					if(self.lineWidth() >= MIN_LINE_WIDTH){
+						return {
+								UI_LEFT_TOP_X : self.offsetX(),
+								UI_LEFT_TOP_Y : self.offsetY(),
+								UI_RIGHT_BOTTOM_X : self.offsetX() - self.lineLength(),
+								UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth(),
+								UI_TYPE : "horizontal"
+							};
+
+						}else {
+							return {
+								UI_LEFT_TOP_X : self.offsetX(),
+								UI_LEFT_TOP_Y : self.offsetY() - (MIN_LINE_WIDTH - self.lineWidth()) / 2,
+								UI_RIGHT_BOTTOM_X : self.offsetX() - self.lineLength(),
+								UI_RIGHT_BOTTOM_Y : self.offsetY() + self.lineWidth() + (MIN_LINE_WIDTH - self.lineWidth()) /2,
+								UI_TYPE : "horizontal"
+						};
+					}
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 270 || 
+				self.typewithdirect() === 'nh' && self.angle() === 90 || 
+				self.typewithdirect() === 'pv' && self.angle() === 180 || 
+				self.typewithdirect() === 'nv' && self.angle() === 0 ){ //负竖
+					if(self.lineWidth() >= MIN_LINE_WIDTH){
+						return {
+							UI_LEFT_TOP_X : self.offsetX(),
+							UI_LEFT_TOP_Y : self.offsetY(),
+							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineWidth(),
+							UI_RIGHT_BOTTOM_Y : self.offsetY() - self.lineLength(),
+							UI_TYPE : "vertical"
+						};
+					}else {
+						return {
+							UI_LEFT_TOP_X : self.offsetX() - (MIN_LINE_WIDTH - self.lineWidth()) / 2,
+							UI_LEFT_TOP_Y : self.offsetY(),
+							UI_RIGHT_BOTTOM_X : self.offsetX() + self.lineWidth() + (MIN_LINE_WIDTH - self.lineWidth()) / 2,
+							UI_RIGHT_BOTTOM_Y : self.offsetY() - self.lineLength(),
+							UI_TYPE : "vertical"
+						};
+					}
+
 				}
 			},
 			write: function (info){
-				if(self.lineType() == "h"){
+				if(self.typewithdirect() === 'ph' && self.angle() === 0 || 
+				self.typewithdirect() === 'nh' && self.angle() === 180 || 
+				self.typewithdirect() === 'pv' && self.angle() === 270 || 
+				self.typewithdirect() === 'nv' && self.angle() === 90 ){//正横
 					if(self.lineWidth() >= MIN_LINE_WIDTH){
 						self.offsetX(info.UI_LEFT_TOP_X);
 						self.offsetY(info.UI_LEFT_TOP_Y);
@@ -83,7 +146,12 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 						self.offsetY(info.UI_LEFT_TOP_Y + (MIN_LINE_WIDTH - self.lineWidth()) / 2);
 						self.lineLength(info.UI_RIGHT_BOTTOM_X - info.UI_LEFT_TOP_X);
 					}
-				}else if(self.lineType() == "v") {
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 90 || 
+				self.typewithdirect() === 'nh' && self.angle() === 270 || 
+				self.typewithdirect() === 'pv' && self.angle() === 0 || 
+				self.typewithdirect() === 'nv' && self.angle() === 180 ){ //正竖
+
 					if(self.lineWidth() >= MIN_LINE_WIDTH){
 						self.offsetX(info.UI_LEFT_TOP_X);
 						self.offsetY(info.UI_LEFT_TOP_Y);
@@ -92,6 +160,40 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 						self.offsetX(info.UI_LEFT_TOP_X + (MIN_LINE_WIDTH - self.lineWidth()) / 2);
 						self.offsetY(info.UI_LEFT_TOP_Y);
 						self.lineLength(info.UI_RIGHT_BOTTOM_Y - info.UI_LEFT_TOP_Y);
+					}
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 90 || 
+				self.typewithdirect() === 'nh' && self.angle() === 270 || 
+				self.typewithdirect() === 'pv' && self.angle() === 0 || 
+				self.typewithdirect() === 'nv' && self.angle() === 180 ){ //负横
+
+					if(self.lineWidth() >= MIN_LINE_WIDTH){
+						self.offsetX(info.UI_LEFT_TOP_X);
+						self.offsetY(info.UI_LEFT_TOP_Y);
+						// self.lineLength(info.UI_RIGHT_BOTTOM_X - info.UI_LEFT_TOP_X);
+						self.lineLength(info.UI_LEFT_TOP_X - info.UI_RIGHT_BOTTOM_X);
+					}else {
+						self.offsetX(info.UI_LEFT_TOP_X);
+						self.offsetY(info.UI_LEFT_TOP_Y + (MIN_LINE_WIDTH - self.lineWidth()) / 2);
+						// self.lineLength(info.UI_RIGHT_BOTTOM_X - info.UI_LEFT_TOP_X);
+						self.lineLength(info.UI_LEFT_TOP_X - info.UI_RIGHT_BOTTOM_X );
+					}
+
+				}else if(self.typewithdirect() === 'ph' && self.angle() === 90 || 
+				self.typewithdirect() === 'nh' && self.angle() === 270 || 
+				self.typewithdirect() === 'pv' && self.angle() === 0 || 
+				self.typewithdirect() === 'nv' && self.angle() === 180 ){ //负竖
+
+					if(self.lineWidth() >= MIN_LINE_WIDTH){
+						self.offsetX(info.UI_LEFT_TOP_X);
+						self.offsetY(info.UI_LEFT_TOP_Y);
+						// self.lineLength(info.UI_RIGHT_BOTTOM_Y - info.UI_LEFT_TOP_Y);
+						self.lineLength(info.UI_LEFT_TOP_Y - info.UI_RIGHT_BOTTOM_Y );
+					}else {
+						self.offsetX(info.UI_LEFT_TOP_X + (MIN_LINE_WIDTH - self.lineWidth()) / 2);
+						self.offsetY(info.UI_LEFT_TOP_Y);
+						// self.lineLength(info.UI_RIGHT_BOTTOM_Y - info.UI_LEFT_TOP_Y);
+						self.lineLength(info.UI_LEFT_TOP_Y - info.UI_RIGHT_BOTTOM_Y);
 					}
 				}
 			},
@@ -137,8 +239,8 @@ define(['jquery','jqueryUI','knockout','mapping','app/Extender'],function ($,ui,
 			//
 			
 			self.ctx.beginPath();
-			self.ctx.lineWidth= self.lineWidth();
-			self.ctx.strokeStyle=self.lineColor();
+			self.ctx.lineWidth = self.lineWidth();
+			self.ctx.strokeStyle = self.lineColor();
 			if(self.lineType() === "h"){
 				self.ctx.moveTo(0,self.lineWidth() / 2);
 				self.ctx.lineTo(self.lineLength(),self.lineWidth() / 2);

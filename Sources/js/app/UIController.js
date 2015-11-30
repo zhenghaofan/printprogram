@@ -31,7 +31,7 @@ define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 		//UI 类型
 		self.UI_TYPE = ko.observable("all");
 
-		//计算控制点的位置
+		//计算控制点的位置,x1为左上角，x2为上顶角，x3为右上角，y1左下角,y2下底角,y3左下角
 		self.x1 = ko.computed(function (){
 			return self.UI_LEFT_TOP_X();
 		});
@@ -120,7 +120,7 @@ define(['jquery','knockout','app/ControlPoint'],function ($,ko,cp){
 				self.ne.print();
 				self.sw.print();
 				self.se.print();
-			}else if(self.UI_TYPE() == "horizontal"){
+			}else if(self.UI_TYPE() == "horizontal"){//横线
 				self.e.print();
 				self.w.print();
 			}else if(self.UI_TYPE() == "vertical"){

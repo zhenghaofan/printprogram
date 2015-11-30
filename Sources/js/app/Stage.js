@@ -7,7 +7,7 @@
  	'app/UIController',
  	'app/Util'
 ],function ($,ko,map,ruler,doc,ui,util){
- 	
+ 	//整个绘制区域
  	var Stage = function (){
 		var self          = this;
 		self.cvs          = document.getElementById("cvs");

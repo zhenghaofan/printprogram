@@ -13,7 +13,7 @@ define(['jquery','knockout','app/Stage','object/Line','app/Util'],function ($,ko
 			var doc = stage.curDoc();
 			if(doc){
 				util.Event.dispatch("beforeAddLine",this);
-				self.x = stage.mouseX();
+				self.x = stage.mouseX();//canvas中的坐标,直线起点
 				self.y = stage.mouseY();
 				self.newLine = doc.addLine();
 				self.newLine.offsetX(self.x);
@@ -24,14 +24,22 @@ define(['jquery','knockout','app/Stage','object/Line','app/Util'],function ($,ko
 		};
 		self.onmousemove = function (){
 			var line = self.newLine;
-			var d_x = Math.abs(self.x - stage.mouseX());
-			var d_y = Math.abs(self.y - stage.mouseY());
+			var ishReverse = self.x - stage.mouseX();
+			var isvReverse = self.y - stage.mouseY();
+			var d_x = Math.abs(ishReverse);
+			var d_y = Math.abs(isvReverse);
 			if(d_x < d_y){
+				if(isvReverse > 0){
+					line.reverse(true);
+				}
 				line.lineType("v");
-				line.offsetX(self.x);
-				line.offsetY(Math.min(self.y,stage.mouseY()));
+				line.offsetX(self.x);//起点
+				line.offsetY(Math.min(self.y,stage.mouseY()));//起点y与最终y的最小值
 				line.lineLength(d_y);
 			}else {
+				if(ishReverse > 0){
+					line.reverse(true);
+				}
 				line.lineType("h");
 				line.offsetX(Math.min(self.x,stage.mouseX()));
 				line.offsetY(self.y);
