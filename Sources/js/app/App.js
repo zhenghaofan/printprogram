@@ -49,11 +49,11 @@
 		
 		this.textguide = textguide;
 		this.codeguide = codeguide;
-		this.doc = doc;
 		this.menu = menu;
 		this.login2 = login2;
 		this.login1 = login1;
 		this.stagerightmenu = stagerightmenu;
+		this.doc = doc;
 		this._init();
 	};
 	App.prototype = {

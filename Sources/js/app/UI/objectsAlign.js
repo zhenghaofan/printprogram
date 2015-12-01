@@ -1,4 +1,5 @@
-define(['app/Stage'],function (stage){
+define(['app/Stage','app/Doc'],function (stage,doc){
+	// var docZIndex = doc.zIndexCounter();
 	return {
 		left: function (){
 			var doc = stage.curDoc(),
@@ -65,7 +66,17 @@ define(['app/Stage'],function (stage){
 		},
 		verticalDivider: function (){
 
+		},
+		ztop : function(){
+			var doc = stage.curDoc();
+			var obj = doc.focusObject();
+			obj.zIndex(doc.zIndexCounter());
+			doc.zIndexCounter(doc.zIndexCounter()+1);
+		},
+		zbottom : function(){
+			var doc = stage.curDoc();
+			var obj = doc.focusObject();
+			obj.zIndex(-1);
 		}
-
 	};
 });
