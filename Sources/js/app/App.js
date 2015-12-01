@@ -28,8 +28,9 @@
  	'app/UI/rect',
  	'app/UI/line',
  	'app/UI/textGuide',
- 	'app/UI/codeGuide'
-],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet,text,image,rect,line,textguide,codeguide){
+ 	'app/UI/codeGuide',
+ 	'app/Doc'
+],function ($,ui,ko,router,stage,database,util,tool,history,lang,barcode,objectsalign,lineproperty,codeproperty,imageproperty,rectproperty,textproperty,stagerightmenu,pageSet,login2,login1,menu,gc,formSet,text,image,rect,line,textguide,codeguide,doc){
  	
  	var App = function (){
 		this.stage = 		stage;
@@ -48,7 +49,7 @@
 		
 		this.textguide = textguide;
 		this.codeguide = codeguide;
-
+		this.doc = doc;
 		this.menu = menu;
 		this.login2 = login2;
 		this.login1 = login1;

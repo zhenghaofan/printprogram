@@ -875,17 +875,17 @@
 			</div>
 		</div>
 		
-		<div class="property" id="page-setting-dialog" title="页面设置" data-width="510" data-visibility="false">
+		<div class="property" id="page-setting-dialog" title="页面设置" data-width="510" data-visibility="false" data-bind="with:stage.curDoc">
 			<div class="row">
 				<div class="span3"><label class="label">长度：</label></div>
-				<div class="span6"><input type="text" class="input"></div>
+				<div class="span6"><input type="text" class="input" data-bind="value:width"></div>
 				<div class="span3"><label class="label">宽度：</label></div>
-				<div class="span6 last-span"><input type="text" class="input"></div>
+				<div class="span6 last-span"><input type="text" class="input" data-bind="value:height"></div>
 			</div>
 			
 			<div class="row sm-margin-top md-margin-right">
 				<div class="span4 span-right"><button class="button" id="pageSetSubmit">取消</button></div>
-				<div class="span4 span-right"><button class="button">确定</button></div>
+				<div class="span4 span-right pageAttrSubmit"><button class="button" data-bind="click:updateCanvas">确定</button></div>
 			</div>
 		</div>
 			

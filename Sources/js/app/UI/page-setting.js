@@ -30,7 +30,7 @@ define(['jquery'], function($){
 	$(document).on('click','#initSubmit',function(){
 		$('#page-initial').dialog('close');
 	});
-	$(document).on('click','#pageSetSubmit',function(){
+	$(document).on('click','#pageSetSubmit,.pageAttrSubmit',function(){
 		$('#page-setting-dialog').dialog('close');
 	});
 	$(document).on('click','#rectSubmit,.rectAttrSubmit',function(){
